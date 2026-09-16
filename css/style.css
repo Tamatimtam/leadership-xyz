@@ -17,3 +17,7 @@
 @import url('story-card.css');
 @import url('authors.css');
 @import url('footer.css');
+
+/* 4. Event Expansion Sections */
+@import url('city-dinner.css');
+@import url('events-coming-soon.css');

@@ -1,0 +1,86 @@
+/* ==========================================================================
+   XYZ EVENTS – Coming Soon Stubs (Book Talks & Idea Fest)
+   ========================================================================== */
+
+.events-coming-soon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 24px 100px;
+}
+
+.coming-soon-card {
+  width: 100%;
+  max-width: var(--container-max-width);
+  border: 1.5px solid rgba(67, 62, 112, 0.12);
+  border-radius: 20px;
+  padding: 48px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.coming-soon-card:hover {
+  border-color: rgba(67, 62, 112, 0.25);
+  box-shadow: 0 4px 20px rgba(67, 62, 112, 0.06);
+}
+
+.coming-soon-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.coming-soon-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+.coming-soon-desc {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #888;
+  letter-spacing: -0.02em;
+}
+
+.coming-soon-badge {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-nav-pill);
+  border: 1.5px solid var(--color-nav-pill);
+  border-radius: 100px;
+  padding: 8px 20px;
+}
+
+@media (max-width: 809.98px) {
+  .events-coming-soon {
+    padding: 30px 16px 80px;
+  }
+
+  .coming-soon-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
+  }
+
+  .coming-soon-title {
+    font-size: 26px;
+  }
+
+  .coming-soon-badge {
+    align-self: flex-start;
+  }
+}

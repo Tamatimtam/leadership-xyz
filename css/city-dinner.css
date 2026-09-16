@@ -1,0 +1,489 @@
+/* ==========================================================================
+   XYZ @ CITY OVER DINNER – Carousel & 3-Stage Reveal Cards
+   ========================================================================== */
+
+.city-dinner-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 24px 80px;
+  overflow: hidden;
+}
+
+.city-dinner-container {
+  width: 100%;
+  max-width: var(--container-wide-width);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section Header */
+.city-dinner-header {
+  margin-bottom: 48px;
+  padding-left: 16px;
+}
+
+.city-dinner-series-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-light-cream);
+  background-color: var(--color-indigo);
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.city-dinner-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 1em;
+  letter-spacing: -0.03em;
+  color: var(--color-dark);
+  margin-bottom: 14px;
+}
+
+.city-dinner-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #666;
+  max-width: 520px;
+}
+
+/* Carousel Track */
+.city-dinner-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.city-dinner-carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 16px 24px;
+}
+
+.city-dinner-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Carousel Navigation Arrows */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px 0;
+}
+
+.carousel-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--color-indigo);
+  background: transparent;
+  color: var(--color-indigo);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+  background-color: var(--color-indigo);
+  color: var(--color-light-cream);
+  transform: scale(1.06);
+}
+
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-counter {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--color-indigo);
+  min-width: 50px;
+  text-align: center;
+}
+
+/* ── Individual Session Card ────────────────────────────────── */
+.session-card {
+  flex-shrink: 0;
+  width: 380px;
+  height: 540px;
+  border-radius: 20px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.session-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.35s ease;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.session-card:hover .session-card-inner {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Stage Layers ───────────────────────────────────────────── */
+/* All three stages are stacked absolutely inside session-card-inner */
+.stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stage 1: Poster / Silhouette Cover */
+.stage-poster {
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px 28px;
+  color: var(--color-light-cream);
+  opacity: 1;
+}
+
+.stage-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* Poster Accent Colors Per Card */
+.session-card[data-accent="violet"] .stage-poster::before {
+  background: linear-gradient(145deg, #5d3a82 0%, #3a1f5e 100%);
+}
+.session-card[data-accent="cobalt"] .stage-poster::before {
+  background: linear-gradient(145deg, #1b4eb8 0%, #0f2d6e 100%);
+}
+.session-card[data-accent="green"] .stage-poster::before {
+  background: linear-gradient(145deg, #27a74a 0%, #155e29 100%);
+}
+
+/* Poster Decorative Arch */
+.poster-arch {
+  position: absolute;
+  top: -60px;
+  right: -30px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 28px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.poster-arch-inner {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 16px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Poster Content */
+.poster-edition {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.poster-silhouette {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.silhouette-figure {
+  width: 160px;
+  height: 200px;
+  border-radius: 12px 12px 0 0;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.silhouette-figure::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 120px;
+  border-radius: 40px 40px 0 0;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.poster-topic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.15em;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.poster-speaker {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+
+.poster-date {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Stage 2: Black & White Photo */
+.stage-bw {
+  z-index: 2;
+  opacity: 0;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+}
+
+.stage-bw-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.15) brightness(0.85);
+  border-radius: 20px;
+}
+
+.stage-bw-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.stage-bw-pill {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 100px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.stage-bw-pill-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.session-card:hover .stage-bw-pill-arrow {
+  transform: translateX(3px);
+}
+
+/* Stage 3: Full Color Expanded */
+.stage-color {
+  z-index: 1;
+  opacity: 0;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+}
+
+.stage-color-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0%) contrast(1.05);
+  border-radius: 20px;
+}
+
+.stage-color-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.75) 100%);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.stage-color-content {
+  position: relative;
+  z-index: 2;
+}
+
+.stage-color-topic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.2em;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.stage-color-speaker {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.stage-color-desc {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.stage-color-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.stage-color-back:hover {
+  color: #fff;
+}
+
+/* ── Card State Classes (toggled by JS) ─────────────────────── */
+.session-card.state-bw .stage-poster {
+  opacity: 0;
+}
+.session-card.state-bw .stage-bw {
+  opacity: 1;
+}
+
+.session-card.state-color .stage-poster {
+  opacity: 0;
+}
+.session-card.state-color .stage-bw {
+  opacity: 0;
+}
+.session-card.state-color .stage-color {
+  opacity: 1;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1409.98px) {
+  .city-dinner-title {
+    font-size: 62px;
+  }
+
+  .session-card {
+    width: 340px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .city-dinner-section {
+    padding: 70px 16px 60px;
+  }
+
+  .city-dinner-title {
+    font-size: 44px;
+  }
+
+  .city-dinner-subtitle {
+    font-size: 15px;
+  }
+
+  .session-card {
+    width: 300px;
+    height: 460px;
+  }
+
+  .poster-topic {
+    font-size: 22px;
+  }
+
+  .carousel-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
