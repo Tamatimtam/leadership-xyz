@@ -1,0 +1,33 @@
+/* ==========================================================================
+   DESIGN TOKENS & VARIABLES
+   Extracted directly from the original Leadership XYZ design
+   ========================================================================== */
+
+:root {
+  /* Brand Color Palette */
+  --bg-primary: #f6f6f6;
+  --color-dark: #191919;
+  --color-indigo: #433e70;
+  --color-nav-pill: #7f76b1;
+  --color-emerald: #296b59;
+  --color-shopee: #ef4d30;
+  --color-tiktok: #191919;
+  --color-white: #ffffff;
+  --color-light-cream: #f6f6f6;
+
+  /* Typography */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing & Layout */
+  --container-max-width: 1100px;
+  --container-wide-width: 1362px;
+  --radius-pill: 100px;
+  --radius-card: 16px;
+
+  /* Transitions & Animation Eases */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

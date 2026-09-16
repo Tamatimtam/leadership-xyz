@@ -1,0 +1,91 @@
+/* ==========================================================================
+   PHILOSOPHY & STATEMENT SECTION
+   ========================================================================== */
+
+.philosophy-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 24px 80px;
+  background: transparent;
+  z-index: 2;
+}
+
+.philosophy-container {
+  max-width: var(--container-max-width);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Badge icon above quote */
+.philosophy-badge {
+  width: 157px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* Primary Quote (Plus Jakarta Sans semibold in emerald green) */
+.philosophy-quote {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 54px;
+  line-height: 1.3em;
+  letter-spacing: -0.05em;
+  color: var(--color-emerald);
+  max-width: 1000px;
+}
+
+.philosophy-quote .highlight {
+  font-style: italic;
+  color: inherit;
+}
+
+/* Narrative Body */
+.philosophy-narrative {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.35em;
+  letter-spacing: -0.05em;
+  color: var(--color-indigo);
+  max-width: 600px;
+  margin-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1409.98px) {
+  .philosophy-quote {
+    font-size: 40px;
+  }
+  .philosophy-narrative {
+    font-size: 18px;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .philosophy-section {
+    padding: 30px 16px 60px;
+  }
+
+  .philosophy-badge {
+    width: 107px;
+  }
+
+  .philosophy-quote {
+    font-size: 24px;
+    line-height: 1.35em;
+  }
+
+  .philosophy-narrative {
+    font-size: 14px;
+    max-width: 290px;
+  }
+}

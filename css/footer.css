@@ -1,0 +1,21 @@
+/* ==========================================================================
+   FOOTER SECTION
+   ========================================================================== */
+
+.site-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px 60px;
+  background-color: var(--bg-primary);
+  border-top: 1px solid rgba(127, 118, 177, 0.12);
+}
+
+.footer-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-nav-pill);
+  letter-spacing: 0.02em;
+  text-align: center;
+}

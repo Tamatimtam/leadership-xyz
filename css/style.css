@@ -1,0 +1,19 @@
+/* ==========================================================================
+   LEADERSHIP XYZ - MASTER STYLESHEET
+   Imports typography and modular section stylesheets
+   ========================================================================== */
+
+/* 1. Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+
+/* 2. Core Tokens & Reset */
+@import url('variables.css');
+@import url('reset.css');
+
+/* 3. Section & Component Styles */
+@import url('navbar.css');
+@import url('hero.css');
+@import url('philosophy.css');
+@import url('story-card.css');
+@import url('authors.css');
+@import url('footer.css');
