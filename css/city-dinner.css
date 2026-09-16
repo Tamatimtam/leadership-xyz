@@ -7,22 +7,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px 24px 80px;
+  padding: 80px 24px 80px;
   overflow: hidden;
   position: relative;
 }
 
+/* Width perfectly matched to authors-container & 3 author cards (1090px) */
 .city-dinner-container {
   width: 100%;
-  max-width: var(--container-wide-width);
+  max-width: 1090px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
-/* ── Section Header ─────────────────────────────────────────── */
+/* ── Section Header (Flush with left boundary of cards) ─────── */
 .city-dinner-header {
-  margin-bottom: 48px;
-  padding-left: 16px;
+  margin-bottom: 40px;
+  padding-left: 0;
 }
 
 .city-dinner-series-label {
@@ -66,18 +68,17 @@
   width: 100%;
 }
 
-/* ── Overview Carousel Track ────────────────────────────────── */
+/* ── Overview Carousel Track (Flush with 1090px width) ──────── */
 .city-dinner-carousel {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 8px 16px 24px;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 8px 0 24px;
+  width: 100%;
 }
 
 .city-dinner-carousel::-webkit-scrollbar {
@@ -90,14 +91,14 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SESSION CARD – Photo-First with Grayscale-to-Color Hover
+   SESSION CARD – Exact Match to Author Card Size (350px x 500px)
    ═══════════════════════════════════════════════════════════════ */
 
 .session-card {
   flex-shrink: 0;
-  width: 380px;
-  height: 540px;
-  border-radius: 20px;
+  width: 350px;
+  height: 500px;
+  border-radius: var(--radius-card);
   scroll-snap-align: start;
   cursor: pointer;
   position: relative;
@@ -109,17 +110,18 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-  transition: box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  /* Weighted, tactile physics ease */
+  transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Lift + shadow bloom on hover */
+/* Tactile lift on hover */
 .session-card:hover .session-card-inner {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 /* ── Card Photo Layer ───────────────────────────────────────── */
@@ -129,34 +131,34 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   filter: grayscale(80%) contrast(1.1) brightness(0.88);
-  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .session-card:hover .card-photo {
   filter: grayscale(0%) contrast(1.05) brightness(0.95);
 }
 
-/* ── Card Color Overlay (tinted by accent) ──────────────────── */
+/* ── Card Color Tint (Reusing exact palette: indigo, emerald, nav-pill) ── */
 .card-tint {
   position: absolute;
   inset: 0;
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   opacity: 0.45;
   mix-blend-mode: multiply;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
-.session-card[data-accent="violet"] .card-tint {
-  background: #5d3a82;
+.session-card[data-accent="indigo"] .card-tint {
+  background: var(--color-indigo);
 }
-.session-card[data-accent="cobalt"] .card-tint {
-  background: #1b4eb8;
+.session-card[data-accent="emerald"] .card-tint {
+  background: var(--color-emerald);
 }
-.session-card[data-accent="green"] .card-tint {
-  background: #155e29;
+.session-card[data-accent="nav-pill"] .card-tint {
+  background: var(--color-nav-pill);
 }
 
 .session-card:hover .card-tint {
@@ -167,33 +169,33 @@
 .card-gradient {
   position: absolute;
   inset: 0;
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   background: linear-gradient(
     180deg,
     transparent 30%,
-    rgba(0, 0, 0, 0.15) 55%,
-    rgba(0, 0, 0, 0.72) 100%
+    rgba(25, 25, 25, 0.2) 55%,
+    rgba(25, 25, 25, 0.82) 100%
   );
   pointer-events: none;
-  transition: background 0.5s ease;
+  transition: background 0.6s ease;
 }
 
 .session-card:hover .card-gradient {
   background: linear-gradient(
     180deg,
     transparent 25%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.78) 100%
+    rgba(25, 25, 25, 0.15) 50%,
+    rgba(25, 25, 25, 0.88) 100%
   );
 }
 
-/* ── Card Content Overlay (text on top of image) ────────────── */
+/* ── Card Content Overlay ───────────────────────────────────── */
 .card-content {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 28px;
+  padding: 26px;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -207,19 +209,19 @@
   font-weight: 700;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.08em;
+  color: var(--color-light-cream);
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   padding: 5px 14px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .session-card:hover .card-edition {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.24);
   transform: translateY(-2px);
 }
 
@@ -227,15 +229,15 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 1.15em;
+  font-size: 22px;
+  line-height: 1.18em;
   letter-spacing: -0.02em;
-  color: #fff;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--color-white);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .session-card:hover .card-topic {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .card-speaker {
@@ -244,31 +246,31 @@
   font-size: 14px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.03s;
+  color: rgba(255, 255, 255, 0.92);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.03s;
 }
 
 .session-card:hover .card-speaker {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .card-date {
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.06s;
+  color: rgba(255, 255, 255, 0.65);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.06s;
 }
 
 .session-card:hover .card-date {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
-/* ── "Click to explore" hint pill ───────────────────────────── */
+/* ── "Explore session →" hint pill ─────────────────────────── */
 .card-hint {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 18px;
+  right: 18px;
   z-index: 3;
   display: flex;
   align-items: center;
@@ -277,21 +279,21 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-light-cream);
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   padding: 6px 14px;
   opacity: 0;
   transform: translateY(-6px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
 }
 
 .card-hint-arrow {
   display: inline-block;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
 .session-card:hover .card-hint {
@@ -300,17 +302,17 @@
 }
 
 .session-card:hover .card-hint-arrow {
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   IN-PLACE EXPANDED STAGE (Fills the entire section)
+   IN-PLACE EXPANDED STAGE (Spans exact 1090px width)
    ═══════════════════════════════════════════════════════════════ */
 
 .city-dinner-stage {
   display: none;
   width: 100%;
-  padding: 0 16px;
+  padding: 0;
 }
 
 .city-dinner-carousel-wrapper.is-expanded .city-dinner-stage {
@@ -320,36 +322,36 @@
 .stage-card {
   position: relative;
   width: 100%;
-  min-height: 540px;
-  border-radius: 24px;
+  min-height: 500px;
+  border-radius: var(--radius-card);
   overflow: hidden;
   display: flex;
-  background: #14131c;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22), 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: var(--color-dark);
+  border: 1px solid rgba(67, 62, 112, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24), 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* ── Close / Collapse Button ─────────────────────────────────── */
 .stage-close-btn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 22px;
+  right: 22px;
   z-index: 10;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 8px 18px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  color: var(--color-light-cream);
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
 }
 
 .stage-close-btn:hover {
@@ -364,7 +366,7 @@
 
 .stage-close-icon {
   font-size: 15px;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
 .stage-close-btn:hover .stage-close-icon {
@@ -373,20 +375,20 @@
 
 /* ── Stage Visual Side (Photo) ──────────────────────────────── */
 .stage-visual {
-  flex: 0 0 44%;
+  flex: 0 0 42%;
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: #111;
 }
 
 .stage-photo {
   width: 100%;
   height: 100%;
-  min-height: 540px;
+  min-height: 500px;
   object-fit: cover;
   display: block;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.5s ease;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s ease;
 }
 
 .stage-accent-bar {
@@ -398,43 +400,44 @@
   z-index: 3;
 }
 
-.stage-card[data-accent="violet"] .stage-accent-bar {
-  background: linear-gradient(90deg, #5d3a82, #9a65d5);
+/* Accent bars using exact site tokens */
+.stage-card[data-accent="indigo"] .stage-accent-bar {
+  background: linear-gradient(90deg, var(--color-indigo), var(--color-nav-pill));
 }
-.stage-card[data-accent="cobalt"] .stage-accent-bar {
-  background: linear-gradient(90deg, #1b4eb8, #4d8aef);
+.stage-card[data-accent="emerald"] .stage-accent-bar {
+  background: linear-gradient(90deg, var(--color-emerald), #3d8b75);
 }
-.stage-card[data-accent="green"] .stage-accent-bar {
-  background: linear-gradient(90deg, #155e29, #27a74a);
+.stage-card[data-accent="nav-pill"] .stage-accent-bar {
+  background: linear-gradient(90deg, var(--color-nav-pill), var(--color-indigo));
 }
 
 .stage-edition-badge {
   position: absolute;
-  top: 24px;
-  left: 24px;
+  top: 22px;
+  left: 22px;
   z-index: 3;
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.45);
+  color: var(--color-light-cream);
+  background: rgba(25, 25, 25, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-pill);
   padding: 6px 16px;
 }
 
 /* ── Stage Content Side ─────────────────────────────────────── */
 .stage-content {
   flex: 1;
-  padding: 56px 64px;
+  padding: 48px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
   overflow-y: auto;
 }
 
@@ -447,7 +450,7 @@
 .stage-series-tag {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
@@ -456,7 +459,7 @@
 .stage-location-tag {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(255, 255, 255, 0.4);
 }
 
@@ -464,10 +467,10 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 38px;
+  font-size: 34px;
   line-height: 1.15em;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--color-light-cream);
 }
 
 .stage-speaker-wrap {
@@ -479,41 +482,41 @@
 .stage-speaker-name {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: #fff;
+  color: var(--color-white);
 }
 
 .stage-speaker-role {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
 }
 
 .stage-divider {
-  width: 48px;
+  width: 44px;
   height: 2px;
   border-radius: 2px;
 }
 
-.stage-card[data-accent="violet"] .stage-divider {
-  background: #9a65d5;
+.stage-card[data-accent="indigo"] .stage-divider {
+  background: var(--color-nav-pill);
 }
-.stage-card[data-accent="cobalt"] .stage-divider {
-  background: #4d8aef;
+.stage-card[data-accent="emerald"] .stage-divider {
+  background: var(--color-emerald);
 }
-.stage-card[data-accent="green"] .stage-divider {
-  background: #27a74a;
+.stage-card[data-accent="nav-pill"] .stage-divider {
+  background: var(--color-nav-pill);
 }
 
 .stage-desc {
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.68;
   color: rgba(255, 255, 255, 0.78);
   letter-spacing: -0.01em;
-  max-width: 680px;
+  max-width: 620px;
 }
 
 .stage-lens {
@@ -522,36 +525,37 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 100px;
-  padding: 8px 18px;
-  margin-top: 6px;
+  border-radius: var(--radius-pill);
+  padding: 7px 16px;
+  margin-top: 4px;
   background: rgba(255, 255, 255, 0.03);
 }
 
 .stage-lens-icon {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.85);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   BOTTOM CONTROL BAR – Counter, Nav, and Minimized Thumbnails
+   BOTTOM CONTROL BAR – Flush with 1090px width
    ═══════════════════════════════════════════════════════════════ */
 
 .carousel-control-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 16px 0;
+  padding: 24px 0 0;
+  width: 100%;
   gap: 20px;
 }
 
-/* ── Minimized Thumbnails Strip (Visible during expanded mode) ─ */
+/* ── Minimized Thumbnails Strip ─────────────────────────────── */
 .stage-minimized-strip {
   display: none;
   align-items: center;
@@ -567,8 +571,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 16px 6px 6px;
-  border-radius: 100px;
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--radius-pill);
   background: rgba(67, 62, 112, 0.06);
   border: 1.5px solid rgba(67, 62, 112, 0.16);
   color: var(--color-indigo);
@@ -577,7 +581,7 @@
   font-size: 13px;
   cursor: pointer;
   opacity: 0.65;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .stage-thumb-btn:hover {
@@ -592,12 +596,12 @@
   background: var(--color-indigo);
   border-color: var(--color-indigo);
   color: var(--color-light-cream);
-  box-shadow: 0 4px 12px rgba(67, 62, 112, 0.25);
+  box-shadow: 0 4px 14px rgba(67, 62, 112, 0.25);
 }
 
 .thumb-img {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -612,8 +616,8 @@
 }
 
 .carousel-btn {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: 2px solid var(--color-indigo);
   background: transparent;
@@ -623,7 +627,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
   flex-shrink: 0;
 }
 
@@ -651,25 +655,16 @@
    RESPONSIVE DESIGN
    ═══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 1409.98px) {
-  .city-dinner-title {
-    font-size: 62px;
-  }
-  .session-card {
-    width: 340px;
-    height: 500px;
-  }
-  .stage-topic {
-    font-size: 32px;
-  }
-  .stage-content {
-    padding: 44px 40px;
+@media (max-width: 1140px) {
+  .city-dinner-container {
+    max-width: 100%;
+    padding: 0 8px;
   }
 }
 
 @media (max-width: 809.98px) {
   .city-dinner-section {
-    padding: 70px 16px 60px;
+    padding: 60px 16px 60px;
   }
   .city-dinner-title {
     font-size: 44px;
@@ -677,12 +672,16 @@
   .city-dinner-subtitle {
     font-size: 15px;
   }
+  .city-dinner-carousel {
+    gap: 16px;
+    padding: 8px 16px 20px;
+  }
   .session-card {
-    width: 300px;
-    height: 460px;
+    width: 290px;
+    height: 440px;
   }
   .card-topic {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   /* Responsive Stage: Stacks vertically */
@@ -692,18 +691,18 @@
   }
   .stage-visual {
     flex: 0 0 auto;
-    height: 280px;
+    height: 260px;
   }
   .stage-photo {
     min-height: unset;
     height: 100%;
   }
   .stage-content {
-    padding: 32px 24px;
+    padding: 28px 20px;
     gap: 14px;
   }
   .stage-topic {
-    font-size: 26px;
+    font-size: 24px;
   }
   .stage-desc {
     font-size: 14px;
