@@ -1,5 +1,5 @@
 /* ==========================================================================
-   XYZ @ CITY OVER DINNER – Carousel & 3-Stage Reveal Cards
+   XYZ @ CITY OVER DINNER – Carousel & Expandable Spotlight Cards
    ========================================================================== */
 
 .city-dinner-section {
@@ -9,6 +9,7 @@
   align-items: center;
   padding: 100px 24px 80px;
   overflow: hidden;
+  position: relative;
 }
 
 .city-dinner-container {
@@ -18,7 +19,7 @@
   flex-direction: column;
 }
 
-/* Section Header */
+/* ── Section Header ─────────────────────────────────────────── */
 .city-dinner-header {
   margin-bottom: 48px;
   padding-left: 16px;
@@ -59,7 +60,7 @@
   max-width: 520px;
 }
 
-/* Carousel Track */
+/* ── Carousel Track ─────────────────────────────────────────── */
 .city-dinner-carousel-wrapper {
   position: relative;
   width: 100%;
@@ -73,14 +74,14 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0 16px 24px;
+  padding: 8px 16px 24px;
 }
 
 .city-dinner-carousel::-webkit-scrollbar {
   display: none;
 }
 
-/* Carousel Navigation Arrows */
+/* ── Carousel Navigation ────────────────────────────────────── */
 .carousel-nav {
   display: flex;
   align-items: center;
@@ -124,7 +125,10 @@
   text-align: center;
 }
 
-/* ── Individual Session Card ────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   SESSION CARD – Photo-First with Grayscale-to-Color Hover
+   ═══════════════════════════════════════════════════════════════ */
+
 .session-card {
   flex-shrink: 0;
   width: 380px;
@@ -143,316 +147,401 @@
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
-  transition: box-shadow 0.35s ease;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Lift + shadow bloom on hover */
 .session-card:hover .session-card-inner {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* ── Stage Layers ───────────────────────────────────────────── */
-/* All three stages are stacked absolutely inside session-card-inner */
-.stage {
+/* ── Card Photo Layer ───────────────────────────────────────── */
+.card-photo {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 20px;
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Start desaturated with boosted contrast */
+  filter: grayscale(80%) contrast(1.1) brightness(0.88);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Stage 1: Poster / Silhouette Cover */
-.stage-poster {
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 32px 28px;
-  color: var(--color-light-cream);
-  opacity: 1;
+/* Hover reveals color */
+.session-card:hover .card-photo {
+  filter: grayscale(0%) contrast(1.05) brightness(0.95);
 }
 
-.stage-poster::before {
-  content: '';
+/* ── Card Color Overlay (tinted by accent) ──────────────────── */
+.card-tint {
   position: absolute;
   inset: 0;
   border-radius: 20px;
-  z-index: -1;
-}
-
-/* Poster Accent Colors Per Card */
-.session-card[data-accent="violet"] .stage-poster::before {
-  background: linear-gradient(145deg, #5d3a82 0%, #3a1f5e 100%);
-}
-.session-card[data-accent="cobalt"] .stage-poster::before {
-  background: linear-gradient(145deg, #1b4eb8 0%, #0f2d6e 100%);
-}
-.session-card[data-accent="green"] .stage-poster::before {
-  background: linear-gradient(145deg, #27a74a 0%, #155e29 100%);
-}
-
-/* Poster Decorative Arch */
-.poster-arch {
-  position: absolute;
-  top: -60px;
-  right: -30px;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  border: 28px solid rgba(255, 255, 255, 0.08);
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
-  z-index: 0;
 }
 
-.poster-arch-inner {
+.session-card[data-accent="violet"] .card-tint {
+  background: #5d3a82;
+}
+.session-card[data-accent="cobalt"] .card-tint {
+  background: #1b4eb8;
+}
+.session-card[data-accent="green"] .card-tint {
+  background: #155e29;
+}
+
+/* Tint fades on hover to reveal natural colors */
+.session-card:hover .card-tint {
+  opacity: 0.12;
+}
+
+/* ── Card Bottom Gradient (text readability) ────────────────── */
+.card-gradient {
   position: absolute;
-  top: -20px;
-  right: 10px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  border: 16px solid rgba(255, 255, 255, 0.05);
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    rgba(0, 0, 0, 0.15) 55%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
   pointer-events: none;
-  z-index: 0;
+  transition: background 0.5s ease;
 }
 
-/* Poster Content */
-.poster-edition {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  opacity: 0.7;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1;
+.session-card:hover .card-gradient {
+  background: linear-gradient(
+    180deg,
+    transparent 25%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.78) 100%
+  );
 }
 
-.poster-silhouette {
-  width: 100%;
-  height: 220px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 1;
-}
-
-.silhouette-figure {
-  width: 160px;
-  height: 200px;
-  border-radius: 12px 12px 0 0;
-  background: rgba(255, 255, 255, 0.12);
-  position: relative;
-  overflow: hidden;
-}
-
-.silhouette-figure::after {
-  content: '';
+/* ── Card Content Overlay (text on top of image) ────────────── */
+.card-content {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 120px;
-  border-radius: 40px 40px 0 0;
-  background: rgba(255, 255, 255, 0.15);
+  left: 0;
+  right: 0;
+  padding: 28px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.poster-topic {
+.card-edition {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.session-card:hover .card-edition {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.card-topic {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 26px;
+  font-size: 24px;
   line-height: 1.15em;
   letter-spacing: -0.02em;
-  margin-bottom: 14px;
-  position: relative;
-  z-index: 1;
+  color: #fff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.poster-speaker {
+.session-card:hover .card-topic {
+  transform: translateY(-3px);
+}
+
+.card-speaker {
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 14px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  opacity: 0.85;
-  position: relative;
-  z-index: 1;
+  color: rgba(255, 255, 255, 0.9);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.03s;
 }
 
-.poster-date {
+.session-card:hover .card-speaker {
+  transform: translateY(-3px);
+}
+
+.card-date {
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 12px;
-  opacity: 0.6;
-  margin-top: 6px;
-  position: relative;
-  z-index: 1;
+  color: rgba(255, 255, 255, 0.6);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.06s;
 }
 
-/* Stage 2: Black & White Photo */
-.stage-bw {
-  z-index: 2;
-  opacity: 0;
-  background-color: #1a1a1a;
+.session-card:hover .card-date {
+  transform: translateY(-3px);
+}
+
+/* ── "Click to explore" hint pill ───────────────────────────── */
+.card-hint {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 28px;
-}
-
-.stage-bw-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.15) brightness(0.85);
-  border-radius: 20px;
-}
-
-.stage-bw-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
-  border-radius: 20px;
-  z-index: 1;
-}
-
-.stage-bw-pill {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-self: flex-start;
   align-items: center;
-  gap: 6px;
-  padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.18);
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 100px;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-
-.stage-bw-pill-arrow {
-  display: inline-block;
-  transition: transform 0.2s ease;
-}
-
-.session-card:hover .stage-bw-pill-arrow {
-  transform: translateX(3px);
-}
-
-/* Stage 3: Full Color Expanded */
-.stage-color {
-  z-index: 1;
+  padding: 6px 14px;
   opacity: 0;
-  background-color: #111;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 28px;
+  transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
 }
 
-.stage-color-photo {
+.card-hint-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.session-card:hover .card-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.session-card:hover .card-hint-arrow {
+  transform: translateX(2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EXPANDED SPOTLIGHT OVERLAY
+   ═══════════════════════════════════════════════════════════════ */
+
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.spotlight-overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.spotlight-backdrop {
   position: absolute;
   inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.spotlight-panel {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 85vh;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  background: #111;
+  z-index: 1;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Spotlight Photo Side ───────────────────────────────────── */
+.spotlight-photo-side {
+  flex: 0 0 44%;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-photo {
   width: 100%;
   height: 100%;
+  min-height: 500px;
   object-fit: cover;
-  filter: grayscale(0%) contrast(1.05);
-  border-radius: 20px;
 }
 
-.stage-color-overlay {
+.spotlight-accent-bar {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.75) 100%);
-  border-radius: 20px;
-  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
 }
 
-.stage-color-content {
-  position: relative;
-  z-index: 2;
+.spotlight-panel[data-accent="violet"] .spotlight-accent-bar {
+  background: linear-gradient(90deg, #5d3a82, #8b5fbf);
+}
+.spotlight-panel[data-accent="cobalt"] .spotlight-accent-bar {
+  background: linear-gradient(90deg, #1b4eb8, #4d8aef);
+}
+.spotlight-panel[data-accent="green"] .spotlight-accent-bar {
+  background: linear-gradient(90deg, #27a74a, #5ed87d);
 }
 
-.stage-color-topic {
+/* ── Spotlight Content Side ─────────────────────────────────── */
+.spotlight-content-side {
+  flex: 1;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.spotlight-edition {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.spotlight-topic {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 24px;
-  line-height: 1.2em;
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.15em;
+  letter-spacing: -0.02em;
   color: #fff;
-  margin-bottom: 10px;
 }
 
-.stage-color-speaker {
+.spotlight-speaker-name {
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 16px;
-  color: #fff;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+  color: #fff;
 }
 
-.stage-color-desc {
+.spotlight-divider {
+  width: 50px;
+  height: 2px;
+  border: none;
+  border-radius: 2px;
+}
+
+.spotlight-panel[data-accent="violet"] .spotlight-divider {
+  background: #8b5fbf;
+}
+.spotlight-panel[data-accent="cobalt"] .spotlight-divider {
+  background: #4d8aef;
+}
+.spotlight-panel[data-accent="green"] .spotlight-divider {
+  background: #5ed87d;
+}
+
+.spotlight-desc {
   font-family: var(--font-sans);
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: -0.01em;
 }
 
-.stage-color-back {
+.spotlight-lens {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-sans);
   font-size: 12px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  transition: color 0.2s ease;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin-top: 4px;
 }
 
-.stage-color-back:hover {
+.spotlight-lens-icon {
+  font-size: 14px;
+}
+
+/* ── Spotlight Close Button ─────────────────────────────────── */
+.spotlight-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.25s ease, transform 0.2s ease;
 }
 
-/* ── Card State Classes (toggled by JS) ─────────────────────── */
-.session-card.state-bw .stage-poster {
-  opacity: 0;
-}
-.session-card.state-bw .stage-bw {
-  opacity: 1;
+.spotlight-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
 }
 
-.session-card.state-color .stage-poster {
-  opacity: 0;
-}
-.session-card.state-color .stage-bw {
-  opacity: 0;
-}
-.session-card.state-color .stage-color {
-  opacity: 1;
+.spotlight-close:active {
+  transform: scale(0.92);
 }
 
-/* ── Responsive ─────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+
 @media (max-width: 1409.98px) {
   .city-dinner-title {
     font-size: 62px;
   }
-
   .session-card {
     width: 340px;
     height: 500px;
@@ -463,27 +552,47 @@
   .city-dinner-section {
     padding: 70px 16px 60px;
   }
-
   .city-dinner-title {
     font-size: 44px;
   }
-
   .city-dinner-subtitle {
     font-size: 15px;
   }
-
   .session-card {
     width: 300px;
     height: 460px;
   }
-
-  .poster-topic {
-    font-size: 22px;
+  .card-topic {
+    font-size: 20px;
   }
-
   .carousel-btn {
     width: 42px;
     height: 42px;
     font-size: 18px;
+  }
+
+  /* Spotlight goes full-screen stacked on mobile */
+  .spotlight-overlay {
+    padding: 0;
+  }
+  .spotlight-panel {
+    flex-direction: column;
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .spotlight-photo-side {
+    flex: 0 0 auto;
+    height: 260px;
+  }
+  .spotlight-photo {
+    min-height: unset;
+    height: 100%;
+  }
+  .spotlight-content-side {
+    padding: 28px 24px;
+  }
+  .spotlight-topic {
+    font-size: 26px;
   }
 }
