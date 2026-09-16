@@ -1,5 +1,5 @@
 /* ==========================================================================
-   XYZ @ CITY OVER DINNER – Carousel & Expandable Spotlight Cards
+   XYZ @ CITY OVER DINNER – Carousel & In-Place Section Expansion
    ========================================================================== */
 
 .city-dinner-section {
@@ -60,12 +60,13 @@
   max-width: 520px;
 }
 
-/* ── Carousel Track ─────────────────────────────────────────── */
+/* ── Carousel Wrapper & Dual-Mode Container ─────────────────── */
 .city-dinner-carousel-wrapper {
   position: relative;
   width: 100%;
 }
 
+/* ── Overview Carousel Track ────────────────────────────────── */
 .city-dinner-carousel {
   display: flex;
   gap: 24px;
@@ -75,54 +76,17 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 8px 16px 24px;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .city-dinner-carousel::-webkit-scrollbar {
   display: none;
 }
 
-/* ── Carousel Navigation ────────────────────────────────────── */
-.carousel-nav {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 24px 16px 0;
-}
-
-.carousel-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--color-indigo);
-  background: transparent;
-  color: var(--color-indigo);
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.carousel-btn:hover {
-  background-color: var(--color-indigo);
-  color: var(--color-light-cream);
-  transform: scale(1.06);
-}
-
-.carousel-btn:active {
-  transform: scale(0.95);
-}
-
-.carousel-counter {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: -0.02em;
-  color: var(--color-indigo);
-  min-width: 50px;
-  text-align: center;
+/* When expanded, the overview track tucks away */
+.city-dinner-carousel-wrapper.is-expanded .city-dinner-carousel {
+  display: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -166,12 +130,10 @@
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  /* Start desaturated with boosted contrast */
   filter: grayscale(80%) contrast(1.1) brightness(0.88);
   transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Hover reveals color */
 .session-card:hover .card-photo {
   filter: grayscale(0%) contrast(1.05) brightness(0.95);
 }
@@ -197,7 +159,6 @@
   background: #155e29;
 }
 
-/* Tint fades on hover to reveal natural colors */
 .session-card:hover .card-tint {
   opacity: 0.12;
 }
@@ -343,112 +304,179 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   EXPANDED SPOTLIGHT OVERLAY
+   IN-PLACE EXPANDED STAGE (Fills the entire section)
    ═══════════════════════════════════════════════════════════════ */
 
-.spotlight-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  pointer-events: none;
-  opacity: 0;
+.city-dinner-stage {
+  display: none;
+  width: 100%;
+  padding: 0 16px;
 }
 
-.spotlight-overlay.active {
-  pointer-events: all;
-  opacity: 1;
+.city-dinner-carousel-wrapper.is-expanded .city-dinner-stage {
+  display: block;
 }
 
-.spotlight-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  cursor: pointer;
-}
-
-.spotlight-panel {
+.stage-card {
   position: relative;
   width: 100%;
-  max-width: 1000px;
-  max-height: 85vh;
+  min-height: 540px;
   border-radius: 24px;
   overflow: hidden;
   display: flex;
-  background: #111;
-  z-index: 1;
-  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5);
+  background: #14131c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22), 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Spotlight Photo Side ───────────────────────────────────── */
-.spotlight-photo-side {
+/* ── Close / Collapse Button ─────────────────────────────────── */
+.stage-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease, border-color 0.25s ease;
+}
+
+.stage-close-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.stage-close-btn:active {
+  transform: scale(0.96);
+}
+
+.stage-close-icon {
+  font-size: 15px;
+  transition: transform 0.25s ease;
+}
+
+.stage-close-btn:hover .stage-close-icon {
+  transform: translateX(-3px);
+}
+
+/* ── Stage Visual Side (Photo) ──────────────────────────────── */
+.stage-visual {
   flex: 0 0 44%;
   position: relative;
   overflow: hidden;
+  background: #000;
 }
 
-.spotlight-photo {
+.stage-photo {
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 540px;
   object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s ease;
 }
 
-.spotlight-accent-bar {
+.stage-accent-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 5px;
+  height: 6px;
+  z-index: 3;
 }
 
-.spotlight-panel[data-accent="violet"] .spotlight-accent-bar {
-  background: linear-gradient(90deg, #5d3a82, #8b5fbf);
+.stage-card[data-accent="violet"] .stage-accent-bar {
+  background: linear-gradient(90deg, #5d3a82, #9a65d5);
 }
-.spotlight-panel[data-accent="cobalt"] .spotlight-accent-bar {
+.stage-card[data-accent="cobalt"] .stage-accent-bar {
   background: linear-gradient(90deg, #1b4eb8, #4d8aef);
 }
-.spotlight-panel[data-accent="green"] .spotlight-accent-bar {
-  background: linear-gradient(90deg, #27a74a, #5ed87d);
+.stage-card[data-accent="green"] .stage-accent-bar {
+  background: linear-gradient(90deg, #155e29, #27a74a);
 }
 
-/* ── Spotlight Content Side ─────────────────────────────────── */
-.spotlight-content-side {
-  flex: 1;
-  padding: 48px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  overflow-y: auto;
-}
-
-.spotlight-edition {
+.stage-edition-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 3;
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.5;
   color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  padding: 6px 16px;
 }
 
-.spotlight-topic {
+/* ── Stage Content Side ─────────────────────────────────────── */
+.stage-content {
+  flex: 1;
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  overflow-y: auto;
+}
+
+.stage-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stage-series-tag {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.stage-location-tag {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.stage-topic {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 34px;
+  font-size: 38px;
   line-height: 1.15em;
   letter-spacing: -0.02em;
   color: #fff;
 }
 
-.spotlight-speaker-name {
+.stage-speaker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stage-speaker-name {
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 16px;
@@ -457,32 +485,38 @@
   color: #fff;
 }
 
-.spotlight-divider {
-  width: 50px;
+.stage-speaker-role {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.stage-divider {
+  width: 48px;
   height: 2px;
-  border: none;
   border-radius: 2px;
 }
 
-.spotlight-panel[data-accent="violet"] .spotlight-divider {
-  background: #8b5fbf;
+.stage-card[data-accent="violet"] .stage-divider {
+  background: #9a65d5;
 }
-.spotlight-panel[data-accent="cobalt"] .spotlight-divider {
+.stage-card[data-accent="cobalt"] .stage-divider {
   background: #4d8aef;
 }
-.spotlight-panel[data-accent="green"] .spotlight-divider {
-  background: #5ed87d;
+.stage-card[data-accent="green"] .stage-divider {
+  background: #27a74a;
 }
 
-.spotlight-desc {
+.stage-desc {
   font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.78);
   letter-spacing: -0.01em;
+  max-width: 680px;
 }
 
-.spotlight-lens {
+.stage-lens {
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
@@ -492,50 +526,129 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 100px;
   padding: 8px 18px;
-  margin-top: 4px;
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.spotlight-lens-icon {
-  font-size: 14px;
+.stage-lens-icon {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-/* ── Spotlight Close Button ─────────────────────────────────── */
-.spotlight-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
+/* ═══════════════════════════════════════════════════════════════
+   BOTTOM CONTROL BAR – Counter, Nav, and Minimized Thumbnails
+   ═══════════════════════════════════════════════════════════════ */
+
+.carousel-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 16px 0;
+  gap: 20px;
+}
+
+/* ── Minimized Thumbnails Strip (Visible during expanded mode) ─ */
+.stage-minimized-strip {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.city-dinner-carousel-wrapper.is-expanded .stage-minimized-strip {
+  display: flex;
+}
+
+.stage-thumb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 6px;
+  border-radius: 100px;
+  background: rgba(67, 62, 112, 0.06);
+  border: 1.5px solid rgba(67, 62, 112, 0.16);
+  color: var(--color-indigo);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stage-thumb-btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: rgba(67, 62, 112, 0.12);
+  border-color: var(--color-indigo);
+}
+
+.stage-thumb-btn.is-active {
+  opacity: 1;
+  background: var(--color-indigo);
+  border-color: var(--color-indigo);
+  color: var(--color-light-cream);
+  box-shadow: 0 4px 12px rgba(67, 62, 112, 0.25);
+}
+
+.thumb-img {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  color: #fff;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Carousel Navigation Controls ───────────────────────────── */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.carousel-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--color-indigo);
+  background: transparent;
+  color: var(--color-indigo);
   font-size: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  transition: background 0.25s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.spotlight-close:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.08);
+.carousel-btn:hover {
+  background-color: var(--color-indigo);
+  color: var(--color-light-cream);
+  transform: scale(1.06);
 }
 
-.spotlight-close:active {
-  transform: scale(0.92);
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-counter {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--color-indigo);
+  min-width: 58px;
+  text-align: center;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE DESIGN
    ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1409.98px) {
@@ -545,6 +658,12 @@
   .session-card {
     width: 340px;
     height: 500px;
+  }
+  .stage-topic {
+    font-size: 32px;
+  }
+  .stage-content {
+    padding: 44px 40px;
   }
 }
 
@@ -565,34 +684,45 @@
   .card-topic {
     font-size: 20px;
   }
+
+  /* Responsive Stage: Stacks vertically */
+  .stage-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .stage-visual {
+    flex: 0 0 auto;
+    height: 280px;
+  }
+  .stage-photo {
+    min-height: unset;
+    height: 100%;
+  }
+  .stage-content {
+    padding: 32px 24px;
+    gap: 14px;
+  }
+  .stage-topic {
+    font-size: 26px;
+  }
+  .stage-desc {
+    font-size: 14px;
+  }
+
+  .carousel-control-bar {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 16px;
+  }
+  .carousel-nav {
+    margin-left: 0;
+  }
+  .stage-minimized-strip {
+    justify-content: center;
+  }
   .carousel-btn {
     width: 42px;
     height: 42px;
     font-size: 18px;
-  }
-
-  /* Spotlight goes full-screen stacked on mobile */
-  .spotlight-overlay {
-    padding: 0;
-  }
-  .spotlight-panel {
-    flex-direction: column;
-    max-width: 100%;
-    max-height: 100vh;
-    border-radius: 0;
-  }
-  .spotlight-photo-side {
-    flex: 0 0 auto;
-    height: 260px;
-  }
-  .spotlight-photo {
-    min-height: unset;
-    height: 100%;
-  }
-  .spotlight-content-side {
-    padding: 28px 24px;
-  }
-  .spotlight-topic {
-    font-size: 26px;
   }
 }

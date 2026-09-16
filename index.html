@@ -254,38 +254,68 @@
 
           </div>
 
-          <!-- Carousel Controls -->
-          <div class="carousel-nav">
-            <button class="carousel-btn carousel-btn-prev" aria-label="Previous session">‹</button>
-            <span class="carousel-counter">01 / 03</span>
-            <button class="carousel-btn carousel-btn-next" aria-label="Next session">›</button>
+          <!-- In-Place Expanded Stage (Expands to fill section width on card click) -->
+          <div class="city-dinner-stage" id="city-dinner-stage" aria-hidden="true">
+            <div class="stage-card" data-accent="violet">
+              <button class="stage-close-btn" id="stage-close-btn" aria-label="Back to all sessions">
+                <span class="stage-close-icon">←</span>
+                <span class="stage-close-label">All Sessions</span>
+              </button>
+
+              <div class="stage-visual">
+                <img src="assets/images/speaker-her.jpg" alt="Speaker photo" class="stage-photo" width="760" height="1080">
+                <div class="stage-accent-bar"></div>
+                <span class="stage-edition-badge">Vol. 01 · Public Spaces</span>
+              </div>
+
+              <div class="stage-content">
+                <div class="stage-header">
+                  <span class="stage-series-tag">City Over Dinner</span>
+                  <span class="stage-location-tag">Jakarta Chapter</span>
+                </div>
+                <h3 class="stage-topic">Do's and Don'ts Steps to Build Public Spaces</h3>
+                <div class="stage-speaker-wrap">
+                  <span class="stage-speaker-name">Her Pramtama</span>
+                  <span class="stage-speaker-role">Featured Speaker</span>
+                </div>
+                <div class="stage-divider"></div>
+                <p class="stage-desc">Spatial leadership and civic ownership — how thoughtful design of public spaces can transform communities.</p>
+                <div class="stage-lens">
+                  <span class="stage-lens-icon">◉</span>
+                  <span class="stage-lens-text">Spatial Leadership &amp; Civic Ownership</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Control Bar (Counter, Nav Arrows & Minimized Thumbnails) -->
+          <div class="carousel-control-bar">
+            <!-- Minimized Thumbnails Strip (Visible during expanded mode) -->
+            <div class="stage-minimized-strip" id="stage-minimized-strip" aria-label="Session selector">
+              <button class="stage-thumb-btn is-active" data-session="0" aria-label="Switch to Vol. 01: Her Pramtama">
+                <img src="assets/images/speaker-her.jpg" alt="Her Pramtama" class="thumb-img">
+                <span class="thumb-label">Vol. 01</span>
+              </button>
+              <button class="stage-thumb-btn" data-session="1" aria-label="Switch to Vol. 02: Prof. Sulfikar Amir">
+                <img src="assets/images/speaker-sulfikar.jpg" alt="Prof. Sulfikar Amir" class="thumb-img">
+                <span class="thumb-label">Vol. 02</span>
+              </button>
+              <button class="stage-thumb-btn" data-session="2" aria-label="Switch to Vol. 03: Roni Pramaditia">
+                <img src="assets/images/speaker-roni.jpg" alt="Roni Pramaditia" class="thumb-img">
+                <span class="thumb-label">Vol. 03</span>
+              </button>
+            </div>
+
+            <!-- Carousel Nav (Controls scroll in overview, switches sessions in expanded mode) -->
+            <div class="carousel-nav">
+              <button class="carousel-btn carousel-btn-prev" aria-label="Previous session">‹</button>
+              <span class="carousel-counter">01 / 03</span>
+              <button class="carousel-btn carousel-btn-next" aria-label="Next session">›</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Spotlight Overlay (Shared, populated by JS on card click) -->
-    <div class="spotlight-overlay" id="spotlight-overlay">
-      <div class="spotlight-backdrop"></div>
-      <div class="spotlight-panel" data-accent="violet">
-        <button class="spotlight-close" aria-label="Close spotlight">✕</button>
-        <div class="spotlight-photo-side">
-          <img src="" alt="" class="spotlight-photo">
-          <div class="spotlight-accent-bar"></div>
-        </div>
-        <div class="spotlight-content-side">
-          <span class="spotlight-edition"></span>
-          <h3 class="spotlight-topic"></h3>
-          <span class="spotlight-speaker-name"></span>
-          <hr class="spotlight-divider">
-          <p class="spotlight-desc"></p>
-          <span class="spotlight-lens">
-            <span class="spotlight-lens-icon">◉</span>
-            <span class="spotlight-lens-text"></span>
-          </span>
-        </div>
-      </div>
-    </div>
 
     <!-- Coming Soon Stubs: Book Talks & Idea Fest -->
     <section class="events-coming-soon" id="events-upcoming">
