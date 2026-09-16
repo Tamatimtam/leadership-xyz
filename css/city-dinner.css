@@ -498,6 +498,7 @@
   width: 44px;
   height: 2px;
   border-radius: 2px;
+  transform-origin: left center;
 }
 
 .stage-card[data-accent="indigo"] .stage-divider {

@@ -2,7 +2,11 @@
  * ==========================================================================
  * CITY OVER DINNER – Carousel & In-Place Section Expand Controller
  *
- * Tactile Animation & Strict Brand Token System
+ * Micro-Choreographed, Tactile Motion System:
+ *   - Sibling cards and clicked card have unique, staggered physical exits
+ *   - Stage entrance is seamless, overlapping, weighted, and deeply layered
+ *   - Collapse animation completely restores overview track with staggered bounce
+ *   - Switching sessions features direction-aware slide & photo reveal
  * ==========================================================================
  */
 
@@ -21,8 +25,9 @@ export function initCityDinnerCarousel() {
 
   let currentIndex = 0;
   let isExpanded = false;
+  let isTransitioning = false;
 
-  // ── Session Chronicle Data (Reusing exact palette: indigo, emerald, nav-pill) ──
+  // ── Session Data (Strict brand tokens: indigo, emerald, nav-pill) ────────
   const sessionData = [
     {
       edition: 'Vol. 01 · Public Spaces',
@@ -76,147 +81,359 @@ export function initCityDinnerCarousel() {
     stage.querySelector('.stage-lens-text').textContent = data.lens;
   }
 
-  // ── Update Counter Display & Active State ────────────────────
+  // ── Update Counter Display & Minimized Strip ─────────────────
   function updateCounter(index) {
     if (counter) {
       counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(cards.length).padStart(2, '0')}`;
     }
-    // Sync minimized thumbnails
     thumbBtns.forEach((btn, i) => {
       btn.classList.toggle('is-active', i === index);
     });
   }
 
-  // ── Expand Session to In-Place Stage (Weighted Tactile Easing) ─
+  // ── Expand Session (Tactile, Multi-Layered Choreography) ──────
   function expandSession(index) {
-    if (!stage) return;
+    if (!stage || isTransitioning) return;
+    isTransitioning = true;
     currentIndex = index;
     isExpanded = true;
 
     populateStage(currentIndex);
     updateCounter(currentIndex);
 
-    if (typeof gsap !== 'undefined') {
-      // Deliberate, smooth transition of overview track
-      gsap.to(track, {
-        opacity: 0,
-        y: -12,
-        duration: 0.32,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          wrapper.classList.add('is-expanded');
-          stage.setAttribute('aria-hidden', 'false');
-
-          const stageCard = stage.querySelector('.stage-card');
-          const stagePhoto = stage.querySelector('.stage-photo');
-          const contentChildren = stage.querySelectorAll('.stage-content > *');
-          const closeButton = stage.querySelector('.stage-close-btn');
-
-          // Weighted entrance timeline: tactile, grounded deceleration
-          const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-          tl.fromTo(stageCard,
-            { opacity: 0, scale: 0.94, y: 36 },
-            { opacity: 1, scale: 1, y: 0, duration: 0.75 }
-          )
-          .fromTo(stagePhoto,
-            { scale: 1.10, filter: 'grayscale(70%) contrast(1.1) brightness(0.65)' },
-            { scale: 1, filter: 'grayscale(0%) contrast(1.05) brightness(1)', duration: 0.92 },
-            '-=0.55'
-          )
-          .fromTo(contentChildren,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.58, stagger: 0.07 },
-            '-=0.6'
-          )
-          .fromTo(closeButton,
-            { opacity: 0, scale: 0.85 },
-            { opacity: 1, scale: 1, duration: 0.45 },
-            '-=0.4'
-          )
-          .fromTo('.stage-minimized-strip',
-            { opacity: 0, y: 12 },
-            { opacity: 1, y: 0, duration: 0.5 },
-            '-=0.35'
-          );
-
-          // Gently scroll stage into view if needed
-          stage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
-    } else {
+    if (typeof gsap === 'undefined') {
       wrapper.classList.add('is-expanded');
       stage.setAttribute('aria-hidden', 'false');
+      isTransitioning = false;
+      return;
     }
+
+    const clickedCard = cards[index];
+    const siblingCards = Array.from(cards).filter((_, i) => i !== index);
+
+    // 1. Staged exit for overview cards
+    const exitTl = gsap.timeline();
+
+    // Sibling cards peel back with momentum
+    siblingCards.forEach((sibling, sIdx) => {
+      const siblingInner = sibling.querySelector('.session-card-inner');
+      const siblingPhoto = sibling.querySelector('.card-photo');
+      const siblingContent = sibling.querySelectorAll('.card-content > *');
+
+      exitTl.to(siblingContent, {
+        opacity: 0,
+        y: 18,
+        stagger: 0.03,
+        duration: 0.25,
+        ease: 'power2.in'
+      }, 0);
+
+      exitTl.to(siblingPhoto, {
+        scale: 0.94,
+        filter: 'grayscale(100%) brightness(0.5)',
+        duration: 0.32,
+        ease: 'power2.in'
+      }, 0);
+
+      exitTl.to(siblingInner || sibling, {
+        opacity: 0,
+        y: 28,
+        scale: 0.90,
+        duration: 0.35,
+        delay: sIdx * 0.04,
+        ease: 'power3.in'
+      }, 0);
+    });
+
+    // Clicked card leads the expansion
+    const clickedInner = clickedCard.querySelector('.session-card-inner');
+    const clickedPhoto = clickedCard.querySelector('.card-photo');
+    const clickedContent = clickedCard.querySelectorAll('.card-content > *');
+    const clickedHint = clickedCard.querySelector('.card-hint');
+
+    if (clickedHint) {
+      exitTl.to(clickedHint, { opacity: 0, y: -10, scale: 0.8, duration: 0.2 }, 0);
+    }
+
+    exitTl.to(clickedContent, {
+      opacity: 0,
+      y: -16,
+      stagger: 0.03,
+      duration: 0.28,
+      ease: 'power2.in'
+    }, 0);
+
+    exitTl.to(clickedPhoto, {
+      scale: 1.08,
+      filter: 'grayscale(0%) brightness(1.05)',
+      duration: 0.35,
+      ease: 'power2.out'
+    }, 0);
+
+    exitTl.to(clickedInner || clickedCard, {
+      scale: 1.03,
+      y: -8,
+      duration: 0.35,
+      ease: 'power2.out'
+    }, 0);
+
+    // 2. Seamless overlap into Stage Entrance
+    exitTl.add(() => {
+      wrapper.classList.add('is-expanded');
+      stage.setAttribute('aria-hidden', 'false');
+
+      // Clear overview inline styles behind the scene
+      gsap.set(cards, { clearProps: 'all' });
+      cards.forEach(c => gsap.set(c.querySelectorAll('.card-content > *, .card-photo, .card-hint, .session-card-inner'), { clearProps: 'all' }));
+      gsap.set(track, { clearProps: 'all' });
+
+      // Elements of the stage to micro-animate
+      const stageCard = stage.querySelector('.stage-card');
+      const stagePhoto = stage.querySelector('.stage-photo');
+      const editionBadge = stage.querySelector('.stage-edition-badge');
+      const headerTags = stage.querySelector('.stage-header');
+      const topic = stage.querySelector('.stage-topic');
+      const speakerWrap = stage.querySelector('.stage-speaker-wrap');
+      const divider = stage.querySelector('.stage-divider');
+      const desc = stage.querySelector('.stage-desc');
+      const lens = stage.querySelector('.stage-lens');
+      const stageClose = stage.querySelector('.stage-close-btn');
+
+      const enterTl = gsap.timeline({
+        onComplete: () => {
+          isTransitioning = false;
+        }
+      });
+
+      // Stage card lands with weighted authority
+      enterTl.fromTo(stageCard,
+        { opacity: 0, scale: 0.93, y: 38 },
+        { opacity: 1, scale: 1, y: 0, duration: 0.78, ease: 'power3.out' }
+      )
+      // Photo zooms from expanding momentum
+      .fromTo(stagePhoto,
+        { scale: 1.16, filter: 'grayscale(60%) contrast(1.15) brightness(0.65)' },
+        { scale: 1, filter: 'grayscale(0%) contrast(1.05) brightness(1)', duration: 0.95, ease: 'power3.out' },
+        '-=0.6'
+      )
+      // Edition badge drops in with spring
+      .fromTo(editionBadge,
+        { opacity: 0, y: -18, scale: 0.88 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: 'back.out(1.5)' },
+        '-=0.65'
+      )
+      // Header tags glide
+      .fromTo(headerTags,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+        '-=0.6'
+      )
+      // Topic headline sweeps in
+      .fromTo(topic,
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' },
+        '-=0.55'
+      )
+      // Speaker wrap
+      .fromTo(speakerWrap,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' },
+        '-=0.5'
+      )
+      // Divider line draws from left to right!
+      .fromTo(divider,
+        { scaleX: 0, opacity: 0 },
+        { scaleX: 1, opacity: 1, duration: 0.52, ease: 'power2.out' },
+        '-=0.45'
+      )
+      // Narrative paragraph
+      .fromTo(desc,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.62, ease: 'power3.out' },
+        '-=0.42'
+      )
+      // Lens badge pops with spring
+      .fromTo(lens,
+        { opacity: 0, y: 16, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.52, ease: 'back.out(1.4)' },
+        '-=0.38'
+      )
+      // Close button snaps in
+      .fromTo(stageClose,
+        { opacity: 0, scale: 0.75, rotation: -20 },
+        { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(1.8)' },
+        '-=0.4'
+      )
+      // Minimized buttons stagger in
+      .fromTo(thumbBtns,
+        { opacity: 0, y: 14, scale: 0.9 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.07, ease: 'power3.out' },
+        '-=0.35'
+      );
+
+      stage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 0.28);
   }
 
-  // ── Switch Between Sessions in Expanded State (Tactile Glide) ─
+  // ── Switch Sessions in Expanded State (Tactile Direction Glide) ──
   function switchSession(newIndex, direction = 1) {
     if (newIndex < 0) newIndex = sessionData.length - 1;
     if (newIndex >= sessionData.length) newIndex = 0;
-    if (newIndex === currentIndex) return;
+    if (newIndex === currentIndex || isTransitioning) return;
 
+    isTransitioning = true;
     currentIndex = newIndex;
     updateCounter(currentIndex);
 
-    if (typeof gsap !== 'undefined') {
-      const stagePhoto = stage.querySelector('.stage-photo');
-      const stageContent = stage.querySelector('.stage-content');
-      const slideDist = direction > 0 ? 24 : -24;
-
-      const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
-
-      tl.to([stagePhoto, stageContent], {
-        opacity: 0.15,
-        y: slideDist,
-        duration: 0.24,
-        onComplete: () => {
-          populateStage(currentIndex);
-        }
-      })
-      .fromTo([stagePhoto, stageContent],
-        { opacity: 0.15, y: -slideDist },
-        { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }
-      );
-    } else {
+    if (typeof gsap === 'undefined') {
       populateStage(currentIndex);
+      isTransitioning = false;
+      return;
+    }
+
+    const stagePhoto = stage.querySelector('.stage-photo');
+    const contentChildren = stage.querySelectorAll('.stage-content > *');
+    const divider = stage.querySelector('.stage-divider');
+    const activeThumb = wrapper.querySelector(`.stage-thumb-btn[data-session="${currentIndex}"]`);
+    const slideDist = direction > 0 ? 22 : -22;
+
+    const switchTl = gsap.timeline({
+      onComplete: () => {
+        isTransitioning = false;
+      }
+    });
+
+    // Content & photo slide out
+    switchTl.to(contentChildren, {
+      opacity: 0,
+      y: slideDist,
+      stagger: 0.025,
+      duration: 0.22,
+      ease: 'power2.in'
+    }, 0)
+    .to(stagePhoto, {
+      opacity: 0.2,
+      scale: 0.97,
+      duration: 0.24,
+      ease: 'power2.in'
+    }, 0)
+    .add(() => {
+      populateStage(currentIndex);
+    })
+    // Photo enters with fresh zoom
+    .fromTo(stagePhoto,
+      { opacity: 0.2, scale: 1.10, filter: 'grayscale(40%)' },
+      { opacity: 1, scale: 1, filter: 'grayscale(0%)', duration: 0.65, ease: 'power3.out' }
+    )
+    // Content glides in from opposite direction
+    .fromTo(contentChildren,
+      { opacity: 0, y: -slideDist },
+      { opacity: 1, y: 0, duration: 0.55, stagger: 0.045, ease: 'power3.out' },
+      '-=0.5'
+    )
+    // Divider redraws
+    .fromTo(divider,
+      { scaleX: 0 },
+      { scaleX: 1, duration: 0.45, ease: 'power2.out' },
+      '-=0.45'
+    );
+
+    // Active thumb tactile pulse
+    if (activeThumb) {
+      gsap.fromTo(activeThumb,
+        { scale: 0.92 },
+        { scale: 1, duration: 0.35, ease: 'back.out(2)' }
+      );
     }
   }
 
-  // ── Collapse Session Back to Overview (Weighted Settle) ──────
+  // ── Collapse Session (Guaranteed Track Restore & Staggered Settle) ─
   function collapseSession() {
-    if (!isExpanded) return;
+    if (!isExpanded || isTransitioning) return;
+    isTransitioning = true;
 
-    if (typeof gsap !== 'undefined') {
-      const stageCard = stage.querySelector('.stage-card');
-
-      gsap.to(stageCard, {
-        opacity: 0,
-        scale: 0.95,
-        y: 24,
-        duration: 0.38,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          wrapper.classList.remove('is-expanded');
-          stage.setAttribute('aria-hidden', 'true');
-          isExpanded = false;
-
-          // Restore overview track with tactile staggered settle
-          gsap.fromTo(cards,
-            { opacity: 0, y: 22, scale: 0.97 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.65, stagger: 0.08, ease: 'power3.out' }
-          );
-
-          // Ensure card is aligned
-          scrollToOverviewCard(currentIndex);
-        }
-      });
-    } else {
+    if (typeof gsap === 'undefined') {
       wrapper.classList.remove('is-expanded');
       stage.setAttribute('aria-hidden', 'true');
       isExpanded = false;
+      isTransitioning = false;
       scrollToOverviewCard(currentIndex);
+      return;
     }
+
+    const stageCard = stage.querySelector('.stage-card');
+    const stagePhoto = stage.querySelector('.stage-photo');
+    const contentChildren = stage.querySelectorAll('.stage-content > *');
+
+    const collapseTl = gsap.timeline({
+      onComplete: () => {
+        // 1. Switch back DOM state
+        wrapper.classList.remove('is-expanded');
+        stage.setAttribute('aria-hidden', 'true');
+        isExpanded = false;
+
+        // 2. Clear all inline styles from stage
+        gsap.set(stage.querySelectorAll('.stage-card, .stage-photo, .stage-content > *, .stage-close-btn, .stage-edition-badge, .stage-divider'), { clearProps: 'all' });
+
+        // 3. Guaranteed reset of track styles (Prevents invisible track bug!)
+        gsap.set(track, { clearProps: 'all' });
+        track.style.display = 'flex';
+        track.style.opacity = '1';
+        track.style.transform = 'none';
+
+        // 4. Clean cards before return animation
+        cards.forEach(c => {
+          gsap.set(c.querySelectorAll('.card-content > *, .card-photo, .card-hint, .session-card-inner'), { clearProps: 'all' });
+        });
+
+        // 5. Staggered, tactile return of the 3 overview cards
+        const returnTl = gsap.timeline({
+          onComplete: () => {
+            isTransitioning = false;
+            scrollToOverviewCard(currentIndex);
+          }
+        });
+
+        returnTl
+          .fromTo(cards,
+            { opacity: 0, y: 35, scale: 0.92 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.72, stagger: 0.1, ease: 'power3.out' }
+          )
+          .fromTo(track.querySelectorAll('.card-photo'),
+            { scale: 1.12 },
+            { scale: 1, duration: 0.75, stagger: 0.1, ease: 'power3.out' },
+            '-=0.6'
+          )
+          .fromTo(track.querySelectorAll('.card-content > *'),
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.045, ease: 'power3.out' },
+            '-=0.55'
+          );
+      }
+    });
+
+    // Stage content descends
+    collapseTl
+      .to(contentChildren, {
+        opacity: 0,
+        y: 20,
+        stagger: 0.025,
+        duration: 0.25,
+        ease: 'power2.in'
+      }, 0)
+      .to(stagePhoto, {
+        scale: 0.96,
+        filter: 'grayscale(50%) brightness(0.6)',
+        duration: 0.3,
+        ease: 'power2.in'
+      }, 0)
+      .to(stageCard, {
+        opacity: 0,
+        scale: 0.94,
+        y: 30,
+        duration: 0.36,
+        ease: 'power2.inOut'
+      }, 0.05);
   }
 
   // ── Overview Track Scroll ────────────────────────────────────
