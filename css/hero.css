@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 80px 24px 0;
+  padding: 48px 24px 0;
   overflow: visible;
 }
 
@@ -33,6 +33,7 @@
   color: var(--color-indigo);
   text-transform: uppercase;
   margin: 0;
+  margin-top: 15%;
   user-select: none;
 }
 
@@ -46,7 +47,7 @@
   will-change: transform, opacity;
 }
 
-/* Hero Subtitle (max-width 600px gives the exact 2-line break) */
+/* Hero Subtitle (max-width ensures a clean 2-line break) */
 .hero-subtitle {
   font-family: var(--font-sans);
   font-weight: 600;
@@ -54,8 +55,8 @@
   line-height: 1.15;
   letter-spacing: -0.05em;
   color: var(--color-indigo);
-  margin-top: 16px;
-  max-width: 600px;
+  margin-top: 8px;
+  max-width: 860px;
 }
 
 .hero-subtitle .char {
@@ -63,14 +64,14 @@
   will-change: transform, opacity;
 }
 
-/* Marketplace Action Buttons */
+/* Marketplace Action Buttons (15% enlarged) */
 .hero-actions {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 16px;
   flex-wrap: wrap;
   z-index: 20;
 }
@@ -79,14 +80,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 25px;
+  gap: 12px;
+  padding: 12px 29px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-light-cream);
   color: var(--color-light-cream);
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 20px;
+  font-size: 23px;
   letter-spacing: -0.05em;
   line-height: 1;
   text-decoration: none;
@@ -107,8 +108,8 @@
 }
 
 .btn-marketplace .btn-icon {
-  width: 16px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
   object-fit: contain;
 }
 
@@ -124,13 +125,13 @@
   background-color: var(--color-tiktok);
 }
 
-/* 3D Book Mockup: in-flow so the full book is 100% visible */
+/* 3D Book Mockup: 20% enlarged so the book is commanding and prominent */
 .hero-mockup-container {
   position: relative;
   width: 100%;
-  max-width: 1440px;
-  margin-top: 24px;
-  margin-bottom: 20px;
+  max-width: 1728px;
+  margin-top: 12px;
+  margin-bottom: 16px;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -138,12 +139,13 @@
 }
 
 .hero-mockup-img {
-  width: 100%;
+  width: 120%;
   height: auto;
-  max-width: 1380px;
+  max-width: 1656px;
   object-fit: contain;
   pointer-events: none;
   display: block;
+  flex-shrink: 0;
 }
 
 /* Responsive Media Queries */
@@ -154,17 +156,18 @@
 
   .hero-subtitle {
     font-size: 40px;
-    max-width: 500px;
+    max-width: 720px;
   }
 
   .hero-mockup-img {
-    max-width: 1100px;
+    width: 120%;
+    max-width: 1320px;
   }
 }
 
 @media (max-width: 809.98px) {
   .hero-section {
-    padding: 70px 16px 0;
+    padding: 44px 16px 0;
   }
 
   .hero-title {
@@ -172,29 +175,31 @@
   }
 
   .hero-subtitle {
-    font-size: 20px;
-    max-width: 290px;
-    margin-top: 14px;
+    font-size: 22px;
+    max-width: 360px;
+    margin-top: 8px;
   }
 
   .hero-actions {
     flex-direction: column;
     width: 100%;
     max-width: 280px;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 14px;
   }
 
   .btn-marketplace {
     width: 100%;
-    padding: 12px 20px;
-    font-size: 18px;
+    padding: 14px 24px;
+    font-size: 21px;
   }
 
   .hero-mockup-container {
-    margin-top: 20px;
+    margin-top: 12px;
   }
 
   .hero-mockup-img {
-    max-width: 100%;
+    width: 120%;
+    max-width: 120%;
   }
 }
