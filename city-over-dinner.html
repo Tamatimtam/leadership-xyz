@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>City Over Dinner — XYZ Series Chapter 01 | Leadership XYZ</title>
   <meta name="description" content="Conversations on cities, leadership, and public life over intimate dinners.">
 
@@ -19,6 +19,9 @@
   <meta name="twitter:title" content="City Over Dinner — Leadership XYZ">
   <meta name="twitter:description" content="Conversations on cities, leadership, and public life over intimate dinners.">
   <meta name="twitter:image" content="assets/images/og-image.png">
+
+  <!-- Tabler Icons Webfont CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -88,13 +91,15 @@
       <a href="index.html" class="navbar-brand" aria-label="Leadership XYZ Home">
         <img src="assets/images/logo.png" alt="Leadership XYZ Logo" class="navbar-logo" width="31" height="31">
       </a>
-      <a href="index.html" class="navbar-back-link">
-        <span>← Back to Book</span>
+      <a href="index.html" class="navbar-back-link" aria-label="Back to Book">
+        <span class="back-text-full">← Back to Book</span>
+        <span class="back-text-short">← Back</span>
       </a>
     </div>
     <div class="navbar-right">
-      <a href="https://wa.me/6282233006139" target="_blank" rel="noopener noreferrer" class="navbar-contact-btn">
-        Contact Us
+      <a href="https://wa.me/6282233006139" target="_blank" rel="noopener noreferrer" class="navbar-contact-btn" aria-label="Contact Us">
+        <span class="contact-text-full">Contact Us</span>
+        <span class="contact-text-short">Contact</span>
       </a>
       <button class="nav-menu-btn" type="button" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="navOverlay">
         <span class="nav-menu-icon" aria-hidden="true">
@@ -162,10 +167,22 @@
           <div class="nav-order-row">
             <span class="nav-eyebrow">Order Book</span>
             <div class="nav-order-links">
-              <a href="https://tokopedia.link/cmzmrUmL1Xb" target="_blank" rel="noopener noreferrer" class="nav-order-link">Tokopedia ↗</a>
-              <a href="https://shopee.co.id/leadership.xyz" target="_blank" rel="noopener noreferrer" class="nav-order-link">Shopee ↗</a>
-              <a href="https://vt.tiktok.com/ZSyUcrDWN/?page=Mall" target="_blank" rel="noopener noreferrer" class="nav-order-link">TikTok Shop ↗</a>
-              <a href="https://wa.me/6282233006139" target="_blank" rel="noopener noreferrer" class="nav-order-link nav-order-whatsapp">WhatsApp Inquiries ↗</a>
+              <a href="https://tokopedia.link/cmzmrUmL1Xb" target="_blank" rel="noopener noreferrer" class="nav-order-link">
+                <i class="ti ti-shopping-bag" aria-hidden="true"></i>
+                <span>Tokopedia ↗</span>
+              </a>
+              <a href="https://shopee.co.id/leadership.xyz" target="_blank" rel="noopener noreferrer" class="nav-order-link">
+                <i class="ti ti-brand-shopee" aria-hidden="true"></i>
+                <span>Shopee ↗</span>
+              </a>
+              <a href="https://vt.tiktok.com/ZSyUcrDWN/?page=Mall" target="_blank" rel="noopener noreferrer" class="nav-order-link">
+                <i class="ti ti-brand-tiktok" aria-hidden="true"></i>
+                <span>TikTok Shop ↗</span>
+              </a>
+              <a href="https://wa.me/6282233006139" target="_blank" rel="noopener noreferrer" class="nav-order-link nav-order-whatsapp">
+                <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+                <span>WhatsApp Inquiries ↗</span>
+              </a>
             </div>
           </div>
         </div>
