@@ -1,0 +1,215 @@
+/* ==========================================================================
+   XYZ @ CITY OVER DINNER – Overview Session Cards
+   Matches author card dimensions (350px x 500px) with tactile interaction
+   ========================================================================== */
+
+.session-card {
+  flex-shrink: 0;
+  width: 350px;
+  height: 500px;
+  border-radius: var(--radius-card);
+  scroll-snap-align: start;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.session-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  /* Weighted, tactile physics ease */
+  transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tactile lift on hover */
+.session-card:hover .session-card-inner {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ── Card Photo Layer ───────────────────────────────────────── */
+.card-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  filter: grayscale(80%) contrast(1.1) brightness(0.88);
+  transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.session-card:hover .card-photo {
+  filter: grayscale(0%) contrast(1.05) brightness(0.95);
+}
+
+/* ── Card Color Tint (Reusing exact palette: indigo, emerald, nav-pill) ── */
+.card-tint {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.session-card[data-accent="indigo"] .card-tint {
+  background: var(--color-indigo);
+}
+.session-card[data-accent="emerald"] .card-tint {
+  background: var(--color-emerald);
+}
+.session-card[data-accent="nav-pill"] .card-tint {
+  background: var(--color-nav-pill);
+}
+
+.session-card:hover .card-tint {
+  opacity: 0.12;
+}
+
+/* ── Card Bottom Gradient (text readability) ────────────────── */
+.card-gradient {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    rgba(25, 25, 25, 0.2) 55%,
+    rgba(25, 25, 25, 0.82) 100%
+  );
+  pointer-events: none;
+  transition: background 0.6s ease;
+}
+
+.session-card:hover .card-gradient {
+  background: linear-gradient(
+    180deg,
+    transparent 25%,
+    rgba(25, 25, 25, 0.15) 50%,
+    rgba(25, 25, 25, 0.88) 100%
+  );
+}
+
+/* ── Card Content Overlay ───────────────────────────────────── */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 26px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-edition {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-light-cream);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--radius-pill);
+  padding: 5px 14px;
+  margin-bottom: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.session-card:hover .card-edition {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-2px);
+}
+
+.card-topic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.18em;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.session-card:hover .card-topic {
+  transform: translateY(-2px);
+}
+
+.card-speaker {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.03s;
+}
+
+.session-card:hover .card-speaker {
+  transform: translateY(-2px);
+}
+
+.card-date {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.06s;
+}
+
+.session-card:hover .card-date {
+  transform: translateY(-2px);
+}
+
+/* ── "Explore session →" hint pill ─────────────────────────── */
+.card-hint {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-light-cream);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.card-hint-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.session-card:hover .card-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.session-card:hover .card-hint-arrow {
+  transform: translateX(3px);
+}

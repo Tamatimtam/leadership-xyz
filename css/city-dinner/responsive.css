@@ -1,0 +1,75 @@
+/* ==========================================================================
+   XYZ @ CITY OVER DINNER – Responsive Breakpoints
+   Handles container scaling, card resizing, and vertical stacking on mobile
+   ========================================================================== */
+
+@media (max-width: 1140px) {
+  .city-dinner-container {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .city-dinner-section {
+    padding: 60px 16px 60px;
+  }
+  .city-dinner-title {
+    font-size: 44px;
+  }
+  .city-dinner-subtitle {
+    font-size: 15px;
+  }
+  .city-dinner-carousel {
+    gap: 16px;
+    padding: 8px 16px 20px;
+  }
+  .session-card {
+    width: 290px;
+    height: 440px;
+  }
+  .card-topic {
+    font-size: 19px;
+  }
+
+  /* Responsive Stage: Stacks vertically */
+  .stage-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .stage-visual {
+    flex: 0 0 auto;
+    height: 260px;
+  }
+  .stage-photo {
+    min-height: unset;
+    height: 100%;
+  }
+  .stage-content {
+    padding: 28px 20px;
+    gap: 14px;
+  }
+  .stage-topic {
+    font-size: 24px;
+  }
+  .stage-desc {
+    font-size: 14px;
+  }
+
+  .carousel-control-bar {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 16px;
+  }
+  .carousel-nav {
+    margin-left: 0;
+  }
+  .stage-minimized-strip {
+    justify-content: center;
+  }
+  .carousel-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}

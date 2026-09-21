@@ -1,0 +1,91 @@
+/* ==========================================================================
+   XYZ @ CITY OVER DINNER – Layout & Section Header
+   ========================================================================== */
+
+.city-dinner-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Width perfectly matched to authors-container & 3 author cards (1090px) */
+.city-dinner-container {
+  width: 100%;
+  max-width: 1090px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Section Header (Flush with left boundary of cards) ─────── */
+.city-dinner-header {
+  margin-bottom: 40px;
+  padding-left: 0;
+}
+
+.city-dinner-series-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-light-cream);
+  background-color: var(--color-indigo);
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.city-dinner-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 1em;
+  letter-spacing: -0.03em;
+  color: var(--color-dark);
+  margin-bottom: 14px;
+}
+
+.city-dinner-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: #666;
+  max-width: 520px;
+}
+
+/* ── Carousel Wrapper & Dual-Mode Container ─────────────────── */
+.city-dinner-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Overview Carousel Track (Flush with 1090px width) ──────── */
+.city-dinner-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 8px 0 24px;
+  width: 100%;
+}
+
+.city-dinner-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* When expanded, the overview track tucks away */
+.city-dinner-carousel-wrapper.is-expanded .city-dinner-carousel {
+  display: none;
+}

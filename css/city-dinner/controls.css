@@ -1,0 +1,109 @@
+/* ==========================================================================
+   XYZ @ CITY OVER DINNER – Control Bar & Navigation
+   Bottom carousel navigation, counter, and minimized stage thumbnails
+   ========================================================================== */
+
+.carousel-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 0;
+  width: 100%;
+  gap: 20px;
+}
+
+/* ── Minimized Thumbnails Strip ─────────────────────────────── */
+.stage-minimized-strip {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.city-dinner-carousel-wrapper.is-expanded .stage-minimized-strip {
+  display: flex;
+}
+
+.stage-thumb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(67, 62, 112, 0.06);
+  border: 1.5px solid rgba(67, 62, 112, 0.16);
+  color: var(--color-indigo);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stage-thumb-btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  background: rgba(67, 62, 112, 0.12);
+  border-color: var(--color-indigo);
+}
+
+.stage-thumb-btn.is-active {
+  opacity: 1;
+  background: var(--color-indigo);
+  border-color: var(--color-indigo);
+  color: var(--color-light-cream);
+  box-shadow: 0 4px 14px rgba(67, 62, 112, 0.25);
+}
+
+.thumb-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Carousel Navigation Controls ───────────────────────────── */
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.carousel-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--color-indigo);
+  background: transparent;
+  color: var(--color-indigo);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+  background-color: var(--color-indigo);
+  color: var(--color-light-cream);
+  transform: scale(1.06);
+}
+
+.carousel-btn:active {
+  transform: scale(0.95);
+}
+
+.carousel-counter {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--color-indigo);
+  min-width: 58px;
+  text-align: center;
+}
