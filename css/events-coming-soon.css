@@ -1,5 +1,5 @@
 /* ==========================================================================
-   XYZ EVENTS – Coming Soon Stubs (Book Talks & Idea Fest)
+   XYZ SERIES – Previews & Upcoming Chapters
    ========================================================================== */
 
 .events-coming-soon {
@@ -7,49 +7,184 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 40px 24px 100px;
+  gap: 20px;
+  padding: 60px 24px 100px;
 }
 
+.series-section-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.series-section-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+  background-color: rgba(67, 62, 112, 0.08);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+}
+
+.series-section-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.05em;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+/* Base Chapter Card */
 .coming-soon-card {
+  position: relative;
   width: 100%;
   max-width: var(--container-max-width);
   border: 1.5px solid rgba(67, 62, 112, 0.12);
   border-radius: 20px;
-  padding: 48px 44px;
+  padding: 36px 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+  color: inherit;
 }
 
 .coming-soon-card:hover {
   border-color: rgba(67, 62, 112, 0.25);
-  box-shadow: 0 4px 20px rgba(67, 62, 112, 0.06);
+  box-shadow: 0 8px 28px rgba(67, 62, 112, 0.08);
+}
+
+/* Active Chapter 01 (City Over Dinner) Card */
+.series-card-active {
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffffff 0%, #faf9fd 100%);
+  border-color: rgba(67, 62, 112, 0.2);
+}
+
+.series-card-active:hover {
+  border-color: var(--color-indigo);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(67, 62, 112, 0.12);
 }
 
 .coming-soon-left {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+}
+
+.series-card-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-nav-pill);
 }
 
 .coming-soon-title {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 36px;
-  line-height: 1.1em;
+  font-size: 34px;
+  line-height: 1.15em;
   letter-spacing: -0.02em;
   color: var(--color-dark);
+  margin: 0;
 }
 
 .coming-soon-desc {
   font-family: var(--font-sans);
   font-size: 15px;
-  color: #888;
+  line-height: 1.45;
+  color: #666;
   letter-spacing: -0.02em;
+  max-width: 620px;
+  margin: 0;
+}
+
+/* Avatars Preview for City Over Dinner */
+.series-avatars-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.series-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.series-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  margin-left: -8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.series-avatar-img:first-child {
+  margin-left: 0;
+}
+
+.series-avatars-caption {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-indigo);
+  opacity: 0.85;
+}
+
+/* Right Side Controls / Badges */
+.series-right-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.series-counter-badge {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--color-indigo);
+  background-color: rgba(67, 62, 112, 0.08);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.series-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-light-cream);
+  background-color: var(--color-indigo);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.series-card-active:hover .series-explore-btn {
+  background-color: #35305c;
+  transform: translateX(3px);
 }
 
 .coming-soon-badge {
@@ -65,19 +200,33 @@
   padding: 8px 20px;
 }
 
+/* Responsive */
 @media (max-width: 809.98px) {
   .events-coming-soon {
     padding: 30px 16px 80px;
+    gap: 16px;
+  }
+
+  .series-section-title {
+    font-size: 38px;
   }
 
   .coming-soon-card {
     flex-direction: column;
     align-items: flex-start;
-    padding: 32px 24px;
+    padding: 28px 22px;
+    gap: 20px;
   }
 
   .coming-soon-title {
     font-size: 26px;
+  }
+
+  .series-right-action {
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .coming-soon-badge {
