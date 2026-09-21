@@ -1,18 +1,16 @@
 /**
  * ==========================================================================
- * LEADERSHIP XYZ - CITY OVER DINNER STANDALONE ENTRY POINT
+ * LEADERSHIP XYZ - SUBPAGE MAIN SCRIPT
+ * Initializes navigation menu and scroll behavior for subpages.
  * ==========================================================================
  */
 
-import { initCityDinnerCarousel } from './modules/city-dinner-carousel.js';
 import { initNavigationMenu } from './modules/navigation-menu.js';
 import { initPageTransitions } from './modules/page-transition.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize transitions, navigation and carousel
   initPageTransitions();
   initNavigationMenu();
-  initCityDinnerCarousel();
 
   // Dynamic Navbar Scroll Behavior
   const navbar = document.querySelector('.navbar');
@@ -28,5 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
   }
 
-  console.log('✨ City Over Dinner standalone page initialized.');
+  console.log('✨ Leadership XYZ subpage initialized.');
 });

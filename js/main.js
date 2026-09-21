@@ -9,9 +9,13 @@ import { initHeroAnimation } from './modules/hero-animation.js';
 import { initScrollReveals } from './modules/scroll-reveal.js';
 import { initInteractions } from './modules/interactions.js';
 import { initCityDinnerCarousel } from './modules/city-dinner-carousel.js';
+import { initNavigationMenu } from './modules/navigation-menu.js';
+import { initPageTransitions } from './modules/page-transition.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize animations in sequence
+  // Initialize transitions and animations
+  initPageTransitions();
+  initNavigationMenu();
   initHeroAnimation();
   initScrollReveals();
   initInteractions();

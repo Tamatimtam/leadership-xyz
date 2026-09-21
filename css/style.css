@@ -12,6 +12,8 @@
 
 /* 3. Section & Component Styles */
 @import url('navbar.css');
+@import url('nav-overlay.css');
+@import url('page-transition.css');
 @import url('hero.css');
 @import url('philosophy.css');
 @import url('story-card.css');

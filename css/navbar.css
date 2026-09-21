@@ -82,6 +82,12 @@
   transform: scale(1.08) rotate(-4deg);
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navbar-contact-btn {
   display: inline-flex;
   align-items: center;
@@ -111,6 +117,98 @@
   transform: translateY(0) scale(0.98);
 }
 
+/* Tactile Menu Toggle Button */
+.nav-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 18px;
+  background-color: rgba(255, 255, 255, 0.16);
+  color: var(--color-light-cream);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              color 0.25s ease;
+  will-change: transform;
+}
+
+.nav-menu-btn:hover {
+  background-color: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 18px rgba(30, 27, 51, 0.2);
+}
+
+.nav-menu-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-light-cream);
+}
+
+/* Independent Menu Icon Bars */
+.nav-menu-icon {
+  width: 16px;
+  height: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.nav-menu-icon .menu-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+}
+
+.nav-menu-icon .menu-bar-2 {
+  width: 75%;
+  align-self: flex-end;
+  transition: width 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-menu-btn:hover .nav-menu-icon .menu-bar-2 {
+  width: 100%;
+}
+
+/* Active State: morphs to '✕' */
+.nav-menu-btn.is-active {
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-indigo);
+  border-color: var(--color-white);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.nav-menu-btn.is-active .nav-menu-icon .menu-bar-1 {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.nav-menu-btn.is-active .nav-menu-icon .menu-bar-2 {
+  width: 100%;
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.nav-menu-label {
+  display: inline-block;
+  pointer-events: none;
+  line-height: 1;
+}
+
 /* Tablet & Mobile Breakpoints */
 @media (max-width: 809.98px) {
   .navbar {
@@ -131,7 +229,14 @@
   }
 
   .navbar-contact-btn {
-    padding: 8px 18px;
-    font-size: 15px;
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+
+  .nav-menu-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+    gap: 7px;
   }
 }
+
