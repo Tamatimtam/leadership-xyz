@@ -72,7 +72,7 @@
   transform: rotateY(180deg);
 }
 
-/* Front & Back Faces */
+/* Front & Back Faces with explicit 3D plane separation */
 .author-card-front,
 .author-card-back {
   position: absolute;
@@ -88,6 +88,19 @@
 /* FRONT FACE: Full-bleed photo */
 .author-card-front {
   background-color: #e5e5e5;
+  transform: rotateY(0deg) translateZ(1px);
+  transition: opacity 0.2s ease, visibility 0s 0.3s;
+}
+
+/* Hide front face completely when card is flipped to eliminate mirroring */
+.author-card.is-flipped .author-card-front {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.author-card:not(.is-flipped) .author-card-back {
+  pointer-events: none;
 }
 
 .author-card-image {
@@ -112,6 +125,8 @@
   text-decoration: none;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   transition: opacity var(--transition-fast);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .author-front-tag:hover {
@@ -137,6 +152,8 @@
   line-height: 1.3em;
   color: var(--color-light-cream);
   transition: filter var(--transition-fast), transform var(--transition-fast);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .author-front-btn:hover {
@@ -145,7 +162,7 @@
 
 /* BACK FACE: Solid color with 45px Name and Bio */
 .author-card-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
   padding: 50px 35px;
   display: flex;
   flex-direction: column;
@@ -156,6 +173,11 @@
 /* Color themes matching Framer tokens */
 .theme-indigo {
   background-color: var(--color-indigo);
+}
+
+.theme-purple,
+.theme-nav-pill {
+  background-color: rgb(127, 118, 177);
 }
 
 .theme-emerald {
@@ -186,8 +208,26 @@
 
 .author-back-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 16px;
+  width: 100%;
+}
+
+.author-back-tag {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.05em;
+  color: var(--color-light-cream);
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.author-back-tag:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 .author-back-flip-btn {
