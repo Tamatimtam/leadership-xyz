@@ -8,17 +8,18 @@
 export function initInteractions() {
   if (typeof gsap === 'undefined') return;
 
-  // 1. Subtle continuous floating/breathing motion for 3D Book Mockup
-  const mockup = document.querySelector('.hero-mockup-img');
-  if (mockup) {
-    gsap.to(mockup, {
-      y: '-=10',
-      duration: 3.2,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-      delay: 1.8
-    });
+  // 1. Dynamic Navbar Scroll Behavior
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    const onScroll = () => {
+      if (window.scrollY > 24) {
+        navbar.classList.add('is-scrolled');
+      } else {
+        navbar.classList.remove('is-scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
   // 2. Marketplace button tactile hover physics
