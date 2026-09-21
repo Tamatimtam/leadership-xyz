@@ -31,19 +31,25 @@
   margin-bottom: 12px;
 }
 
-/* Primary Quote (Plus Jakarta Sans semibold in emerald green) */
+/* Primary Quote (Plus Jakarta Sans semibold in emerald green, increased 20%) */
 .philosophy-quote {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 54px;
+  font-size: 65px;
   line-height: 1.3em;
   letter-spacing: -0.05em;
   color: var(--color-emerald);
-  max-width: 1000px;
+  max-width: 1200px;
 }
 
+/* "dirimu sendiri." matching the editorial DM Serif Display italic */
 .philosophy-quote .highlight {
+  font-family: var(--font-serif);
   font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  padding: 0 2px;
   color: inherit;
 }
 
@@ -59,10 +65,16 @@
   margin-top: 12px;
 }
 
+.philosophy-narrative strong {
+  font-weight: 700;
+  color: var(--color-indigo);
+}
+
 /* Responsive */
 @media (max-width: 1409.98px) {
   .philosophy-quote {
-    font-size: 40px;
+    font-size: 48px;
+    max-width: 960px;
   }
   .philosophy-narrative {
     font-size: 18px;
@@ -80,7 +92,7 @@
   }
 
   .philosophy-quote {
-    font-size: 24px;
+    font-size: 29px;
     line-height: 1.35em;
   }
 
