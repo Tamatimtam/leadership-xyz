@@ -70,6 +70,24 @@
   color: var(--color-indigo);
 }
 
+/* Kinetic Text Illumination Effect (Binary Per-Letter Scroll Scrub) */
+.has-scroll-scrub .scrub-char {
+  opacity: 0.15;
+  display: inline;
+  will-change: opacity;
+}
+
+.has-scroll-scrub .scrub-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-scroll-scrub .scrub-char {
+    opacity: 1 !important;
+  }
+}
+
 /* Responsive */
 @media (max-width: 1409.98px) {
   .philosophy-quote {
