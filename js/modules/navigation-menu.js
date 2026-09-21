@@ -1,8 +1,8 @@
 /**
  * ==========================================================================
- * IMMERSIVE NAVIGATION MENU MODULE
- * Orchestrates GSAP timelines, tactile physics, spatial depth,
- * and individual component choreography for Leadership XYZ.
+ * MINIMALIST EDITORIAL NAVIGATION MENU MODULE
+ * Orchestrates slow, cinematic, luxury GSAP choreography,
+ * tactile button physics, and pure typographic reveals.
  * ==========================================================================
  */
 
@@ -17,62 +17,57 @@ export function initNavigationMenu() {
   let isOpen = false;
   let isAnimating = false;
 
-  // Query choreographable elements
+  // Elements to choreograph
   const eyebrowLabels = overlay.querySelectorAll('.nav-eyebrow');
-  const dividerLines = overlay.querySelectorAll('.nav-divider-line');
-  const chapterCards = overlay.querySelectorAll('.nav-chapter-card');
-  const chapterMasks = overlay.querySelectorAll('.nav-chapter-card .nav-mask-inner');
-  const chapterBadges = overlay.querySelectorAll('.nav-status-badge');
-  const chapterArrows = overlay.querySelectorAll('.nav-chapter-arrow');
-  const chapterDescs = overlay.querySelectorAll('.nav-chapter-desc');
+  const chapterItems = overlay.querySelectorAll('.nav-chapter-item');
+  const chapterMasks = overlay.querySelectorAll('.nav-chapter-item .nav-mask-inner');
+  const chapterNumbers = overlay.querySelectorAll('.nav-item-num');
+  const chapterArrows = overlay.querySelectorAll('.nav-item-arrow');
   const bookLinks = overlay.querySelectorAll('.nav-book-link');
-  const actionsPanel = overlay.querySelector('.nav-actions-panel');
-  const footerRow = overlay.querySelector('.nav-overlay-footer');
-  const closeTriggers = overlay.querySelectorAll('[data-close-nav]');
+  const bookMasks = overlay.querySelectorAll('.nav-book-link .nav-mask-inner');
+  const orderSection = overlay.querySelector('.nav-order-row');
+  const orderLinks = overlay.querySelectorAll('.nav-order-link');
 
-  // Initialize GSAP states if available
+  // 1. Tactile Menu Button Physics
   if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
-    // 1. Tactile Menu Button Physics (Micro-interactions)
     const btnLabel = menuBtn.querySelector('.nav-menu-label');
     const btnIcon = menuBtn.querySelector('.nav-menu-icon');
 
     menuBtn.addEventListener('mouseenter', () => {
       if (isOpen) return;
-      gsap.to(menuBtn, { scale: 1.05, y: -1, duration: 0.28, ease: 'power2.out' });
-      if (btnLabel) gsap.to(btnLabel, { x: 2, duration: 0.25, ease: 'power2.out' });
-      if (btnIcon) gsap.to(btnIcon, { x: -2, rotate: -4, duration: 0.28, ease: 'power2.out' });
+      gsap.to(menuBtn, { scale: 1.04, duration: 0.3, ease: 'power2.out' });
+      if (btnLabel) gsap.to(btnLabel, { x: 2, duration: 0.28, ease: 'power2.out' });
+      if (btnIcon) gsap.to(btnIcon, { x: -2, rotate: -4, duration: 0.3, ease: 'power2.out' });
     });
 
     menuBtn.addEventListener('mouseleave', () => {
       if (isOpen) return;
-      gsap.to(menuBtn, { scale: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+      gsap.to(menuBtn, { scale: 1, duration: 0.35, ease: 'power2.out' });
       if (btnLabel) gsap.to(btnLabel, { x: 0, duration: 0.3, ease: 'power2.out' });
       if (btnIcon) gsap.to(btnIcon, { x: 0, rotate: 0, duration: 0.35, ease: 'power2.out' });
     });
 
-    // 2. Link Hover Physics
-    chapterCards.forEach(card => {
-      const arrow = card.querySelector('.nav-chapter-arrow');
-      const title = card.querySelector('.nav-chapter-title');
-      const badge = card.querySelector('.nav-status-badge');
+    // Chapter Row Hover Dynamics
+    chapterItems.forEach(item => {
+      const arrow = item.querySelector('.nav-item-arrow');
+      const title = item.querySelector('.nav-item-title');
+      const num = item.querySelector('.nav-item-num');
 
-      card.addEventListener('mouseenter', () => {
-        gsap.to(card, { y: -3, duration: 0.3, ease: 'power2.out' });
-        if (title) gsap.to(title, { x: 6, duration: 0.28, ease: 'power2.out' });
-        if (arrow) gsap.to(arrow, { x: 4, scale: 1.1, duration: 0.3, ease: 'back.out(1.4)' });
-        if (badge) gsap.to(badge, { scale: 1.04, duration: 0.25, ease: 'power1.out' });
+      item.addEventListener('mouseenter', () => {
+        if (title) gsap.to(title, { x: 8, duration: 0.35, ease: 'power2.out' });
+        if (arrow) gsap.to(arrow, { x: 6, opacity: 1, duration: 0.35, ease: 'power2.out' });
+        if (num) gsap.to(num, { opacity: 1, duration: 0.3 });
       });
 
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, { y: 0, duration: 0.35, ease: 'power2.out' });
-        if (title) gsap.to(title, { x: 0, duration: 0.3, ease: 'power2.out' });
-        if (arrow) gsap.to(arrow, { x: 0, scale: 1, duration: 0.35, ease: 'power2.out' });
-        if (badge) gsap.to(badge, { scale: 1, duration: 0.3, ease: 'power2.out' });
+      item.addEventListener('mouseleave', () => {
+        if (title) gsap.to(title, { x: 0, duration: 0.35, ease: 'power2.out' });
+        if (arrow) gsap.to(arrow, { x: 0, opacity: 0.4, duration: 0.35, ease: 'power2.out' });
+        if (num) gsap.to(num, { opacity: 0.7, duration: 0.3 });
       });
     });
   }
 
-  // Master Entrance Choreography (Slow, Smooth, Luxury UI)
+  // 2. Master Entrance Choreography (Slow, Cinematic, Unhurried Luxury)
   function buildOpenTimeline() {
     const tl = gsap.timeline({
       defaults: { ease: 'power3.out' },
@@ -92,113 +87,103 @@ export function initNavigationMenu() {
     });
 
     if (prefersReducedMotion) {
-      tl.to(overlay, { opacity: 1, duration: 0.25 });
+      tl.to(overlay, { opacity: 1, duration: 0.3 });
       return tl;
     }
 
-    // Immediate tactile click resistance & button compression
-    tl.fromTo(menuBtn, { scale: 0.92 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' }, 0);
+    // Button tactile compress & release
+    tl.fromTo(menuBtn, { scale: 0.93 }, { scale: 1, duration: 0.4, ease: 'back.out(2)' }, 0);
 
-    // Overlay container spatial slide & fade
+    // Overlay container spatial fade & slight descent
     tl.fromTo(overlay,
-      { opacity: 0, y: -20 },
-      { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' },
+      { opacity: 0, y: -25 },
+      { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' },
       0
     );
 
-    // Eyebrow and decorative lines assemble
+    // Eyebrow labels arrive unhurriedly
     if (eyebrowLabels.length) {
       tl.fromTo(eyebrowLabels,
         { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.45, stagger: 0.08 },
-        0.18
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 },
+        0.2
       );
     }
 
-    if (dividerLines.length) {
-      tl.fromTo(dividerLines,
-        { scaleX: 0, transformOrigin: 'left center' },
-        { scaleX: 1, duration: 0.55, stagger: 0.08 },
-        0.22
-      );
-    }
-
-    // Chapters staggered entrance
-    if (chapterCards.length) {
-      tl.fromTo(chapterCards,
-        { opacity: 0, y: 35 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.09, ease: 'power3.out' },
-        0.25
-      );
-    }
-
-    // Masked chapter titles reveal
-    if (chapterMasks.length) {
-      tl.fromTo(chapterMasks,
-        { y: '105%', opacity: 0 },
-        { y: '0%', opacity: 1, duration: 0.55, stagger: 0.09, ease: 'power3.out' },
+    // Chapter item borders unroll
+    if (chapterItems.length) {
+      tl.fromTo(chapterItems,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.14, ease: 'power3.out' },
         0.28
       );
     }
 
-    // Badges pop with slight overshoot
-    if (chapterBadges.length) {
-      tl.fromTo(chapterBadges,
-        { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.4, stagger: 0.08, ease: 'back.out(1.5)' },
-        0.35
-      );
-    }
-
-    // Interactive circular arrows slide in
-    if (chapterArrows.length) {
-      tl.fromTo(chapterArrows,
-        { x: -16, opacity: 0, rotate: -30 },
-        { x: 0, opacity: 1, rotate: 0, duration: 0.45, stagger: 0.08, ease: 'back.out(1.3)' },
-        0.38
-      );
-    }
-
-    // Chapter descriptions gently arrive
-    if (chapterDescs.length) {
-      tl.fromTo(chapterDescs,
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.45, stagger: 0.08 },
-        0.42
-      );
-    }
-
-    // Book overview links cascade
-    if (bookLinks.length) {
-      tl.fromTo(bookLinks,
-        { opacity: 0, x: 25 },
-        { opacity: 1, x: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out' },
+    // Chapter masked titles reveal like majestic editorial print
+    if (chapterMasks.length) {
+      tl.fromTo(chapterMasks,
+        { y: '110%', opacity: 0 },
+        { y: '0%', opacity: 1, duration: 0.75, stagger: 0.14, ease: 'power3.out' },
         0.32
       );
     }
 
-    // Marketplace / actions card surfaces
-    if (actionsPanel) {
-      tl.fromTo(actionsPanel,
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' },
-        0.45
+    // Chapter index numbers slide into place
+    if (chapterNumbers.length) {
+      tl.fromTo(chapterNumbers,
+        { opacity: 0, x: -10 },
+        { opacity: 0.75, x: 0, duration: 0.5, stagger: 0.14 },
+        0.35
       );
     }
 
-    // Footer tagline arrives last
-    if (footerRow) {
-      tl.fromTo(footerRow,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.4 },
-        0.55
+    // Subtle arrow indicators drift in
+    if (chapterArrows.length) {
+      tl.fromTo(chapterArrows,
+        { opacity: 0, x: -14 },
+        { opacity: 0.4, x: 0, duration: 0.5, stagger: 0.14 },
+        0.42
+      );
+    }
+
+    // Secondary Book links cascade
+    if (bookLinks.length) {
+      tl.fromTo(bookLinks,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.65, stagger: 0.1, ease: 'power3.out' },
+        0.38
+      );
+    }
+
+    if (bookMasks.length) {
+      tl.fromTo(bookMasks,
+        { y: '105%', opacity: 0 },
+        { y: '0%', opacity: 1, duration: 0.65, stagger: 0.1, ease: 'power3.out' },
+        0.42
+      );
+    }
+
+    // Order text links reveal with relaxed timing
+    if (orderSection) {
+      tl.fromTo(orderSection,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.55 },
+        0.6
+      );
+    }
+
+    if (orderLinks.length) {
+      tl.fromTo(orderLinks,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.45, stagger: 0.08 },
+        0.68
       );
     }
 
     return tl;
   }
 
-  // Master Exit Choreography (Snappy, Controlled Reverse)
+  // 3. Master Exit Choreography (Snappy, Clean Reverse)
   function buildCloseTimeline() {
     const tl = gsap.timeline({
       defaults: { ease: 'power3.in' },
@@ -222,30 +207,21 @@ export function initNavigationMenu() {
       return tl;
     }
 
-    // Button tactile snap back
+    // Button snap back
     tl.to(menuBtn, { scale: 0.95, duration: 0.15, ease: 'power1.in' }, 0);
     tl.to(menuBtn, { scale: 1, duration: 0.25, ease: 'power2.out' }, 0.15);
 
-    // Retract secondary actions and footer
-    if (footerRow) tl.to(footerRow, { opacity: 0, duration: 0.2 }, 0);
-    if (actionsPanel) tl.to(actionsPanel, { opacity: 0, y: 15, duration: 0.22 }, 0.05);
+    // Retract links and overlay promptly
+    if (orderSection) tl.to(orderSection, { opacity: 0, duration: 0.18 }, 0);
+    if (bookLinks.length) tl.to(bookLinks, { opacity: 0, y: -8, duration: 0.22, stagger: 0.03 }, 0.04);
+    if (chapterItems.length) tl.to(chapterItems, { opacity: 0, y: -10, duration: 0.25, stagger: 0.04 }, 0.08);
 
-    // Retract links and chapters with quick reverse stagger
-    if (bookLinks.length) {
-      tl.to(bookLinks, { opacity: 0, x: 15, duration: 0.25, stagger: 0.04 }, 0.05);
-    }
-
-    if (chapterCards.length) {
-      tl.to(chapterCards, { opacity: 0, y: -15, duration: 0.3, stagger: 0.05 }, 0.08);
-    }
-
-    // Retract overlay canvas
-    tl.to(overlay, { opacity: 0, y: -15, duration: 0.38, ease: 'power3.inOut' }, 0.18);
+    tl.to(overlay, { opacity: 0, y: -15, duration: 0.35, ease: 'power3.inOut' }, 0.15);
 
     return tl;
   }
 
-  // Toggle Function
+  // Toggle Action
   function toggleMenu() {
     if (isAnimating) return;
     isAnimating = true;
@@ -275,21 +251,14 @@ export function initNavigationMenu() {
     toggleMenu();
   });
 
-  closeTriggers.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (isOpen) toggleMenu();
-    });
-  });
-
-  // Keyboard accessibility: Escape to close
+  // Escape to close
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isOpen) {
       toggleMenu();
     }
   });
 
-  // Close when clicking empty backdrop
+  // Click on backdrop to close
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) {
       toggleMenu();
@@ -297,8 +266,8 @@ export function initNavigationMenu() {
   });
 
   // Close when clicking an anchor link inside overlay
-  const internalNavLinks = overlay.querySelectorAll('a[href^="#"], a[href$=".html"]');
-  internalNavLinks.forEach(link => {
+  const navLinks = overlay.querySelectorAll('a[href]');
+  navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (isOpen) {
         toggleMenu();

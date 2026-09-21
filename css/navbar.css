@@ -92,7 +92,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 25px;
+  height: 42px;
+  padding: 0 24px;
+  box-sizing: border-box;
   background-color: var(--color-emerald);
   color: var(--color-light-cream);
   border: 1px solid var(--color-light-cream);
@@ -121,8 +123,11 @@
 .nav-menu-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 9px;
-  padding: 8px 18px;
+  height: 42px;
+  padding: 0 20px;
+  box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.16);
   color: var(--color-light-cream);
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -177,13 +182,14 @@
 }
 
 .nav-menu-icon .menu-bar-2 {
-  width: 75%;
-  align-self: flex-end;
-  transition: width 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  transform: scaleX(0.75);
+  transform-origin: right center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-menu-btn:hover .nav-menu-icon .menu-bar-2 {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* Active State: morphs to '✕' */
@@ -229,12 +235,14 @@
   }
 
   .navbar-contact-btn {
-    padding: 7px 14px;
-    font-size: 14px;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 15px;
   }
 
   .nav-menu-btn {
-    padding: 7px 14px;
+    height: 36px;
+    padding: 0 14px;
     font-size: 12px;
     gap: 7px;
   }
