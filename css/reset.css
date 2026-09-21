@@ -15,6 +15,7 @@ html {
   background-color: var(--bg-primary);
   color: var(--color-dark);
   font-family: var(--font-sans);
+  touch-action: manipulation;
 }
 
 body {
@@ -23,6 +24,7 @@ body {
   color: var(--color-dark);
   overflow-x: hidden;
   line-height: 1.5;
+  touch-action: manipulation;
 }
 
 img, picture, video, canvas, svg {

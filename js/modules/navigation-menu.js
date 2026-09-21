@@ -274,4 +274,9 @@ export function initNavigationMenu() {
       }
     });
   });
+
+  // Prevent accidental pinch-to-zoom gestures on iOS Safari
+  document.addEventListener('gesturestart', (e) => {
+    e.preventDefault();
+  }, { passive: false });
 }
