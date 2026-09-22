@@ -7,9 +7,11 @@
 
 import { initNavigationMenu } from './modules/navigation-menu.js';
 import { initPageTransitions } from './modules/page-transition.js';
+import { initSmoothScroll } from './modules/smooth-scroll.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initPageTransitions();
+  initSmoothScroll();
   initNavigationMenu();
 
   // Dynamic Navbar Scroll Behavior

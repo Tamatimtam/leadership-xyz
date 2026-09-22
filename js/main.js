@@ -8,18 +8,18 @@
 import { initHeroAnimation } from './modules/hero-animation.js';
 import { initScrollReveals } from './modules/scroll-reveal.js';
 import { initInteractions } from './modules/interactions.js';
-import { initCityDinnerCarousel } from './modules/city-dinner-carousel.js';
 import { initNavigationMenu } from './modules/navigation-menu.js';
 import { initPageTransitions } from './modules/page-transition.js';
+import { initSmoothScroll } from './modules/smooth-scroll.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize transitions and animations
   initPageTransitions();
+  initSmoothScroll();
   initNavigationMenu();
   initHeroAnimation();
   initScrollReveals();
   initInteractions();
-  initCityDinnerCarousel();
   
   console.log('✨ Leadership XYZ initialized successfully with modular architecture.');
 });
