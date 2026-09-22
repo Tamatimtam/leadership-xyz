@@ -1,0 +1,91 @@
+/* ==========================================================================
+   URBAN 101 – COMING SOON GALLERY SECTION
+   ========================================================================== */
+
+.cod-gallery-section {
+  width: 100%;
+  max-width: 1090px;
+  margin: 0 auto 90px;
+  padding: 0 24px;
+}
+
+.cod-gallery-card {
+  position: relative;
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, #182033 0%, #111524 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 60px 48px;
+  color: var(--color-light-cream);
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cod-gallery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a4b3d6;
+  margin-bottom: 20px;
+}
+
+.cod-gallery-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+.cod-gallery-desc {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 580px;
+  margin: 0 0 28px;
+}
+
+.cod-gallery-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cod-gallery-pill {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 768px) {
+  .cod-gallery-card {
+    padding: 40px 24px;
+  }
+  .cod-gallery-title {
+    font-size: 32px;
+  }
+  .cod-gallery-desc {
+    font-size: 15px;
+  }
+}

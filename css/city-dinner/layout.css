@@ -2,6 +2,39 @@
    XYZ @ CITY OVER DINNER – Layout & Section Header
    ========================================================================== */
 
+.subpage-main {
+  padding-top: 80px;
+  min-height: calc(100vh - 120px);
+}
+
+.subpage-back-section {
+  width: 100%;
+  max-width: var(--container-wide-width);
+  padding: 24px 24px 0;
+  margin: 0 auto;
+}
+
+.series-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-indigo);
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(67, 62, 112, 0.08);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.series-nav-back:hover {
+  background-color: rgba(67, 62, 112, 0.16);
+  transform: translateX(-3px);
+}
+
 .city-dinner-section {
   width: 100%;
   display: flex;

@@ -3,17 +3,27 @@
    Imports focused sub-modules for DX & maintainability
    ========================================================================== */
 
-/* 1. Base Layout & Section Header */
+/* 1. Base Layout & Containers */
 @import url('city-dinner/layout.css');
 
-/* 2. Overview Session Cards */
+/* 2. Hero Section & Text Scrub */
+@import url('city-dinner/hero.css');
+
+/* 3. Next Event Countdown */
+@import url('city-dinner/countdown.css');
+
+/* 4. Overview Session Cards */
 @import url('city-dinner/cards.css');
 
-/* 3. In-Place Expanded Stage View */
+/* 5. In-Place Expanded Stage View */
 @import url('city-dinner/stage.css');
 
-/* 4. Controls, Navigation & Thumbnails */
+/* 6. Controls, Navigation & Thumbnails */
 @import url('city-dinner/controls.css');
 
-/* 5. Responsive Breakpoints */
+/* 7. Coming Soon Gallery Section */
+@import url('city-dinner/gallery.css');
+
+/* 8. Responsive Breakpoints */
 @import url('city-dinner/responsive.css');
+
