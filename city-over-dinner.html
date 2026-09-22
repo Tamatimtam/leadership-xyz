@@ -42,6 +42,22 @@
       document.documentElement.classList.add('is-page-transitioning');
     }
   </script>
+
+  <!-- Prevent FOUC for Intro Animation -->
+  <style>
+    body:not(.intro-done) .cod-hero-logo,
+    body:not(.intro-done) .cod-hero-title,
+    body:not(.intro-done) .cod-hero-scrub-box,
+    body:not(.intro-done) .cod-countdown-section,
+    body:not(.intro-done) .city-dinner-section,
+    body:not(.intro-done) .cod-gallery-section,
+    body:not(.intro-done) .events-coming-soon,
+    body:not(.intro-done) .site-footer,
+    body:not(.intro-done) .navbar {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
 </head>
 <body>
 
@@ -171,7 +187,10 @@
         <h1 class="cod-hero-title">City Over Dinner</h1>
         <div class="cod-hero-scrub-box">
           <p class="cod-hero-scrub-text">
-            <strong>Urban 101: City Over Dinner</strong> is an intimate gathering where thinkers, architects, entrepreneurs, and citizens meet around one shared table. Over dinner, we deconstruct how cities breathe, struggle, and transform—leaving formal lectures behind for honest, unfiltered discourse on urban life and civic leadership.
+            <strong>Urban 101: City Over Dinner</strong> is a casual get-together for people who live, work, study, and spend their days in Jakarta. Inspired by the idea of a brown-bag lunch, everyone brings their own dinner, sits down, and talks about the city we share.
+          </p>
+          <p class="cod-hero-scrub-text" style="margin-top: 1em;">
+            You don’t have to be an urban planner to have something to say about urban life. Whether you’re an academic, athlete, office worker, entrepreneur, student, influencer, cilok seller, or ojek driver, the city is part of your everyday life. Everyone’s welcome at the table.
           </p>
         </div>
       </div>

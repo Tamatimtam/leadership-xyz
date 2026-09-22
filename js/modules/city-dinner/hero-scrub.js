@@ -8,9 +8,9 @@
 export function initHeroTextScrub() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  const narrativeEl = document.querySelector('.cod-hero-scrub-text');
+  const narrativeEls = document.querySelectorAll('.cod-hero-scrub-text');
   const sectionEl = document.querySelector('.cod-hero-section');
-  if (!narrativeEl || !sectionEl) return;
+  if (!narrativeEls.length || !sectionEl) return;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
@@ -37,22 +37,24 @@ export function initHeroTextScrub() {
   }
 
   const chars = [];
-  const childNodes = Array.from(narrativeEl.childNodes);
-
-  childNodes.forEach(node => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      const text = node.textContent;
-      if (!text.trim()) return;
-      const frag = document.createDocumentFragment();
-      processText(text, frag, chars);
-      node.replaceWith(frag);
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      const innerText = node.textContent;
-      node.innerHTML = '';
-      const frag = document.createDocumentFragment();
-      processText(innerText, frag, chars);
-      node.appendChild(frag);
-    }
+  
+  narrativeEls.forEach(narrativeEl => {
+    const childNodes = Array.from(narrativeEl.childNodes);
+    childNodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        if (!text.trim()) return;
+        const frag = document.createDocumentFragment();
+        processText(text, frag, chars);
+        node.replaceWith(frag);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const innerText = node.textContent;
+        node.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        processText(innerText, frag, chars);
+        node.appendChild(frag);
+      }
+    });
   });
 
   if (!chars.length) return;
@@ -62,8 +64,8 @@ export function initHeroTextScrub() {
   gsap.timeline({
     scrollTrigger: {
       trigger: sectionEl,
-      start: 'top 70%',
-      end: 'bottom 40%',
+      start: 'top top',
+      end: '+=450',
       scrub: 0.15
     }
   }).to(chars, {
