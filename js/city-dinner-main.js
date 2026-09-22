@@ -8,6 +8,7 @@ import { initUrban101Page } from './modules/city-dinner/index.js';
 import { initNavigationMenu } from './modules/navigation-menu.js';
 import { initPageTransitions } from './modules/page-transition.js';
 import { initSmoothScroll } from './modules/smooth-scroll.js';
+import { initGalleryParallax } from './modules/city-dinner/gallery-parallax.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize transitions, navigation and Urban 101 features
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavigationMenu();
   initUrban101Page();
+  initGalleryParallax();
 
   // Dynamic Navbar Scroll Behavior
   const navbar = document.querySelector('.navbar');

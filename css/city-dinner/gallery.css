@@ -1,91 +1,68 @@
-/* ==========================================================================
-   URBAN 101 – COMING SOON GALLERY SECTION
-   ========================================================================== */
+/* 
+   Urban 101: City Over Dinner - Premium Gallery Section 
+   Design: Continuous Scrolling Orbit (No Overlap, No Rigid Grids)
+*/
 
-.cod-gallery-section {
-  width: 100%;
-  max-width: 1090px;
-  margin: 0 auto 90px;
-  padding: 0 24px;
-}
-
-.cod-gallery-card {
+.cod-immersive-gallery {
   position: relative;
-  border-radius: var(--radius-card);
-  background: linear-gradient(135deg, #182033 0%, #111524 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 60px 48px;
-  color: var(--color-light-cream);
+  width: 100%;
+  height: 100vh; /* Locked to viewport height */
+  background-color: var(--color-bg, #ffffff);
   overflow: hidden;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.16);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  z-index: 1;
+}
+
+/* Massive Centered Typography */
+.gallery-huge-text-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   text-align: center;
+  z-index: 50; /* Ensure it stays above floating images */
+  pointer-events: none;
 }
 
-.cod-gallery-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-sans);
-  font-size: 12px;
+.gallery-huge-text {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(3rem, 10vw, 12rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--color-text, #111111); 
   text-transform: uppercase;
-  color: #a4b3d6;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
-.cod-gallery-title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 42px;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin: 0 0 16px;
-  color: #ffffff;
+.gallery-huge-text span {
+  display: block;
 }
 
-.cod-gallery-desc {
-  font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 580px;
-  margin: 0 0 28px;
+/* Floating Picture Frames */
+.gallery-frame {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  will-change: transform;
+  z-index: 2;
+  background: #f0f0f0;
 }
 
-.cod-gallery-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
+.gallery-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
-.cod-gallery-pill {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.85);
-}
-
-@media (max-width: 768px) {
-  .cod-gallery-card {
-    padding: 40px 24px;
-  }
-  .cod-gallery-title {
-    font-size: 32px;
-  }
-  .cod-gallery-desc {
-    font-size: 15px;
+/* Mobile adjustments */
+@media (max-width: 900px) {
+  .gallery-huge-text {
+    font-size: clamp(2.5rem, 13vw, 8rem);
   }
 }
