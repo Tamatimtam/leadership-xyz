@@ -4,15 +4,15 @@
  * ==========================================================================
  */
 
-import { initCityDinnerCarousel } from './modules/city-dinner-carousel.js';
+import { initUrban101Page } from './modules/city-dinner/index.js';
 import { initNavigationMenu } from './modules/navigation-menu.js';
 import { initPageTransitions } from './modules/page-transition.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize transitions, navigation and carousel
+  // Initialize transitions, navigation and Urban 101 features
   initPageTransitions();
   initNavigationMenu();
-  initCityDinnerCarousel();
+  initUrban101Page();
 
   // Dynamic Navbar Scroll Behavior
   const navbar = document.querySelector('.navbar');
