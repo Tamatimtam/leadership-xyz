@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>City Over Dinner — XYZ Series Chapter 01 | Leadership XYZ</title>
+  <title>City Over Dinner — Urban 101 | Leadership XYZ</title>
   <meta name="description" content="Conversations on cities, leadership, and public life over intimate dinners.">
 
   <!-- Favicons -->
@@ -26,37 +26,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
-  <style>
-    .subpage-main {
-      padding-top: 80px;
-      min-height: calc(100vh - 120px);
-    }
-    .subpage-back-section {
-      width: 100%;
-      max-width: var(--container-wide-width);
-      padding: 24px 24px 0;
-      margin: 0 auto;
-    }
-    .series-nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: -0.02em;
-      color: var(--color-indigo);
-      text-decoration: none;
-      padding: 8px 18px;
-      border-radius: var(--radius-pill);
-      background-color: rgba(67, 62, 112, 0.08);
-      transition: background-color var(--transition-fast), transform var(--transition-fast);
-    }
-    .series-nav-back:hover {
-      background-color: rgba(67, 62, 112, 0.16);
-      transform: translateX(-3px);
-    }
-  </style>
+
 
   <!-- GSAP Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -193,45 +163,123 @@
 
   <main class="subpage-main">
 
-    <!-- XYZ @ City Over Dinner – Interactive Event Chronicle -->
+    <!-- 1. Urban 101 Hero Section with Kinetic Text Scrub -->
+    <section class="cod-hero-section">
+      <div class="cod-hero-container">
+        <img src="assets/images/urban101-logo.png" alt="Urban 101 Logo" class="cod-hero-logo" width="280" height="94">
+        <h1 class="cod-hero-title">City Over Dinner</h1>
+        <div class="cod-hero-scrub-box">
+          <p class="cod-hero-scrub-text">
+            <strong>Urban 101: City Over Dinner</strong> is an intimate gathering where thinkers, architects, entrepreneurs, and citizens meet around one shared table. Over dinner, we deconstruct how cities breathe, struggle, and transform—leaving formal lectures behind for honest, unfiltered discourse on urban life and civic leadership.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Next Event Countdown Section (Chapter 07) -->
+    <section class="cod-countdown-section" id="cod-countdown-section">
+      <div class="cod-next-event-card">
+        <div class="cod-next-left">
+          <div>
+            <div class="cod-live-indicator">
+              <span class="cod-pulse-dot" aria-hidden="true"></span>
+              <span id="cod-event-timing-label">Next Session · Chapter 07 · Tomorrow at 19:00 WIB</span>
+            </div>
+            <h2 class="cod-next-title">Map-A-Thon! What Maps Would Like to Show, and What Do Cities Tell?</h2>
+            <div class="cod-next-speaker-row">
+              <span class="cod-next-speaker-name">Galuh Rohmah</span>
+              <span class="cod-next-speaker-role">Strategic Partnership Manager Geo-Google</span>
+            </div>
+          </div>
+
+          <!-- Minimalist Live Countdown Ticker -->
+          <div class="cod-countdown-wrap">
+            <span class="cod-countdown-eyebrow">Discussion Starts In</span>
+            <div class="cod-countdown-digits" aria-label="Countdown to Chapter 07">
+              <div class="cod-digit-block">
+                <span class="cod-digit-val" id="cd-hours">00</span>
+                <span class="cod-digit-label">Hours</span>
+              </div>
+              <span class="cod-digit-sep" aria-hidden="true">:</span>
+              <div class="cod-digit-block">
+                <span class="cod-digit-val" id="cd-minutes">00</span>
+                <span class="cod-digit-label">Minutes</span>
+              </div>
+              <span class="cod-digit-sep" aria-hidden="true">:</span>
+              <div class="cod-digit-block">
+                <span class="cod-digit-val" id="cd-seconds">00</span>
+                <span class="cod-digit-label">Seconds</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concluded State (Revealed when timer elapses) -->
+          <div class="cod-concluded-card" id="cod-concluded-card">
+            <span class="cod-concluded-badge">
+              <i class="ti ti-check" aria-hidden="true"></i>
+              <span>Session Concluded</span>
+            </span>
+            <h3 class="cod-concluded-title">This chapter has concluded!</h3>
+            <p class="cod-concluded-desc">
+              Thank you to everyone who joined our dinner table discussion. Stay tuned for Chapter 08 announcements! In the meantime, explore all previous documented sessions below.
+            </p>
+            <a href="#city-over-dinner" class="cod-explore-archive-btn">
+              <span>Explore Documented Sessions ↓</span>
+            </a>
+          </div>
+
+          <a href="https://bit.ly/Urban101-7" target="_blank" rel="noopener noreferrer" class="cod-join-btn">
+            <span>Register for Chapter 07</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="cod-next-right">
+          <img src="assets/images/urban101-session-07.jpg" alt="Chapter 07 Flyer" class="cod-next-photo" loading="lazy">
+          <span class="cod-next-photo-badge">Vol. 07 Preview</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. All 7 Sessions Chronicle (Horizontal Overview & In-Place Stage Reveal) -->
     <section class="city-dinner-section" id="city-over-dinner">
       <div class="city-dinner-container">
         <div class="city-dinner-header">
-          <span class="city-dinner-series-label">XYZ Series · Chapter 01</span>
-          <h1 class="city-dinner-title">City Over Dinner</h1>
-          <p class="city-dinner-subtitle">Conversations on cities, leadership, and public life over intimate dinners.</p>
+          <span class="city-dinner-series-label">Archived Sessions</span>
+          <h2 class="city-dinner-title">Previous Sessions</h2>
+          <p class="city-dinner-subtitle">Browse through documented Urban 101 chapters and explore session notes.</p>
         </div>
 
         <div class="city-dinner-carousel-wrapper">
           <div class="city-dinner-carousel">
 
-            <!-- Session 01: Her Pramtama -->
+            <!-- Session 01: Stella Mailoa, Dedi Wijaya, Kevin Arffandy -->
             <article class="session-card" data-accent="indigo" data-session="0">
               <div class="session-card-inner">
-                <img src="assets/images/speaker-her.jpg" alt="Her Pramtama speaking at City Over Dinner" class="card-photo" loading="lazy" width="760" height="1080">
+                <img src="assets/images/urban101-session-01.jpg" alt="+Jakarta Case Study" class="card-photo" loading="lazy" width="760" height="1080">
                 <div class="card-tint"></div>
                 <div class="card-gradient"></div>
                 <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
                 <div class="card-content">
-                  <span class="card-edition">Vol. 01 · Public Spaces</span>
-                  <h3 class="card-topic">Do's and Don'ts Steps to Build Public Spaces</h3>
-                  <span class="card-speaker">Her Pramtama</span>
+                  <span class="card-edition">Vol. 01 · Collaboration</span>
+                  <h3 class="card-topic">Urban Collaboration in Action: +Jakarta Case Study</h3>
+                  <span class="card-speaker">Stella Mailoa, Dedi Wijaya, Kevin Arffandy</span>
                   <span class="card-date">City Over Dinner · Jakarta</span>
                 </div>
               </div>
             </article>
 
-            <!-- Session 02: Prof. Sulfikar Amir -->
+            <!-- Session 02: Marco Kusumawijaya -->
             <article class="session-card" data-accent="emerald" data-session="1">
               <div class="session-card-inner">
-                <img src="assets/images/speaker-sulfikar.jpg" alt="Prof. Sulfikar Amir speaking at City Over Dinner" class="card-photo" loading="lazy" width="760" height="1080">
+                <img src="assets/images/urban101-session-02.jpg" alt="Marco Kusumawijaya" class="card-photo" loading="lazy" width="760" height="1080">
                 <div class="card-tint"></div>
                 <div class="card-gradient"></div>
                 <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
                 <div class="card-content">
-                  <span class="card-edition">Vol. 02 · Urbanism</span>
-                  <h3 class="card-topic">Ctrl+C and Ctrl+V Singapore Urbanism — Should We Do It?</h3>
-                  <span class="card-speaker">Prof. Sulfikar Amir</span>
+                  <span class="card-edition">Vol. 02 · Resilience</span>
+                  <h3 class="card-topic">Aburbanisation, Urban Decline, and Democratic Deficit</h3>
+                  <span class="card-speaker">Marco Kusumawijaya</span>
                   <span class="card-date">City Over Dinner · Jakarta</span>
                 </div>
               </div>
@@ -240,7 +288,7 @@
             <!-- Session 03: Roni Pramaditia -->
             <article class="session-card" data-accent="nav-pill" data-session="2">
               <div class="session-card-inner">
-                <img src="assets/images/speaker-roni.jpg" alt="Roni Pramaditia speaking at City Over Dinner" class="card-photo" loading="lazy" width="760" height="1080">
+                <img src="assets/images/urban101-session-03.jpg" alt="Roni Pramaditia" class="card-photo" loading="lazy" width="760" height="1080">
                 <div class="card-tint"></div>
                 <div class="card-gradient"></div>
                 <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
@@ -248,6 +296,70 @@
                   <span class="card-edition">Vol. 03 · Enterprise</span>
                   <h3 class="card-topic">How to Spark Life in the City: Career, Enterprise &amp; Community</h3>
                   <span class="card-speaker">Roni Pramaditia</span>
+                  <span class="card-date">City Over Dinner · Jakarta</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Session 04: Prof. Sulfikar Amir -->
+            <article class="session-card" data-accent="indigo" data-session="3">
+              <div class="session-card-inner">
+                <img src="assets/images/urban101-session-04.jpg" alt="Prof. Sulfikar Amir" class="card-photo" loading="lazy" width="760" height="1080">
+                <div class="card-tint"></div>
+                <div class="card-gradient"></div>
+                <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+                <div class="card-content">
+                  <span class="card-edition">Vol. 04 · Governance</span>
+                  <h3 class="card-topic">Ctrl+C and Ctrl+V Singapore Urbanism — Should We Do It?</h3>
+                  <span class="card-speaker">Prof. Sulfikar Amir</span>
+                  <span class="card-date">City Over Dinner · Jakarta</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Session 05: Her Pramtama -->
+            <article class="session-card" data-accent="emerald" data-session="4">
+              <div class="session-card-inner">
+                <img src="assets/images/urban101-session-05.jpg" alt="Her Pramtama" class="card-photo" loading="lazy" width="760" height="1080">
+                <div class="card-tint"></div>
+                <div class="card-gradient"></div>
+                <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+                <div class="card-content">
+                  <span class="card-edition">Vol. 05 · Public Space</span>
+                  <h3 class="card-topic">Do's and Don'ts Steps to Build Public Spaces</h3>
+                  <span class="card-speaker">Her Pramtama</span>
+                  <span class="card-date">City Over Dinner · Jakarta</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Session 06: Biasalah Anak Muda -->
+            <article class="session-card" data-accent="nav-pill" data-session="5">
+              <div class="session-card-inner">
+                <img src="assets/images/urban101-session-06.jpg" alt="Biasalah Anak Muda" class="card-photo" loading="lazy" width="760" height="1080">
+                <div class="card-tint"></div>
+                <div class="card-gradient"></div>
+                <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+                <div class="card-content">
+                  <span class="card-edition">Vol. 06 · Chaos &amp; Design</span>
+                  <h3 class="card-topic">The Blueprint and The Chaos of Designing City</h3>
+                  <span class="card-speaker">Biasalah Anak Muda</span>
+                  <span class="card-date">City Over Dinner · Jakarta</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Session 07: Galuh Rohmah -->
+            <article class="session-card" data-accent="indigo" data-session="6">
+              <div class="session-card-inner">
+                <img src="assets/images/urban101-session-07.jpg" alt="Galuh Rohmah" class="card-photo" loading="lazy" width="760" height="1080">
+                <div class="card-tint"></div>
+                <div class="card-gradient"></div>
+                <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+                <div class="card-content">
+                  <span class="card-edition">Vol. 07 · Cartography</span>
+                  <h3 class="card-topic">Map-A-Thon! What Maps Would Like to Show, and What Do Cities Tell?</h3>
+                  <span class="card-speaker">Galuh Rohmah</span>
                   <span class="card-date">City Over Dinner · Jakarta</span>
                 </div>
               </div>
@@ -264,26 +376,31 @@
               </button>
 
               <div class="stage-visual">
-                <img src="assets/images/speaker-her.jpg" alt="Speaker photo" class="stage-photo" width="760" height="1080">
+                <img src="assets/images/urban101-session-01.jpg" alt="Speaker photo" class="stage-photo" width="760" height="1080">
                 <div class="stage-accent-bar"></div>
-                <span class="stage-edition-badge">Vol. 01 · Public Spaces</span>
+                <span class="stage-edition-badge">Vol. 01 · Collaboration</span>
               </div>
 
               <div class="stage-content">
                 <div class="stage-header">
-                  <span class="stage-series-tag">City Over Dinner</span>
-                  <span class="stage-location-tag">Jakarta Chapter</span>
+                  <span class="stage-series-tag">Urban 101</span>
+                  <span class="stage-location-tag">City Over Dinner</span>
                 </div>
-                <h3 class="stage-topic">Do's and Don'ts Steps to Build Public Spaces</h3>
+                <h3 class="stage-topic">Urban Collaboration in Action: +Jakarta Case Study</h3>
                 <div class="stage-speaker-wrap">
-                  <span class="stage-speaker-name">Her Pramtama</span>
-                  <span class="stage-speaker-role">Featured Speaker</span>
+                  <span class="stage-speaker-name">Stella Mailoa, Dedi Wijaya, Kevin Arffandy</span>
+                  <span class="stage-speaker-role">+Jakarta Civic Movement Leaders</span>
                 </div>
                 <div class="stage-divider"></div>
-                <p class="stage-desc">Spatial leadership and civic ownership — how thoughtful design of public spaces can transform communities.</p>
+                <p class="stage-desc">How public-private-civic partnerships breathe life into urban governance through the +Jakarta city branding and collective collaboration movement.</p>
                 <div class="stage-lens">
                   <span class="stage-lens-icon">◉</span>
-                  <span class="stage-lens-text">Spatial Leadership &amp; Civic Ownership</span>
+                  <span class="stage-lens-text">Civic Collaboration &amp; Urban Action</span>
+                </div>
+                <div style="margin-top: 24px;">
+                  <a href="http://bit.ly/Urban101-1" target="_blank" rel="noopener noreferrer" class="stage-register-btn cod-join-btn" style="padding: 10px 22px; font-size: 13px;">
+                    <span>Session Archive / Info ↗</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -291,29 +408,62 @@
 
           <!-- Bottom Control Bar (Counter, Nav Arrows & Minimized Thumbnails) -->
           <div class="carousel-control-bar">
-            <!-- Minimized Thumbnails Strip (Visible during expanded mode) -->
+            <!-- Minimized Thumbnails Strip for 7 Sessions -->
             <div class="stage-minimized-strip" id="stage-minimized-strip" aria-label="Session selector">
-              <button class="stage-thumb-btn is-active" data-session="0" aria-label="Switch to Vol. 01: Her Pramtama">
-                <img src="assets/images/speaker-her.jpg" alt="Her Pramtama" class="thumb-img">
+              <button class="stage-thumb-btn is-active" data-session="0" aria-label="Switch to Vol. 01">
+                <img src="assets/images/urban101-session-01.jpg" alt="Vol. 01" class="thumb-img">
                 <span class="thumb-label">Vol. 01</span>
               </button>
-              <button class="stage-thumb-btn" data-session="1" aria-label="Switch to Vol. 02: Prof. Sulfikar Amir">
-                <img src="assets/images/speaker-sulfikar.jpg" alt="Prof. Sulfikar Amir" class="thumb-img">
+              <button class="stage-thumb-btn" data-session="1" aria-label="Switch to Vol. 02">
+                <img src="assets/images/urban101-session-02.jpg" alt="Vol. 02" class="thumb-img">
                 <span class="thumb-label">Vol. 02</span>
               </button>
-              <button class="stage-thumb-btn" data-session="2" aria-label="Switch to Vol. 03: Roni Pramaditia">
-                <img src="assets/images/speaker-roni.jpg" alt="Roni Pramaditia" class="thumb-img">
+              <button class="stage-thumb-btn" data-session="2" aria-label="Switch to Vol. 03">
+                <img src="assets/images/urban101-session-03.jpg" alt="Vol. 03" class="thumb-img">
                 <span class="thumb-label">Vol. 03</span>
+              </button>
+              <button class="stage-thumb-btn" data-session="3" aria-label="Switch to Vol. 04">
+                <img src="assets/images/urban101-session-04.jpg" alt="Vol. 04" class="thumb-img">
+                <span class="thumb-label">Vol. 04</span>
+              </button>
+              <button class="stage-thumb-btn" data-session="4" aria-label="Switch to Vol. 05">
+                <img src="assets/images/urban101-session-05.jpg" alt="Vol. 05" class="thumb-img">
+                <span class="thumb-label">Vol. 05</span>
+              </button>
+              <button class="stage-thumb-btn" data-session="5" aria-label="Switch to Vol. 06">
+                <img src="assets/images/urban101-session-06.jpg" alt="Vol. 06" class="thumb-img">
+                <span class="thumb-label">Vol. 06</span>
+              </button>
+              <button class="stage-thumb-btn" data-session="6" aria-label="Switch to Vol. 07">
+                <img src="assets/images/urban101-session-07.jpg" alt="Vol. 07" class="thumb-img">
+                <span class="thumb-label">Vol. 07</span>
               </button>
             </div>
 
-            <!-- Carousel Nav (Controls scroll in overview, switches sessions in expanded mode) -->
+            <!-- Carousel Nav -->
             <div class="carousel-nav">
               <button class="carousel-btn carousel-btn-prev" aria-label="Previous session">‹</button>
-              <span class="carousel-counter">01 / 03</span>
+              <span class="carousel-counter">01 / 07</span>
               <button class="carousel-btn carousel-btn-next" aria-label="Next session">›</button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Urban 101 Gallery & Moments (Coming Soon) -->
+    <section class="cod-gallery-section" id="urban-gallery">
+      <div class="cod-gallery-card">
+        <span class="cod-gallery-badge">Coming Soon</span>
+        <h2 class="cod-gallery-title">The Urban 101 Gallery &amp; Archive</h2>
+        <p class="cod-gallery-desc">
+          Unfiltered candid photography, whiteboard spiderweb diagrams, attendee discussion notes, and dinner table moments from across all 7 chapters.
+        </p>
+        <div class="cod-gallery-pills">
+          <span class="cod-gallery-pill">Candid Moments</span>
+          <span class="cod-gallery-pill">Diagrams &amp; Whiteboards</span>
+          <span class="cod-gallery-pill">Audio Snippets</span>
+          <span class="cod-gallery-pill">Community Voices</span>
         </div>
       </div>
     </section>

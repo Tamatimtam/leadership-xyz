@@ -56,8 +56,8 @@ Each carousel item represents a specific City Over Dinner session and features a
 
 ## 4. Carousel Architecture & Layout
 * **Header**:
-  * Eyebrow pill: `XYZ Series • Chapter 01`
-  * Section Title: *"XYZ @ City Over Dinner"* (Large serif `DM Serif Display`)
+  * Eyebrow pill: `Urban 101`
+  * Section Title: *"City Over Dinner"* (Large serif `DM Serif Display`)
   * Subtitle: *"Conversations on cities, leadership, and public life over intimate dinners."*
 * **Carousel Rail**:
   * Horizontal overflow rail with smooth touch/drag and directional arrow buttons.
