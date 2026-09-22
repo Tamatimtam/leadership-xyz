@@ -1,26 +1,29 @@
 /* 
    Urban 101: City Over Dinner - Premium Gallery Section 
-   Design: Continuous Scrolling Orbit (No Overlap, No Rigid Grids)
+   Design: Dual Horizontal Marquee
 */
 
 .cod-immersive-gallery {
   position: relative;
   width: 100%;
-  height: 100vh; /* Locked to viewport height */
+  height: 100vh;
   background-color: var(--color-bg, #ffffff);
   overflow: hidden;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out the top marquee, text, bottom marquee */
+  padding: 4vh 0;
 }
 
 /* Massive Centered Typography */
 .gallery-huge-text-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  z-index: 50; /* Ensure it stays above floating images */
+  z-index: 50;
   pointer-events: none;
 }
 
@@ -39,30 +42,57 @@
   display: block;
 }
 
-/* Floating Picture Frames */
-.gallery-frame {
-  position: absolute;
+/* Marquee Tracks */
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  /* subtle perspective for premium feel */
+  perspective: 1000px; 
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: 2vw;
+  will-change: transform;
+  /* Center items vertically if they have different heights */
+  align-items: center; 
+}
+
+.marquee-item {
+  flex-shrink: 0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-  will-change: transform;
-  z-index: 2;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  /* slight hover tilt */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   background: #f0f0f0;
 }
 
-.gallery-frame img {
-  width: 100%;
-  height: 100%;
+.marquee-item:hover {
+  transform: scale(1.05) translateY(-5px);
+  z-index: 10;
+}
+
+.marquee-item img {
+  height: 28vh; /* Fixed height, variable width based on aspect ratio */
+  width: auto;
   display: block;
   object-fit: cover;
   user-select: none;
   -webkit-user-drag: none;
-  pointer-events: none;
+  pointer-events: auto; /* Allow hover */
 }
 
 /* Mobile adjustments */
 @media (max-width: 900px) {
+  .cod-immersive-gallery {
+    padding: 8vh 0;
+  }
   .gallery-huge-text {
     font-size: clamp(2.5rem, 13vw, 8rem);
+  }
+  .marquee-item img {
+    height: 20vh;
   }
 }

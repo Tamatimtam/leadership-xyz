@@ -5,7 +5,9 @@ export function initGalleryParallax() {
   }
 
   const gallerySection = document.querySelector('.cod-immersive-gallery');
-  if (!gallerySection) return;
+  const textWrapper = document.querySelector('.gallery-huge-text-wrapper');
+  
+  if (!gallerySection || !textWrapper) return;
 
   const imageFiles = [
     'DJI_20260902191258_0030_D_TCM.webp', 'DJI_20260902191302_0031_D_TCM.webp', 'DJI_20260902191311_0032_D_TCM.webp',
@@ -30,111 +32,90 @@ export function initGalleryParallax() {
 
   // Shuffle images so we get a random feed
   const shuffledImages = [...imageFiles].sort(() => 0.5 - Math.random());
-  let imageIndex = 0;
+  
+  // Split into two arrays for top and bottom marquees
+  const midPoint = Math.floor(shuffledImages.length / 2);
+  const topImages = shuffledImages.slice(0, midPoint);
+  const bottomImages = shuffledImages.slice(midPoint);
 
-  // Helper to get next image
-  const getNextImage = () => {
-    const src = shuffledImages[imageIndex];
-    imageIndex = (imageIndex + 1) % shuffledImages.length;
-    return `assets/gallery/${src}`;
+  // Helper to create a marquee row
+  const createMarquee = (images, isReverse) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'marquee-wrapper';
+    
+    const track = document.createElement('div');
+    track.className = 'marquee-track';
+    
+    // We append the images TWICE to the track to create a seamless infinite loop
+    const populateTrack = () => {
+      images.forEach(src => {
+        const item = document.createElement('div');
+        item.className = 'marquee-item';
+        
+        // Random aspect ratio class mapping for visual variety
+        const isPortrait = Math.random() > 0.5;
+        const widthVal = isPortrait ? '21vh' : '38vh'; 
+        
+        const img = document.createElement('img');
+        img.src = `assets/gallery/${src}`;
+        img.loading = 'lazy';
+        img.style.width = widthVal;
+        
+        item.appendChild(img);
+        track.appendChild(item);
+      });
+    };
+
+    populateTrack();
+    populateTrack(); // duplicate for seamless loop
+
+    wrapper.appendChild(track);
+    return { wrapper, track };
   };
 
-  /**
-   * Spawns an image that continuously scrolls upwards.
-   * @param {number} startY - Y position (in pixels) to start at. If null, starts at bottom.
-   */
-  const spawnImage = (startY = null) => {
-    const frame = document.createElement('div');
-    frame.className = 'gallery-frame';
+  const topMarquee = createMarquee(topImages, false);
+  const bottomMarquee = createMarquee(bottomImages, true);
 
-    // 1. Avoid Center: Randomly pick Left zone (2vw-30vw) or Right zone (70vw-85vw)
-    const isMobile = window.innerWidth < 900;
-    const isLeft = Math.random() > 0.5;
-    
-    let minLeft, maxLeft, widthVw;
-    
-    if (isMobile) {
-      minLeft = isLeft ? 2 : 65;
-      maxLeft = isLeft ? 25 : 85;
-      widthVw = 30 + Math.random() * 15; // 30vw - 45vw
-    } else {
-      minLeft = isLeft ? 2 : 75;
-      maxLeft = isLeft ? 25 : 85;
-      widthVw = 12 + Math.random() * 12; // 12vw - 24vw
-    }
+  // Insert into DOM (Top marquee before text, Bottom after)
+  gallerySection.insertBefore(topMarquee.wrapper, textWrapper);
+  gallerySection.appendChild(bottomMarquee.wrapper);
 
-    const left = minLeft + Math.random() * (maxLeft - minLeft);
-    
-    // Random aspect ratio between 3:4 and 4:3
-    const isPortrait = Math.random() > 0.5;
-    const aspectRatio = isPortrait ? (3/4 + Math.random()*0.1) : (4/3 + Math.random()*0.1);
-    
-    frame.style.width = `${widthVw}vw`;
-    frame.style.aspectRatio = aspectRatio.toString();
-    frame.style.left = `${left}vw`;
+  // Animate with GSAP using a modifier for seamless looping
+  const animateTrack = (track, directionLeft) => {
+    // The width of half the track (one set of images)
+    // We must wait a tick for DOM to render and calculate width
+    requestAnimationFrame(() => {
+      const trackWidth = track.scrollWidth / 2;
+      
+      // Setup the infinite tween
+      // Speed: 50 seconds for a full loop
+      const duration = 60; 
 
-    // Add image
-    const img = document.createElement('img');
-    img.src = getNextImage();
-    img.loading = 'lazy';
-    frame.appendChild(img);
-    gallerySection.appendChild(frame);
-
-    // 2. Animation Logic
-    const sectionHeight = gallerySection.offsetHeight;
-    const frameHeight = window.innerWidth * (widthVw / 100) / aspectRatio; // approximate height
-    
-    // Start position: just below screen or at predefined startY
-    const startingY = startY !== null ? startY : sectionHeight + 100;
-    const endingY = -frameHeight - 100; // scroll up past the top
-    
-    // Set initial position
-    gsap.set(frame, { y: startingY });
-
-    // Base duration for a full screen traversal
-    const baseDuration = 15 + Math.random() * 15; // 15 to 30 seconds
-    
-    // If starting halfway up, adjust duration proportionally so speed is consistent
-    const distanceToTravel = startingY - endingY;
-    const fullDistance = sectionHeight + frameHeight + 200;
-    const actualDuration = baseDuration * (distanceToTravel / fullDistance);
-
-    // Continuous float animation (X drift & rotation)
-    const drift = gsap.to(frame, {
-      x: (Math.random() - 0.5) * 50,
-      rotation: (Math.random() - 0.5) * 10,
-      duration: actualDuration,
-      ease: 'none'
-    });
-
-    // Vertical scroll animation
-    gsap.to(frame, {
-      y: endingY,
-      duration: actualDuration,
-      ease: 'none',
-      onComplete: () => {
-        drift.kill();
-        frame.remove();
+      if (directionLeft) {
+        gsap.fromTo(track, 
+          { x: 0 },
+          {
+            x: -trackWidth,
+            ease: 'none',
+            duration: duration,
+            repeat: -1
+          }
+        );
+      } else {
+        gsap.fromTo(track, 
+          { x: -trackWidth },
+          {
+            x: 0,
+            ease: 'none',
+            duration: duration,
+            repeat: -1
+          }
+        );
       }
     });
   };
 
-  // Pre-fill the screen with some images so it doesn't start empty
-  const numInitialFrames = window.innerWidth > 900 ? 8 : 4;
-  for (let i = 0; i < numInitialFrames; i++) {
-    // Distribute them evenly along the Y axis of the screen
-    const sectionHeight = gallerySection.offsetHeight;
-    const randomY = Math.random() * sectionHeight;
-    spawnImage(randomY);
-  }
-
-  // Continuously spawn new images at the bottom
-  const spawnInterval = setInterval(() => {
-    spawnImage();
-  }, 2000); // Spawn a new image every 2 seconds
-
-  // Clean up on unmount
-  window.addEventListener('beforeunload', () => {
-    clearInterval(spawnInterval);
-  });
+  // Top scrolls Left, Bottom scrolls Right
+  animateTrack(topMarquee.track, true);
+  animateTrack(bottomMarquee.track, false);
 }
