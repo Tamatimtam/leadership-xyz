@@ -92,6 +92,15 @@
   color: var(--color-nav-pill);
 }
 
+.series-card-eyebrow-logo {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  align-self: flex-start;
+  margin: 0 0 2px 0;
+}
+
 .coming-soon-title {
   font-family: var(--font-serif);
   font-style: italic;

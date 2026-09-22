@@ -11,7 +11,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: var(--bg-primary);
   color: var(--color-dark);
   font-family: var(--font-sans);
@@ -30,6 +29,30 @@ body {
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
+}
+
+/* ==========================================================================
+   LENIS SMOOTH SCROLL RESET
+   ========================================================================== */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 input, button, textarea, select {
