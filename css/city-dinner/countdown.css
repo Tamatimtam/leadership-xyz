@@ -329,8 +329,143 @@
   }
   .cod-next-left {
     padding: 40px 32px;
+    min-width: 0;
   }
   .cod-next-right {
     min-height: 320px;
   }
 }
+
+@media (max-width: 640px) {
+  .cod-countdown-section {
+    padding: 0 16px;
+    margin: 0 auto 60px;
+  }
+
+  .cod-next-event-card {
+    border-radius: 20px;
+  }
+
+  .cod-next-left {
+    padding: 28px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .cod-live-indicator {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cod-live-indicator::before {
+    width: 20px;
+  }
+
+  .cod-next-title {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.22;
+    margin: 0 0 14px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .cod-next-speaker-row {
+    margin-bottom: 24px;
+    gap: 4px;
+  }
+
+  .cod-next-speaker-name {
+    font-size: 16px;
+  }
+
+  .cod-next-speaker-role {
+    font-size: 13px;
+  }
+
+  .cod-countdown-wrap {
+    margin-bottom: 24px;
+    padding-top: 20px;
+  }
+
+  .cod-countdown-eyebrow {
+    font-size: 10px;
+    margin-bottom: 12px;
+  }
+
+  .cod-countdown-digits {
+    gap: clamp(8px, 2.8vw, 16px);
+    width: 100%;
+    align-items: baseline;
+  }
+
+  .cod-digit-val {
+    font-size: clamp(32px, 8.5vw, 42px);
+    min-width: unset;
+  }
+
+  .cod-digit-sep {
+    font-size: clamp(22px, 6vw, 32px);
+    transform: translateY(-3px);
+  }
+
+  .cod-digit-label {
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+  }
+
+  .cod-join-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 24px;
+    font-size: 13.5px;
+    justify-content: center;
+  }
+
+  .cod-next-right {
+    min-height: 240px;
+    max-height: 340px;
+  }
+
+  .cod-next-photo-badge {
+    top: 16px;
+    right: 16px;
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+
+  .cod-concluded-card {
+    padding: 24px 18px;
+  }
+
+  .cod-concluded-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 380px) {
+  .cod-countdown-section {
+    padding: 0 12px;
+  }
+
+  .cod-next-left {
+    padding: 22px 14px;
+  }
+
+  .cod-countdown-digits {
+    gap: 6px;
+  }
+
+  .cod-digit-val {
+    font-size: 28px;
+  }
+
+  .cod-digit-sep {
+    font-size: 20px;
+  }
+}
+

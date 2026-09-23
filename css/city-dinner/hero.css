@@ -81,15 +81,36 @@
 }
 
 @media (max-width: 768px) {
+  .cod-hero-section {
+    padding: 32px 16px 50px;
+  }
   .cod-hero-logo {
     max-width: 210px;
     margin-bottom: 18px;
   }
   .cod-hero-title {
-    font-size: 52px;
+    font-size: clamp(38px, 11vw, 52px);
+    margin: 0 0 20px;
   }
   .cod-hero-scrub-text {
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.45em;
   }
 }
+
+@media (max-width: 420px) {
+  .cod-hero-section {
+    padding: 24px 12px 40px;
+  }
+  .cod-hero-logo {
+    max-width: 175px;
+    margin-bottom: 14px;
+  }
+  .cod-hero-title {
+    font-size: clamp(32px, 10vw, 40px);
+  }
+  .cod-hero-scrub-text {
+    font-size: 17px;
+  }
+}
+

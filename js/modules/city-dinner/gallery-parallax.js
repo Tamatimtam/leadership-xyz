@@ -52,14 +52,12 @@ export function initGalleryParallax() {
         const item = document.createElement('div');
         item.className = 'marquee-item';
         
-        // Random aspect ratio class mapping for visual variety
+        // Aspect ratio mapping for natural visual variety without squishing
         const isPortrait = Math.random() > 0.5;
-        const widthVal = isPortrait ? '21vh' : '38vh'; 
-        
         const img = document.createElement('img');
         img.src = `assets/gallery/${src}`;
         img.loading = 'lazy';
-        img.style.width = widthVal;
+        img.style.aspectRatio = isPortrait ? '3/4' : '4/3';
         
         item.appendChild(img);
         track.appendChild(item);

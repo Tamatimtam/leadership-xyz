@@ -73,3 +73,47 @@
     font-size: 18px;
   }
 }
+
+@media (max-width: 480px) {
+  .city-dinner-section {
+    padding: 44px 12px 48px;
+  }
+  .city-dinner-title {
+    font-size: clamp(32px, 9.5vw, 40px);
+  }
+  .city-dinner-subtitle {
+    font-size: 14px;
+  }
+  .session-card {
+    width: min(280px, 78vw);
+    height: 410px;
+  }
+  .card-content {
+    padding: 18px;
+  }
+  .card-topic {
+    font-size: 18px;
+  }
+  .stage-visual {
+    height: 220px;
+  }
+  .stage-content {
+    padding: 22px 16px;
+  }
+  .stage-topic {
+    font-size: 21px;
+  }
+  .stage-close-btn {
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 11.5px;
+  }
+  .stage-edition-badge {
+    top: 12px;
+    left: 12px;
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+}
+

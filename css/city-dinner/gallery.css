@@ -6,14 +6,17 @@
 .cod-immersive-gallery {
   position: relative;
   width: 100%;
+  min-height: 520px;
   height: 100vh;
+  height: 100dvh;
   background-color: var(--color-bg, #ffffff);
   overflow: hidden;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Space out the top marquee, text, bottom marquee */
-  padding: 4vh 0;
+  padding: 3vh 0;
+  box-sizing: border-box;
 }
 
 /* Massive Centered Typography */
@@ -25,17 +28,22 @@
   text-align: center;
   z-index: 50;
   pointer-events: none;
+  padding: 0 16px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 .gallery-huge-text {
   font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: clamp(3rem, 10vw, 12rem);
+  font-size: clamp(2.8rem, 8.5vw, 11rem);
   font-weight: 700;
-  line-height: 0.85;
+  line-height: 0.88;
   letter-spacing: -0.04em;
   color: var(--color-text, #111111); 
   text-transform: uppercase;
   margin: 0;
+  max-width: 100%;
 }
 
 .gallery-huge-text span {
@@ -75,8 +83,9 @@
 }
 
 .marquee-item img {
-  height: 28vh; /* Fixed height, variable width based on aspect ratio */
+  height: 26vh; /* Fixed height, variable width based on aspect ratio */
   width: auto;
+  max-width: none;
   display: block;
   object-fit: cover;
   user-select: none;
@@ -87,12 +96,37 @@
 /* Mobile adjustments */
 @media (max-width: 900px) {
   .cod-immersive-gallery {
-    padding: 8vh 0;
+    padding: 2.5vh 0;
+    min-height: 480px;
   }
   .gallery-huge-text {
-    font-size: clamp(2.5rem, 13vw, 8rem);
+    font-size: clamp(1.85rem, 7.5vw, 4.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
   }
   .marquee-item img {
-    height: 20vh;
+    height: clamp(110px, 18vh, 150px);
   }
 }
+
+@media (max-width: 480px) {
+  .cod-immersive-gallery {
+    padding: 2vh 0;
+    min-height: 420px;
+  }
+  .gallery-huge-text {
+    font-size: clamp(1.55rem, 6.8vw, 2.3rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .marquee-item {
+    border-radius: 8px;
+  }
+  .marquee-track {
+    gap: 10px;
+  }
+  .marquee-item img {
+    height: clamp(95px, 16vh, 125px);
+  }
+}
+
