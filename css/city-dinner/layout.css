@@ -122,3 +122,17 @@
 .city-dinner-carousel-wrapper.is-expanded .city-dinner-carousel {
   display: none;
 }
+
+/* ── Prevent FOUC for Intro Animation ────────────────────────── */
+body:not(.intro-done) .cod-hero-logo,
+body:not(.intro-done) .cod-hero-title,
+body:not(.intro-done) .cod-hero-scrub-box,
+body:not(.intro-done) .cod-countdown-section,
+body:not(.intro-done) .city-dinner-section,
+body:not(.intro-done) .cod-gallery-section,
+body:not(.intro-done) .events-coming-soon,
+body:not(.intro-done) .site-footer,
+body:not(.intro-done) .navbar {
+  opacity: 0;
+  visibility: hidden;
+}

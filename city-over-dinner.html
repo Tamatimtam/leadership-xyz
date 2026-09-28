@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>City Over Dinner — Urban 101 | Leadership XYZ</title>
   <meta name="description" content="Conversations on cities, leadership, and public life over intimate dinners.">
-
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/favicon.png">
-
   <!-- Open Graph / Social Media Meta -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="City Over Dinner — Leadership XYZ">
@@ -19,43 +17,22 @@
   <meta name="twitter:title" content="City Over Dinner — Leadership XYZ">
   <meta name="twitter:description" content="Conversations on cities, leadership, and public life over intimate dinners.">
   <meta name="twitter:image" content="assets/images/og-image.png">
-
   <!-- Tabler Icons Webfont CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
-
   <!-- GSAP Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-
   <!-- Modular Page Script -->
   <script type="module" src="js/city-dinner-main.js" defer></script>
-
   <!-- Synchronous Page Transition Pre-Render State -->
   <script>
     if (sessionStorage.getItem('xyz_page_transition') === 'active') {
       document.documentElement.classList.add('is-page-transitioning');
     }
   </script>
-
-  <!-- Prevent FOUC for Intro Animation -->
-  <style>
-    body:not(.intro-done) .cod-hero-logo,
-    body:not(.intro-done) .cod-hero-title,
-    body:not(.intro-done) .cod-hero-scrub-box,
-    body:not(.intro-done) .cod-countdown-section,
-    body:not(.intro-done) .city-dinner-section,
-    body:not(.intro-done) .cod-gallery-section,
-    body:not(.intro-done) .events-coming-soon,
-    body:not(.intro-done) .site-footer,
-    body:not(.intro-done) .navbar {
-      opacity: 0;
-      visibility: hidden;
-    }
-  </style>
 </head>
 <body>
 
@@ -192,25 +169,25 @@
       </div>
     </section>
 
-    <!-- 2. Next Event Countdown Section (Chapter 07) -->
+    <!-- 2. Next Event Countdown Section (Chapter 08) -->
     <section class="cod-countdown-section" id="cod-countdown-section">
       <div class="cod-next-event-card">
         <div class="cod-next-left">
           <div>
             <div class="cod-live-indicator">
-              <span id="cod-event-timing-label">Next Session · Chapter 07 · Tomorrow at 19:00 WIB</span>
+              <span id="cod-event-timing-label">Next Session · Chapter 08 · Wednesday, 30 Sep at 19:00 WIB</span>
             </div>
-            <h2 class="cod-next-title">Map-A-Thon! What Maps Would Like to Show, and What Do Cities Tell?</h2>
+            <h2 class="cod-next-title">Rethinking Waste in Our Cities</h2>
             <div class="cod-next-speaker-row">
-              <span class="cod-next-speaker-name">Galuh Rohmah</span>
-              <span class="cod-next-speaker-role">Strategic Partnership Manager Geo-Google</span>
+              <span class="cod-next-speaker-name">Bijaksana Junerosano</span>
+              <span class="cod-next-speaker-role">Founder Greeneration Indonesia, CEO Waste4Change</span>
             </div>
           </div>
 
           <!-- Minimalist Live Countdown Ticker -->
           <div class="cod-countdown-wrap">
             <span class="cod-countdown-eyebrow">Discussion Starts In</span>
-            <div class="cod-countdown-digits" aria-label="Countdown to Chapter 07">
+            <div class="cod-countdown-digits" aria-label="Countdown to Chapter 08">
               <div class="cod-digit-block">
                 <span class="cod-digit-val" id="cd-hours">00</span>
                 <span class="cod-digit-label">Hours</span>
@@ -236,27 +213,27 @@
             </span>
             <h3 class="cod-concluded-title">This chapter has concluded!</h3>
             <p class="cod-concluded-desc">
-              Thank you to everyone who joined our dinner table discussion. Stay tuned for Chapter 08 announcements! In the meantime, explore all previous documented sessions below.
+              Thank you to everyone who joined our dinner table discussion. Stay tuned for Chapter 09 announcements! In the meantime, explore all previous documented sessions below.
             </p>
             <a href="#city-over-dinner" class="cod-explore-archive-btn">
               <span>Explore Documented Sessions ↓</span>
             </a>
           </div>
 
-          <a href="https://bit.ly/Urban101-7" target="_blank" rel="noopener noreferrer" class="cod-join-btn">
-            <span>Register for Chapter 07</span>
+          <a href="https://bit.ly/Urban101-8" target="_blank" rel="noopener noreferrer" class="cod-join-btn">
+            <span>Register for Chapter 08</span>
             <span aria-hidden="true">↗</span>
           </a>
         </div>
 
         <div class="cod-next-right">
-          <img src="assets/images/urban101-session-07.jpg" alt="Chapter 07 Flyer" class="cod-next-photo" loading="lazy">
-          <span class="cod-next-photo-badge">Vol. 07 Preview</span>
+          <img src="assets/images/urban101-session-08.jpg" alt="Chapter 08 Flyer" class="cod-next-photo" loading="lazy">
+          <span class="cod-next-photo-badge">Vol. 08 Preview</span>
         </div>
       </div>
     </section>
 
-    <!-- 3. All 7 Sessions Chronicle (Horizontal Overview & In-Place Stage Reveal) -->
+    <!-- 3. All 8 Sessions Chronicle (Horizontal Overview & In-Place Stage Reveal) -->
     <section class="city-dinner-section" id="city-over-dinner">
       <div class="city-dinner-container">
         <div class="city-dinner-header">
@@ -267,7 +244,6 @@
 
         <div class="city-dinner-carousel-wrapper">
           <div class="city-dinner-carousel">
-
             <!-- Session 01: Stella Mailoa, Dedi Wijaya, Kevin Arffandy -->
             <article class="session-card" data-accent="indigo" data-session="0">
               <div class="session-card-inner">
@@ -283,7 +259,6 @@
                 </div>
               </div>
             </article>
-
             <!-- Session 02: Marco Kusumawijaya -->
             <article class="session-card" data-accent="emerald" data-session="1">
               <div class="session-card-inner">
@@ -299,7 +274,6 @@
                 </div>
               </div>
             </article>
-
             <!-- Session 03: Roni Pramaditia -->
             <article class="session-card" data-accent="nav-pill" data-session="2">
               <div class="session-card-inner">
@@ -315,7 +289,6 @@
                 </div>
               </div>
             </article>
-
             <!-- Session 04: Prof. Sulfikar Amir -->
             <article class="session-card" data-accent="indigo" data-session="3">
               <div class="session-card-inner">
@@ -331,7 +304,6 @@
                 </div>
               </div>
             </article>
-
             <!-- Session 05: Her Pramtama -->
             <article class="session-card" data-accent="emerald" data-session="4">
               <div class="session-card-inner">
@@ -347,7 +319,6 @@
                 </div>
               </div>
             </article>
-
             <!-- Session 06: Biasalah Anak Muda -->
             <article class="session-card" data-accent="nav-pill" data-session="5">
               <div class="session-card-inner">
@@ -363,7 +334,6 @@
                 </div>
               </div>
             </article>
-
             <!-- Session 07: Galuh Rohmah -->
             <article class="session-card" data-accent="indigo" data-session="6">
               <div class="session-card-inner">
@@ -375,6 +345,21 @@
                   <span class="card-edition">Vol. 07 · Cartography</span>
                   <h3 class="card-topic">Map-A-Thon! What Maps Would Like to Show, and What Do Cities Tell?</h3>
                   <span class="card-speaker">Galuh Rohmah</span>
+                  <span class="card-date">City Over Dinner · Jakarta</span>
+                </div>
+              </div>
+            </article>
+            <!-- Session 08: Bijaksana Junerosano -->
+            <article class="session-card" data-accent="emerald" data-session="7">
+              <div class="session-card-inner">
+                <img src="assets/images/urban101-session-08.jpg" alt="Bijaksana Junerosano" class="card-photo" loading="lazy" width="760" height="1080">
+                <div class="card-tint"></div>
+                <div class="card-gradient"></div>
+                <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+                <div class="card-content">
+                  <span class="card-edition">Vol. 08 · Circularity</span>
+                  <h3 class="card-topic">Rethinking Waste in Our Cities</h3>
+                  <span class="card-speaker">Bijaksana Junerosano</span>
                   <span class="card-date">City Over Dinner · Jakarta</span>
                 </div>
               </div>
@@ -423,7 +408,7 @@
 
           <!-- Bottom Control Bar (Counter, Nav Arrows & Minimized Thumbnails) -->
           <div class="carousel-control-bar">
-            <!-- Minimized Thumbnails Strip for 7 Sessions -->
+            <!-- Minimized Thumbnails Strip for 8 Sessions -->
             <div class="stage-minimized-strip" id="stage-minimized-strip" aria-label="Session selector">
               <button class="stage-thumb-btn is-active" data-session="0" aria-label="Switch to Vol. 01">
                 <img src="assets/images/urban101-session-01.jpg" alt="Vol. 01" class="thumb-img">
@@ -453,12 +438,16 @@
                 <img src="assets/images/urban101-session-07.jpg" alt="Vol. 07" class="thumb-img">
                 <span class="thumb-label">Vol. 07</span>
               </button>
+              <button class="stage-thumb-btn" data-session="7" aria-label="Switch to Vol. 08">
+                <img src="assets/images/urban101-session-08.jpg" alt="Vol. 08" class="thumb-img">
+                <span class="thumb-label">Vol. 08</span>
+              </button>
             </div>
 
             <!-- Carousel Nav -->
             <div class="carousel-nav">
               <button class="carousel-btn carousel-btn-prev" aria-label="Previous session">‹</button>
-              <span class="carousel-counter">01 / 07</span>
+              <span class="carousel-counter">01 / 08</span>
               <button class="carousel-btn carousel-btn-next" aria-label="Next session">›</button>
             </div>
           </div>

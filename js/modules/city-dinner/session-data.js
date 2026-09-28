@@ -102,5 +102,19 @@ export const SESSIONS = [
     accent: 'indigo',
     link: 'https://bit.ly/Urban101-7',
     photo: 'assets/images/urban101-session-07.jpg'
+  },
+  {
+    id: 8,
+    edition: 'Vol. 08 · Circularity',
+    topic: 'Rethinking Waste in Our Cities',
+    speaker: 'Bijaksana Junerosano',
+    role: 'Founder Greeneration Indonesia, CEO Waste4Change',
+    date: 'Wednesday, September 30th 2026',
+    time: '19.00 - 20.30 WIB',
+    desc: 'Reimagining waste ecosystems in rapidly growing cities: building responsible waste management systems and cultivating circular urban models for sustainable collective living.',
+    lens: 'Waste Management & Circular Economy',
+    accent: 'emerald',
+    link: 'https://bit.ly/Urban101-8',
+    photo: 'assets/images/urban101-session-08.jpg'
   }
 ];
