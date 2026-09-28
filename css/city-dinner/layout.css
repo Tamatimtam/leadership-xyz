@@ -123,16 +123,20 @@
   display: none;
 }
 
-/* ── Prevent FOUC for Intro Animation ────────────────────────── */
-body:not(.intro-done) .cod-hero-logo,
-body:not(.intro-done) .cod-hero-title,
-body:not(.intro-done) .cod-hero-scrub-box,
-body:not(.intro-done) .cod-countdown-section,
-body:not(.intro-done) .city-dinner-section,
-body:not(.intro-done) .cod-gallery-section,
-body:not(.intro-done) .events-coming-soon,
-body:not(.intro-done) .site-footer,
-body:not(.intro-done) .navbar {
+/* ── Prevent FOUC for Intro Animation (Strictly scoped to City Over Dinner) ── */
+body.page-city-dinner:not(.intro-done) .cod-hero-logo,
+body.page-city-dinner:not(.intro-done) .cod-hero-title,
+body.page-city-dinner:not(.intro-done) .cod-hero-scrub-box,
+body.page-city-dinner:not(.intro-done) .cod-countdown-section,
+body.page-city-dinner:not(.intro-done) .city-dinner-section,
+body.page-city-dinner:not(.intro-done) .cod-gallery-section,
+body.page-city-dinner:not(.intro-done) .events-coming-soon,
+body.page-city-dinner:not(.intro-done) .site-footer,
+body.page-city-dinner:not(.intro-done) .navbar,
+body:has(.cod-hero-section):not(.intro-done) .navbar,
+body:has(.cod-hero-section):not(.intro-done) .events-coming-soon,
+body:has(.cod-hero-section):not(.intro-done) .site-footer {
   opacity: 0;
   visibility: hidden;
 }
+
