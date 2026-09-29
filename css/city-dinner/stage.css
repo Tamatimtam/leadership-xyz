@@ -17,12 +17,12 @@
   position: relative;
   width: 100%;
   min-height: 500px;
-  border-radius: var(--radius-card);
+  border-radius: 24px;
   overflow: hidden;
   display: flex;
-  background: var(--color-dark);
-  border: 1px solid rgba(67, 62, 112, 0.2);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24), 0 4px 16px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(67, 62, 112, 0.06);
+  box-shadow: 0 20px 60px rgba(67, 62, 112, 0.06), 0 4px 12px rgba(67, 62, 112, 0.03);
 }
 
 /* ── Close / Collapse Button ─────────────────────────────────── */
@@ -36,21 +36,20 @@
   gap: 8px;
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-light-cream);
+  background: rgba(67, 62, 112, 0.06);
+  border: 1px solid rgba(67, 62, 112, 0.12);
+  color: var(--color-dark);
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.25s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.25s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .stage-close-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.35);
+  background: var(--color-indigo);
+  border-color: var(--color-indigo);
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
@@ -127,12 +126,15 @@
 /* ── Stage Content Side ─────────────────────────────────────── */
 .stage-content {
   flex: 1;
-  padding: 48px 48px;
+  padding: 48px 56px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
   overflow-y: auto;
+  background: #ffffff;
+  color: var(--color-dark);
+  position: relative;
 }
 
 .stage-header {
@@ -142,50 +144,62 @@
 }
 
 .stage-series-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: #1b4eb8; /* Cobalt Blue matching cod-live-indicator */
+}
+
+.stage-series-tag::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
 }
 
 .stage-location-tag {
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #888888;
 }
 
 .stage-topic {
   font-family: var(--font-serif);
-  font-style: italic;
   font-weight: 400;
   font-size: 34px;
   line-height: 1.15em;
   letter-spacing: -0.02em;
-  color: var(--color-light-cream);
+  color: var(--color-dark);
+  margin: 0;
 }
 
 .stage-speaker-wrap {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .stage-speaker-name {
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--color-white);
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: var(--color-indigo);
 }
 
 .stage-speaker-role {
   font-family: var(--font-sans);
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  color: #666666;
 }
 
 .stage-divider {
@@ -193,10 +207,11 @@
   height: 2px;
   border-radius: 2px;
   transform-origin: left center;
+  margin: 2px 0;
 }
 
 .stage-card[data-accent="indigo"] .stage-divider {
-  background: var(--color-nav-pill);
+  background: var(--color-indigo);
 }
 .stage-card[data-accent="emerald"] .stage-divider {
   background: var(--color-emerald);
@@ -209,7 +224,7 @@
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.68;
-  color: rgba(255, 255, 255, 0.78);
+  color: #555555;
   letter-spacing: -0.01em;
   max-width: 620px;
 }
@@ -224,15 +239,15 @@
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-indigo);
+  border: 1px solid rgba(67, 62, 112, 0.12);
   border-radius: var(--radius-pill);
   padding: 7px 16px;
   margin-top: 4px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(67, 62, 112, 0.04);
 }
 
 .stage-lens-icon {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #1b4eb8;
 }
