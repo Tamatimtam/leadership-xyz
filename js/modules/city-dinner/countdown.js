@@ -19,8 +19,8 @@ export function initCountdownTimer() {
   const concludedCard = document.getElementById('cod-concluded-card');
   const joinBtn = container.querySelector('.cod-join-btn');
 
-  // Chapter 08 Target: Wednesday, Sept 30, 2026 at 19:00:00 GMT+0700
-  const targetDate = new Date('2026-09-30T19:00:00+07:00');
+  // Chapter 09 Target: Wednesday, Oct 7, 2026 at 19:30:00 GMT+0700
+  const targetDate = new Date('2026-10-07T19:30:00+07:00');
   const targetTime = targetDate.getTime();
 
   // URL query hook for quick testing: ?concluded=1
@@ -35,21 +35,21 @@ export function initCountdownTimer() {
     const timeStr = `${String(targetDate.getHours()).padStart(2, '0')}:${String(targetDate.getMinutes()).padStart(2, '0')} WIB`;
 
     if (dayDiff === 0) {
-      timingLabel.textContent = `Next Session · Chapter 08 · Today at ${timeStr}`;
+      timingLabel.textContent = `Next Session · Chapter 09 · Today at ${timeStr}`;
     } else if (dayDiff === 1) {
-      timingLabel.textContent = `Next Session · Chapter 08 · Tomorrow at ${timeStr}`;
+      timingLabel.textContent = `Next Session · Chapter 09 · Tomorrow at ${timeStr}`;
     } else if (dayDiff > 1) {
       const options = { weekday: 'long', day: 'numeric', month: 'short' };
       const dateFormatted = targetDate.toLocaleDateString('en-GB', options);
-      timingLabel.textContent = `Next Session · Chapter 08 · ${dateFormatted} at ${timeStr}`;
+      timingLabel.textContent = `Next Session · Chapter 09 · ${dateFormatted} at ${timeStr}`;
     } else {
-      timingLabel.textContent = 'Chapter 08 Concluded · Stay Tuned for Next Event';
+      timingLabel.textContent = 'Chapter 09 Concluded · Stay Tuned for Chapter 10';
     }
   }
 
   function showConcludedState() {
     if (timingLabel) {
-      timingLabel.textContent = 'Chapter 08 Concluded · Stay Tuned for Chapter 09';
+      timingLabel.textContent = 'Chapter 09 Concluded · Stay Tuned for Chapter 10';
     }
     if (pulseDot) {
       pulseDot.classList.add('is-concluded');

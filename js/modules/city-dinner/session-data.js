@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * URBAN 101 : CITY OVER DINNER – 7 SESSIONS DATA
+ * URBAN 101 : CITY OVER DINNER – 9 SESSIONS DATA
  * ==========================================================================
  */
 
@@ -116,5 +116,19 @@ export const SESSIONS = [
     accent: 'emerald',
     link: 'https://bit.ly/Urban101-8',
     photo: 'assets/images/urban101-session-08.jpg'
+  },
+  {
+    id: 9,
+    edition: 'Vol. 09 · Global Citizenship',
+    topic: 'Discovering Our Role as Global Citizen',
+    speaker: 'Shofwan Al Banna',
+    role: 'International Relations Scholar, Universitas Indonesia',
+    date: 'Wednesday, October 7th 2026',
+    time: '18.30 - 20.30 WIB',
+    desc: 'Looking at cities from the perspective of global citizens: understanding our position, role, and interconnectedness in an ever-changing world.',
+    lens: 'Global Citizenship & Interconnected Cities',
+    accent: 'nav-pill',
+    link: 'https://bit.ly/Urban101-9',
+    photo: 'assets/images/urban101-session-09.jpg'
   }
 ];
