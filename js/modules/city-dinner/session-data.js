@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * URBAN 101 : CITY OVER DINNER – 9 SESSIONS DATA
+ * URBAN 101 : CITY OVER DINNER – 12 SESSIONS DATA
  * ==========================================================================
  */
 
@@ -129,6 +129,55 @@ export const SESSIONS = [
     lens: 'Global Citizenship & Interconnected Cities',
     accent: 'nav-pill',
     link: 'https://bit.ly/Urban101-9',
-    photo: 'assets/images/urban101-session-09.jpg'
+    photo: 'assets/images/urban101-session-09.jpg',
+    location: 'City Over Dinner · Jakarta'
+  },
+  {
+    id: 10,
+    edition: 'Vol. 10 · Eastern Cities',
+    topic: 'Connecting with the Soul of Eastern Indonesia',
+    speaker: 'M. Khaerun Zuhry Radjilun',
+    role: 'CEO Timur Network Foundation',
+    date: 'Wednesday, October 14th 2026',
+    time: '19.00 - 20.30 WIB',
+    desc: 'Melalui Urban 101: City Over Dinner, Karsa CityLab bersama Timur Network Foundation berbincang mengenal lebih dekat karakter dan potensi kota-kota di Indonesia Timur sambil menikmati makan malam bersama.',
+    lens: 'Regional Identity & Eastern Urban Potential',
+    accent: 'indigo',
+    link: 'https://bit.ly/Urban101-10',
+    photo: 'assets/images/urban101-session-10.jpg',
+    location: 'City Over Dinner · Jakarta'
+  },
+  {
+    id: 11,
+    edition: 'Vol. 11 · Food & City',
+    topic: 'The City Around the Table: Its Stories and Flavors',
+    speaker: 'Faza Zharfan',
+    role: 'Co-founder of Seroja Bake',
+    date: 'Wednesday, October 21st 2026',
+    time: '19.00 - 20.30 WIB',
+    desc: 'What can food tell us about the cities we live in? From local flavors and culinary traditions to the stories behind every dish, exploring how food connects people, culture, and urban life.',
+    lens: 'Food Culture & Urban Identity',
+    accent: 'nav-pill',
+    link: 'https://bit.ly/Urban101-11',
+    photo: 'assets/images/urban101-session-11.jpg',
+    location: 'City Over Dinner · Jakarta'
+  },
+  {
+    id: 12,
+    edition: 'Vol. 12 · Public Space',
+    topic: 'Reconstructing Inclusivity to Public Space',
+    speaker: 'Anton Siura, Ardzuna Sinaga, Rionaldi Gunari',
+    role: 'SIURA Studio · URBAN+ · Karsa CityLab',
+    date: 'Wednesday, October 28th 2026',
+    time: '19.30 - 20.30 WIB',
+    desc: 'Collaborating with M Bloc Design Week 2026: Exploring how spatial design, urban planning, and shared human experiences shape accessible, genuinely inclusive public environments.',
+    lens: 'Spatial Inclusivity & Design Week Collab',
+    accent: 'emerald',
+    link: 'https://bit.ly/Urban101-12',
+    photo: 'assets/images/urban101-session-12.jpg',
+    location: 'Melting Pop, M Bloc Space · Jakarta',
+    isCollab: true,
+    collabTag: 'M Bloc Design Week',
+    venueNote: '🍽️ Support local tenants by buying your dinner at M Bloc Space and enjoying the conversation!'
   }
 ];

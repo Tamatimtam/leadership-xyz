@@ -7,12 +7,16 @@
 
 import { SESSIONS } from './session-data.js';
 import { createStageController } from './stage.js';
+import { renderSessions } from './render.js';
 
 export function initCityDinnerCarousel() {
   const wrapper = document.querySelector('.city-dinner-carousel-wrapper');
   const track = document.querySelector('.city-dinner-carousel');
   const stage = document.getElementById('city-dinner-stage');
   if (!wrapper || !track || !stage) return;
+
+  // Render cards & thumbnails from data first for modular DX
+  renderSessions(SESSIONS);
 
   const prevBtn = wrapper.querySelector('.carousel-btn-prev');
   const nextBtn = wrapper.querySelector('.carousel-btn-next');
