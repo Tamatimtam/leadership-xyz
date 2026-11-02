@@ -251,3 +251,16 @@
   font-size: 12px;
   color: #1b4eb8;
 }
+
+.stage-venue-note {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333333;
+  background: rgba(0, 141, 133, 0.08);
+  border-left: 3px solid var(--color-emerald);
+  padding: 8px 14px;
+  border-radius: 4px;
+  margin-top: 8px;
+  max-width: 620px;
+}

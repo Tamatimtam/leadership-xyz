@@ -37,6 +37,22 @@ export function createStageController({ wrapper, stage, track, getCards, getThum
     setTxt('.stage-speaker-role', data.role);
     setTxt('.stage-desc', data.desc);
     setTxt('.stage-lens-text', data.lens);
+    setTxt('.stage-location-tag', data.location ? (data.isCollab ? `📍 ${data.location}` : data.location) : 'City Over Dinner · Jakarta');
+
+    const seriesTag = stage.querySelector('.stage-series-tag');
+    if (seriesTag) {
+      seriesTag.textContent = data.collabTag ? `Urban 101 × ${data.collabTag}` : 'Urban 101';
+    }
+
+    const venueNote = stage.querySelector('.stage-venue-note');
+    if (venueNote) {
+      if (data.venueNote) {
+        venueNote.textContent = data.venueNote;
+        venueNote.style.display = 'block';
+      } else {
+        venueNote.style.display = 'none';
+      }
+    }
 
     const linkBtn = stage.querySelector('.stage-register-btn');
     if (linkBtn) {

@@ -213,3 +213,65 @@
 .session-card:hover .card-hint-arrow {
   transform: translateX(3px);
 }
+
+/* ── Collab Badge & Venue Flare (Minimalist Delight for Special Collaborations) ── */
+.card-collab-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(18, 18, 18, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  pointer-events: none;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.session-card:hover .card-collab-badge {
+  background: rgba(18, 18, 18, 0.65);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.collab-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff4757;
+  box-shadow: 0 0 8px rgba(255, 71, 87, 0.7);
+}
+
+.card-venue-tag {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Subtle accent dot on session 12 thumbnail button */
+.stage-thumb-btn.is-collab-thumb {
+  position: relative;
+}
+
+.stage-thumb-btn.is-collab-thumb::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff4757;
+  border: 1px solid #ffffff;
+}
