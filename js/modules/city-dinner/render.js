@@ -28,8 +28,10 @@ export function renderSessions(sessions) {
             <img src="${s.photo}" alt="${s.topic}" class="card-photo" loading="lazy" width="760" height="1080">
             <div class="card-tint"></div>
             <div class="card-gradient"></div>
-            ${collabBadge}
-            <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+            <div class="card-top-bar">
+              ${collabBadge}
+              <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
+            </div>
             <div class="card-content">
               <span class="card-edition">${s.edition}</span>
               <h3 class="card-topic">${s.topic}</h3>

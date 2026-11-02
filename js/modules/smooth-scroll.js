@@ -13,6 +13,24 @@ export function initSmoothScroll() {
 
   const lenis = new Lenis();
 
+  // Smooth scroll in-page anchors with floating navbar offset compensation
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#' && targetId.length > 1) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const offset = window.innerWidth <= 640 ? -70 : -90;
+          lenis.scrollTo(targetEl, { offset });
+          if (history.pushState) {
+            history.pushState(null, '', targetId);
+          }
+        }
+      }
+    });
+  });
+
   // Keep GSAP ScrollTrigger in sync with Lenis
   if (typeof ScrollTrigger !== 'undefined') {
     lenis.on('scroll', ScrollTrigger.update);

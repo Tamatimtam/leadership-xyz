@@ -109,7 +109,7 @@ export function createStageController({ wrapper, stage, track, getCards, getThum
       stage.setAttribute('aria-hidden', 'false');
 
       gsap.set(cards, { clearProps: 'all' });
-      cards.forEach(c => gsap.set(c.querySelectorAll('.card-content > *, .card-photo, .card-hint, .session-card-inner'), { clearProps: 'all' }));
+      cards.forEach(c => gsap.set(c.querySelectorAll('.card-content > *, .card-photo, .card-hint, .card-top-bar, .session-card-inner'), { clearProps: 'all' }));
       gsap.set(track, { clearProps: 'all' });
 
       const stageCard = stage.querySelector('.stage-card');
@@ -215,7 +215,7 @@ export function createStageController({ wrapper, stage, track, getCards, getThum
         gsap.set(track, { clearProps: 'all' });
         track.style.display = 'flex';
 
-        cards.forEach(c => gsap.set(c.querySelectorAll('.card-content > *, .card-photo, .card-hint, .session-card-inner'), { clearProps: 'all' }));
+        cards.forEach(c => gsap.set(c.querySelectorAll('.card-content > *, .card-photo, .card-hint, .card-top-bar, .session-card-inner'), { clearProps: 'all' }));
 
         gsap.fromTo(cards,
           { opacity: 0, y: 30, scale: 0.93 },

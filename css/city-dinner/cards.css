@@ -175,12 +175,25 @@
   transform: translateY(-2px);
 }
 
-/* ── "Explore session →" hint pill ─────────────────────────── */
-.card-hint {
+/* ── Card Top Header (Collab Badge & Explore Hint Container) ── */
+.card-top-bar {
   position: absolute;
   top: 18px;
+  left: 18px;
   right: 18px;
   z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  pointer-events: none;
+}
+
+/* ── "Explore session →" hint pill ─────────────────────────── */
+.card-hint {
+  position: relative;
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -198,6 +211,7 @@
   transform: translateY(-6px);
   transition: opacity 0.4s ease, transform 0.4s ease;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .card-hint-arrow {
@@ -205,21 +219,21 @@
   transition: transform 0.3s ease;
 }
 
-.session-card:hover .card-hint {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Only display hover hint on devices with fine pointer (mouse) to prevent sticky hover overlap on touchscreens */
+@media (hover: hover) and (pointer: fine) {
+  .session-card:hover .card-hint {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.session-card:hover .card-hint-arrow {
-  transform: translateX(3px);
+  .session-card:hover .card-hint-arrow {
+    transform: translateX(3px);
+  }
 }
 
 /* ── Collab Badge & Venue Flare (Minimalist Delight for Special Collaborations) ── */
 .card-collab-badge {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  z-index: 3;
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -237,6 +251,8 @@
   padding: 5px 12px;
   pointer-events: none;
   transition: background 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+  max-width: 100%;
 }
 
 .session-card:hover .card-collab-badge {

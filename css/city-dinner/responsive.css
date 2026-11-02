@@ -12,7 +12,8 @@
 
 @media (max-width: 809.98px) {
   .city-dinner-section {
-    padding: 60px 16px 60px;
+    padding: 72px 16px 60px;
+    scroll-margin-top: 76px;
   }
   .city-dinner-title {
     font-size: 44px;
@@ -83,13 +84,25 @@
 
 @media (max-width: 480px) {
   .city-dinner-section {
-    padding: 44px 12px 48px;
+    padding: 68px 12px 48px;
+    scroll-margin-top: 70px;
   }
   .city-dinner-title {
     font-size: clamp(32px, 9.5vw, 40px);
   }
   .city-dinner-subtitle {
     font-size: 14px;
+  }
+  .card-top-bar {
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    gap: 6px;
+  }
+  .card-collab-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+    gap: 6px;
   }
   .session-card {
     width: min(280px, 78vw);

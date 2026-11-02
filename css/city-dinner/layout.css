@@ -43,6 +43,7 @@
   padding: 80px 24px 80px;
   overflow: hidden;
   position: relative;
+  scroll-margin-top: 90px;
 }
 
 /* Width perfectly matched to authors-container & 3 author cards (1090px) */
