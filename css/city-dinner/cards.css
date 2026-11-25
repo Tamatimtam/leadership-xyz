@@ -151,10 +151,9 @@
 
 .card-speaker {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   letter-spacing: -0.01em;
-  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.92);
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.03s;
 }

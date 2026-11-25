@@ -39,25 +39,12 @@
   background: #ffffff;
 }
 
-.cod-live-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
+.cod-event-timing {
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #1b4eb8; /* Cobalt Blue */
-  margin-bottom: 24px;
-}
-
-.cod-live-indicator::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 2px;
-  background-color: currentColor;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5c5778;
+  margin-top: 2px;
 }
 
 .cod-next-title {
@@ -66,14 +53,14 @@
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--color-dark);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }
 
 .cod-next-speaker-row {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 48px;
+  gap: 4px;
+  margin-bottom: 36px;
 }
 
 .cod-next-speaker-name {
@@ -145,12 +132,10 @@
 
 .cod-digit-label {
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #999999;
-  margin-top: 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #77738f;
+  margin-top: 8px;
 }
 
 .cod-digit-sep {

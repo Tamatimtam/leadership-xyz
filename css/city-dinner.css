@@ -18,6 +18,9 @@
 /* 5. In-Place Expanded Stage View */
 @import url('city-dinner/stage.css');
 
+/* 5b. Session Archive WIP Modal */
+@import url('city-dinner/archive-modal.css');
+
 /* 6. Controls, Navigation & Thumbnails */
 @import url('city-dinner/controls.css');
 

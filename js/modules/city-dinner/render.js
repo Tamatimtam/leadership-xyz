@@ -13,15 +13,6 @@ export function renderSessions(sessions) {
 
   if (carousel) {
     carousel.innerHTML = sessions.map((s, idx) => {
-      const volTag = s.edition.split('·')[0].trim();
-      const locationLabel = s.isCollab 
-        ? `📍 ${s.location}` 
-        : (s.location || 'City Over Dinner · Jakarta');
-
-      const collabBadge = s.collabTag 
-        ? `<span class="card-collab-badge" title="${s.collabTag}"><span class="collab-dot" aria-hidden="true"></span>${s.collabTag}</span>` 
-        : '';
-
       return `
         <article class="session-card ${s.isCollab ? 'is-collab' : ''}" data-accent="${s.accent}" data-session="${idx}">
           <div class="session-card-inner">
@@ -29,14 +20,12 @@ export function renderSessions(sessions) {
             <div class="card-tint"></div>
             <div class="card-gradient"></div>
             <div class="card-top-bar">
-              ${collabBadge}
               <span class="card-hint">Explore session <span class="card-hint-arrow">→</span></span>
             </div>
             <div class="card-content">
-              <span class="card-edition">${s.edition}</span>
               <h3 class="card-topic">${s.topic}</h3>
               <span class="card-speaker">${s.speaker}</span>
-              <span class="card-date ${s.isCollab ? 'card-venue-tag' : ''}">${locationLabel}</span>
+              <span class="card-date">${s.date}</span>
             </div>
           </div>
         </article>

@@ -174,19 +174,16 @@
       <div class="cod-next-event-card">
         <div class="cod-next-left">
           <div>
-            <div class="cod-live-indicator">
-              <span id="cod-event-timing-label">Next Session · Chapter 15 · Today at 19:00 WIB</span>
-            </div>
             <h2 class="cod-next-title">Building Minds, Shaping Cities: Rethinking Urban Education Infrastructure</h2>
             <div class="cod-next-speaker-row">
               <span class="cod-next-speaker-name">Patrya Pratama</span>
               <span class="cod-next-speaker-role" style="display: none;"></span>
+              <span class="cod-event-timing" id="cod-event-timing-label">Chapter 15 · Today at 19:00 WIB</span>
             </div>
           </div>
 
           <!-- Minimalist Live Countdown Ticker -->
           <div class="cod-countdown-wrap">
-            <span class="cod-countdown-eyebrow">Discussion Starts In</span>
             <div class="cod-countdown-digits" aria-label="Countdown to Chapter 15">
               <div class="cod-digit-block">
                 <span class="cod-digit-val" id="cd-hours">00</span>
@@ -207,13 +204,9 @@
 
           <!-- Concluded State (Revealed when timer elapses) -->
           <div class="cod-concluded-card" id="cod-concluded-card">
-            <span class="cod-concluded-badge">
-              <i class="ti ti-check" aria-hidden="true"></i>
-              <span>Session Concluded</span>
-            </span>
-            <h3 class="cod-concluded-title">This chapter has concluded!</h3>
+            <h3 class="cod-concluded-title">This chapter has concluded</h3>
             <p class="cod-concluded-desc">
-              Thank you to everyone who joined our dinner table discussion on urban governance and education infrastructure. Stay tuned for future chapter announcements! In the meantime, explore all previous documented sessions below.
+              Thank you to everyone who joined our dinner table discussion on urban governance and education infrastructure. Stay tuned for future chapter announcements, or explore previous sessions below.
             </p>
             <a href="#city-over-dinner" class="cod-explore-archive-btn">
               <span>Explore Documented Sessions ↓</span>
@@ -228,7 +221,6 @@
 
         <div class="cod-next-right">
           <img src="assets/images/urban101-session-15.jpg" alt="Chapter 15 Flyer" class="cod-next-photo" loading="lazy">
-          <span class="cod-next-photo-badge">Vol. 15 · Urban Education</span>
         </div>
       </div>
     </section>
@@ -237,7 +229,6 @@
     <section class="city-dinner-section" id="city-over-dinner">
       <div class="city-dinner-container">
         <div class="city-dinner-header">
-          <span class="city-dinner-series-label">Archived Sessions</span>
           <h2 class="city-dinner-title">Previous Sessions</h2>
           <p class="city-dinner-subtitle">Browse through documented Urban 101 chapters and explore session notes.</p>
         </div>
@@ -258,30 +249,23 @@
               <div class="stage-visual">
                 <img src="assets/images/urban101-session-01.jpg" alt="Speaker photo" class="stage-photo" width="760" height="1080">
                 <div class="stage-accent-bar"></div>
-                <span class="stage-edition-badge">Vol. 01 · Collaboration</span>
               </div>
 
               <div class="stage-content">
-                <div class="stage-header">
-                  <span class="stage-series-tag">Urban 101</span>
-                  <span class="stage-location-tag">City Over Dinner</span>
-                </div>
                 <h3 class="stage-topic">Urban Collaboration in Action: +Jakarta Case Study</h3>
                 <div class="stage-speaker-wrap">
                   <span class="stage-speaker-name">Stella Mailoa, Dedi Wijaya, Kevin Arffandy</span>
                   <span class="stage-speaker-role">+Jakarta Civic Movement Leaders</span>
+                  <span class="stage-meta-date">Wednesday, August 12th 2026</span>
                 </div>
                 <div class="stage-divider"></div>
                 <p class="stage-desc">How public-private-civic partnerships breathe life into urban governance through the +Jakarta city branding and collective collaboration movement.</p>
-                <div class="stage-lens">
-                  <span class="stage-lens-icon">◉</span>
-                  <span class="stage-lens-text">Civic Collaboration &amp; Urban Action</span>
-                </div>
                 <p class="stage-venue-note" style="display: none;"></p>
-                <div style="margin-top: 24px;">
-                  <a href="http://bit.ly/Urban101-1" target="_blank" rel="noopener noreferrer" class="stage-register-btn cod-join-btn" style="padding: 10px 22px; font-size: 13px;">
-                    <span>Session Archive / Info ↗</span>
-                  </a>
+                <div class="stage-actions">
+                  <button type="button" class="stage-register-btn cod-join-btn" id="stage-archive-btn" aria-haspopup="dialog" aria-controls="session-archive-modal">
+                    <span>Session Archive / Info</span>
+                    <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -320,7 +304,6 @@
     <section class="events-coming-soon" style="padding-top: 0; padding-bottom: 80px;">
       <div class="coming-soon-card">
         <div class="coming-soon-left">
-          <span style="font-family: var(--font-sans); font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--color-nav-pill); letter-spacing: 0.08em; margin-bottom: 4px;">Next Chapter in Series</span>
           <h2 class="coming-soon-title">XYZ @ Book Talks</h2>
           <p class="coming-soon-desc">Deep dives into ideas that shaped leadership across generations.</p>
         </div>
@@ -328,6 +311,22 @@
       </div>
     </section>
   </main>
+
+  <!-- Minimalist Session Archive WIP Modal -->
+  <div class="archive-modal-backdrop" id="session-archive-modal" role="dialog" aria-modal="true" aria-labelledby="archiveModalTitle" aria-hidden="true">
+    <div class="archive-modal-sheet">
+      <div class="archive-modal-top">
+        <h3 class="archive-modal-title" id="archiveModalTitle">Work in Progress</h3>
+        <button type="button" class="archive-modal-close" aria-label="Close popup">
+          <i class="ti ti-x" aria-hidden="true"></i>
+        </button>
+      </div>
+      <p class="archive-modal-text">
+        Session summaries and dinner highlights aren’t available yet. Once ready, the recap and key takeaways from this session will live right here.
+      </p>
+      <button type="button" class="archive-btn-done">Got it</button>
+    </div>
+  </div>
 
   <!-- Website Footer -->
   <footer class="site-footer">

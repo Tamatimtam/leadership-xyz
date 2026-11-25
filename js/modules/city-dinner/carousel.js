@@ -8,6 +8,7 @@
 import { SESSIONS } from './session-data.js';
 import { createStageController } from './stage.js';
 import { renderSessions } from './render.js';
+import { initArchiveModal } from './archive-modal.js';
 
 export function initCityDinnerCarousel() {
   const wrapper = document.querySelector('.city-dinner-carousel-wrapper');
@@ -61,6 +62,9 @@ export function initCityDinnerCarousel() {
     getThumbBtns,
     updateCounter
   });
+
+  // Wire minimalist Session Archive / Info WIP modal
+  initArchiveModal();
 
   // Card click triggers expansion
   getCards().forEach((card, idx) => {

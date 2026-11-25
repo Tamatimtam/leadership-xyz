@@ -137,41 +137,6 @@
   position: relative;
 }
 
-.stage-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.stage-series-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #1b4eb8; /* Cobalt Blue matching cod-live-indicator */
-}
-
-.stage-series-tag::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 2px;
-  background-color: currentColor;
-}
-
-.stage-location-tag {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #888888;
-}
-
 .stage-topic {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -198,8 +163,15 @@
 
 .stage-speaker-role {
   font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: #5d5975;
+}
+
+.stage-meta-date {
+  font-family: var(--font-sans);
   font-size: 13px;
-  color: #666666;
+  color: #7a7691;
+  margin-top: 2px;
 }
 
 .stage-divider {
@@ -256,11 +228,32 @@
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1.5;
-  color: #333333;
-  background: rgba(0, 141, 133, 0.08);
-  border-left: 3px solid var(--color-emerald);
-  padding: 8px 14px;
-  border-radius: 4px;
+  color: #264a40;
+  background: rgba(41, 107, 89, 0.07);
+  border: 1px solid rgba(41, 107, 89, 0.18);
+  padding: 9px 14px;
+  border-radius: 8px;
   margin-top: 8px;
   max-width: 620px;
+}
+
+.stage-actions {
+  margin-top: 8px;
+}
+
+button.stage-register-btn {
+  cursor: pointer;
+  padding: 11px 24px;
+  font-size: 13px;
+}
+
+button.stage-register-btn i {
+  position: relative;
+  z-index: 2;
+  font-size: 15px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button.stage-register-btn:hover i {
+  transform: translate(3px, -3px);
 }
