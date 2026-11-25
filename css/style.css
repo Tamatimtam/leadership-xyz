@@ -1,13 +1,10 @@
 /* ==========================================================================
-   LEADERSHIP XYZ - MASTER STYLESHEET
-   Imports typography and modular section stylesheets
+   LEADERSHIP XYZ - LEGACY BARREL STYLESHEET
+   Note: HTML pages link modular stylesheets directly in <head> to avoid
+   sequential CSS @import waterfalls. External font @imports removed.
    ========================================================================== */
 
-/* 1. Google Fonts & CDN Icon Font */
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
-
-/* 2. Core Tokens & Reset */
+/* Core Tokens & Reset */
 @import url('variables.css');
 @import url('reset.css');
 

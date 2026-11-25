@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Leadership XYZ</title>
   <meta name="description" content="Cerita, Kepemimpinan, dan Hidup">
 
@@ -20,19 +21,32 @@
   <meta name="twitter:description" content="Cerita, Kepemimpinan, dan Hidup">
   <meta name="twitter:image" content="assets/images/og-image.png">
 
-  <!-- Tabler Icons Webfont CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Typography & Icon Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.53.0/dist/tabler-icons.min.css" integrity="sha384-KLGH8FsupAFyO1ttg5dHq/FSbeq1JT4S1z5Dii9aLDOtQK6BGJvFeIeGvvNmStZ/" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <!-- Modular Master Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Modular Stylesheets (Direct Parallel Links, Zero @import Waterfall) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/nav-overlay.css">
+  <link rel="stylesheet" href="css/page-transition.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/philosophy.css">
+  <link rel="stylesheet" href="css/story-card.css">
+  <link rel="stylesheet" href="css/authors.css">
+  <link rel="stylesheet" href="css/events-coming-soon.css">
+  <link rel="stylesheet" href="css/footer.css">
 
-  <!-- GSAP & ScrollTrigger Animation Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <!-- GSAP, ScrollTrigger & Lenis Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
   <!-- Modular Application Script -->
-  <script type="module" src="js/main.js" defer></script>
+  <script type="module" src="js/main.js"></script>
 
   <!-- Synchronous Page Transition Pre-Render State -->
   <script>
@@ -48,7 +62,7 @@
     <div class="transition-panel-lead"></div>
     <div class="transition-panel-base">
       <div class="transition-emblem-wrap">
-        <img src="assets/images/logo.png" alt="" class="transition-logo" width="44" height="44">
+        <img src="assets/images/logo.png" alt="" class="transition-logo" width="44" height="44" fetchpriority="low">
         <span class="transition-brand-text">XYZ Learning Lab</span>
       </div>
     </div>
@@ -180,14 +194,14 @@
 
       <!-- 3D Book Mockup Display (10% cropped top and bottom) -->
       <div class="hero-mockup-container">
-        <img src="assets/images/hero-mockup.png" alt="Leadership XYZ Book Presentation Mockup" class="hero-mockup-img" width="1920" height="1024">
+        <img src="assets/images/hero-mockup.png" alt="Leadership XYZ Book Presentation Mockup" class="hero-mockup-img" width="1920" height="1024" fetchpriority="high">
       </div>
     </section>
 
     <!-- Philosophy & Core Statement Section -->
     <section class="philosophy-section" id="philosophy">
       <div class="philosophy-container">
-        <img src="assets/images/quote-badge.png" alt="Leadership XYZ Emblem" class="philosophy-badge" width="157" height="54">
+        <img src="assets/images/quote-badge.png" alt="Leadership XYZ Emblem" class="philosophy-badge" width="157" height="54" loading="lazy">
         
         <blockquote class="philosophy-quote">
           Ketika kepemimpinan tak dimulai di atas mimbar atau panggung seminar, tetapi dimulai dari tempat yang paling dekat: <span class="highlight">dirimu sendiri.</span>
@@ -322,14 +336,14 @@
       <!-- Urban 101: City Over Dinner (Active Chapter -> Links to Dedicated Page) -->
       <a href="city-over-dinner.html" class="coming-soon-card series-card-active" aria-label="Explore Urban 101: City Over Dinner">
         <div class="coming-soon-left">
-          <img src="assets/images/urban101-logo.png" alt="Urban 101" class="series-card-eyebrow-logo">
+          <img src="assets/images/urban101-logo.png" alt="Urban 101" class="series-card-eyebrow-logo" loading="lazy">
           <h3 class="coming-soon-title">City Over Dinner</h3>
           <p class="coming-soon-desc">Conversations on cities, leadership, and public life over intimate dinners.</p>
           <div class="series-avatars-row">
             <div class="series-avatars">
-              <img src="assets/images/speaker-her.jpg" alt="Her Pramtama" class="series-avatar-img">
-              <img src="assets/images/speaker-sulfikar.jpg" alt="Prof. Sulfikar Amir" class="series-avatar-img">
-              <img src="assets/images/speaker-roni.jpg" alt="Roni Pramaditia" class="series-avatar-img">
+              <img src="assets/images/speaker-her.jpg" alt="Her Pramtama" class="series-avatar-img" width="32" height="32" loading="lazy">
+              <img src="assets/images/speaker-sulfikar.jpg" alt="Prof. Sulfikar Amir" class="series-avatar-img" width="32" height="32" loading="lazy">
+              <img src="assets/images/speaker-roni.jpg" alt="Roni Pramaditia" class="series-avatar-img" width="32" height="32" loading="lazy">
             </div>
             <span class="series-avatars-caption">15 Sessions Documented</span>
           </div>

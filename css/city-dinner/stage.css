@@ -145,6 +145,7 @@
   letter-spacing: -0.02em;
   color: var(--color-dark);
   margin: 0;
+  text-wrap: balance;
 }
 
 .stage-speaker-wrap {
@@ -199,6 +200,7 @@
   color: #555555;
   letter-spacing: -0.01em;
   max-width: 620px;
+  text-wrap: pretty;
 }
 
 .stage-lens {

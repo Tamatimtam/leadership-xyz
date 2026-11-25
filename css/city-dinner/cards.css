@@ -142,6 +142,7 @@
   line-height: 1.18em;
   letter-spacing: -0.02em;
   color: var(--color-white);
+  text-wrap: balance;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

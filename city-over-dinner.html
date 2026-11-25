@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>City Over Dinner — Urban 101 | Leadership XYZ</title>
   <meta name="description" content="Conversations on cities, leadership, and public life over intimate dinners.">
   <!-- Favicons -->
@@ -17,16 +18,34 @@
   <meta name="twitter:title" content="City Over Dinner — Leadership XYZ">
   <meta name="twitter:description" content="Conversations on cities, leadership, and public life over intimate dinners.">
   <meta name="twitter:image" content="assets/images/og-image.png">
-  <!-- Tabler Icons Webfont CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- GSAP Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <!-- Typography & Icon Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.53.0/dist/tabler-icons.min.css" integrity="sha384-KLGH8FsupAFyO1ttg5dHq/FSbeq1JT4S1z5Dii9aLDOtQK6BGJvFeIeGvvNmStZ/" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Modular Stylesheets (Direct Parallel Links, Zero @import Waterfall) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/nav-overlay.css">
+  <link rel="stylesheet" href="css/page-transition.css">
+  <link rel="stylesheet" href="css/city-dinner/layout.css">
+  <link rel="stylesheet" href="css/city-dinner/hero.css">
+  <link rel="stylesheet" href="css/city-dinner/countdown.css">
+  <link rel="stylesheet" href="css/city-dinner/cards.css">
+  <link rel="stylesheet" href="css/city-dinner/stage.css">
+  <link rel="stylesheet" href="css/city-dinner/archive-modal.css">
+  <link rel="stylesheet" href="css/city-dinner/controls.css">
+  <link rel="stylesheet" href="css/city-dinner/gallery.css">
+  <link rel="stylesheet" href="css/city-dinner/responsive.css">
+  <link rel="stylesheet" href="css/events-coming-soon.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <!-- GSAP, ScrollTrigger & Lenis Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <!-- Modular Page Script -->
-  <script type="module" src="js/city-dinner-main.js" defer></script>
+  <script type="module" src="js/city-dinner-main.js"></script>
   <!-- Synchronous Page Transition Pre-Render State -->
   <script>
     if (sessionStorage.getItem('xyz_page_transition') === 'active') {
@@ -41,7 +60,7 @@
     <div class="transition-panel-lead"></div>
     <div class="transition-panel-base">
       <div class="transition-emblem-wrap">
-        <img src="assets/images/logo.png" alt="" class="transition-logo" width="44" height="44">
+        <img src="assets/images/logo.png" alt="" class="transition-logo" width="44" height="44" fetchpriority="low">
         <span class="transition-brand-text">XYZ Learning Lab</span>
       </div>
     </div>
@@ -220,7 +239,7 @@
         </div>
 
         <div class="cod-next-right">
-          <img src="assets/images/urban101-session-15.jpg" alt="Chapter 15 Flyer" class="cod-next-photo" loading="lazy">
+          <img src="assets/images/urban101-session-15.jpg" alt="Chapter 15 Flyer" class="cod-next-photo" width="720" height="896" fetchpriority="high">
         </div>
       </div>
     </section>
@@ -247,7 +266,7 @@
               </button>
 
               <div class="stage-visual">
-                <img src="assets/images/urban101-session-01.jpg" alt="Speaker photo" class="stage-photo" width="760" height="1080">
+                <img src="assets/images/urban101-session-01.jpg" alt="Speaker photo" class="stage-photo" width="760" height="1080" fetchpriority="low" loading="lazy">
                 <div class="stage-accent-bar"></div>
               </div>
 

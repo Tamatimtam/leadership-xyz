@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>XYZ @ Book Talks — Leadership XYZ</title>
   <meta name="description" content="Deep dives into ideas that shaped leadership across generations.">
 
@@ -16,11 +17,19 @@
   <meta property="og:description" content="Deep dives into ideas that shaped leadership across generations.">
   <meta property="og:image" content="assets/images/og-image.png">
 
-  <!-- Tabler Icons Webfont CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <!-- Typography & Icon Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.53.0/dist/tabler-icons.min.css" integrity="sha384-KLGH8FsupAFyO1ttg5dHq/FSbeq1JT4S1z5Dii9aLDOtQK6BGJvFeIeGvvNmStZ/" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/nav-overlay.css">
+  <link rel="stylesheet" href="css/page-transition.css">
+  <link rel="stylesheet" href="css/footer.css">
 
   <style>
     .subpage-main {
@@ -106,11 +115,11 @@
     }
   </style>
 
-  <!-- GSAP Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <!-- GSAP & Lenis Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" integrity="sha384-B2WBjDzEjJpYvhmi2UyEn7rektqkf5suS6sNoyyrf0EBAwBHdkiXxIlU0V5Ru2ed" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <!-- Modular Page Script -->
-  <script type="module" src="js/subpage-main.js" defer></script>
+  <script type="module" src="js/subpage-main.js"></script>
 
   <!-- Synchronous Page Transition Pre-Render State -->
   <script>
@@ -126,7 +135,7 @@
     <div class="transition-panel-lead"></div>
     <div class="transition-panel-base">
       <div class="transition-emblem-wrap">
-        <img src="assets/images/logo.png" alt="" class="transition-logo" width="44" height="44">
+        <img src="assets/images/logo.png" alt="" class="transition-logo" width="44" height="44" fetchpriority="low">
         <span class="transition-brand-text">XYZ Learning Lab</span>
       </div>
     </div>
