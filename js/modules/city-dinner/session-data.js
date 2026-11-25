@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * URBAN 101 : CITY OVER DINNER – 12 SESSIONS DATA
+ * URBAN 101 : CITY OVER DINNER – 15 SESSIONS DATA
  * ==========================================================================
  */
 
@@ -179,5 +179,50 @@ export const SESSIONS = [
     isCollab: true,
     collabTag: 'M Bloc Design Week',
     venueNote: '🍽️ Support local tenants by buying your dinner at M Bloc Space and enjoying the conversation!'
+  },
+  {
+    id: 13,
+    edition: 'Vol. 13 · Youth & Culture',
+    topic: 'Gen Z 101: The Evolving City through Culture, Commerce, and Urban Life',
+    speaker: 'Abraham Andrew',
+    role: 'CEO of Z Networks',
+    date: 'Wednesday, November 4th 2026',
+    time: '19.00 - 20.30 WIB',
+    desc: 'From culture and economic activity to everyday routines in urban spaces, young generations actively shape how cities evolve and find their identity — exploring how Gen Z drives contemporary urban dynamics.',
+    lens: 'Youth Culture, Commerce & Urban Identity',
+    accent: 'indigo',
+    link: 'https://bit.ly/Urban101-13',
+    photo: 'assets/images/urban101-session-13.jpg',
+    location: 'City Over Dinner · Jakarta'
+  },
+  {
+    id: 14,
+    edition: 'Vol. 14 · Urban Leadership',
+    topic: 'Shaping a Collective Vision for Urban Leadership',
+    speaker: 'Peggy Putri',
+    role: 'COO and Co-Founder of Paradigm',
+    date: 'Wednesday, November 18th 2026',
+    time: '19.00 - 20.30 WIB',
+    desc: 'Urban leadership requires a shared vision and open spaces to exchange perspectives — exploring leadership practices that foster collective decision-making across the city.',
+    lens: 'Collective Vision & Shared Decision-Making',
+    accent: 'nav-pill',
+    link: 'https://bit.ly/Urban101-14',
+    photo: 'assets/images/urban101-session-14.jpg',
+    location: 'City Over Dinner · Jakarta'
+  },
+  {
+    id: 15,
+    edition: 'Vol. 15 · Urban Education',
+    topic: 'Building Minds, Shaping Cities: Rethinking Urban Education Infrastructure',
+    speaker: 'Patrya Pratama',
+    role: '',
+    date: 'Wednesday, November 25th 2026',
+    time: '19.00 - 20.30 WIB',
+    desc: 'How far does a city play a role in expanding access to higher education for its citizens? Unpacking the relationship between urban governance, advanced learning spaces, and equitable human capital development.',
+    lens: 'Urban Governance & Education Infrastructure',
+    accent: 'emerald',
+    link: 'https://bit.ly/Urban101-15',
+    photo: 'assets/images/urban101-session-15.jpg',
+    location: 'City Over Dinner · Jakarta'
   }
 ];

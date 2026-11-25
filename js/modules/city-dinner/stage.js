@@ -35,6 +35,10 @@ export function createStageController({ wrapper, stage, track, getCards, getThum
     setTxt('.stage-topic', data.topic);
     setTxt('.stage-speaker-name', data.speaker);
     setTxt('.stage-speaker-role', data.role);
+    const roleEl = stage.querySelector('.stage-speaker-role');
+    if (roleEl) {
+      roleEl.style.display = data.role ? '' : 'none';
+    }
     setTxt('.stage-desc', data.desc);
     setTxt('.stage-lens-text', data.lens);
     setTxt('.stage-location-tag', data.location ? (data.isCollab ? `📍 ${data.location}` : data.location) : 'City Over Dinner · Jakarta');
